@@ -148,10 +148,12 @@
 </head>
 <body class="bg-background text-primary font-sans text-base leading-relaxed m-0 p-0 min-h-full">
     <!-- Navigation -->
-    <nav class="fixed top-0 left-0 right-0 bg-background/95 backdrop-blur-xl border-b border-primary/10 z-50 py-5">
-        <div class="max-w-7xl mx-auto px-10 flex justify-between items-center">
-            <a href="#" id="logo-link" class="text-2xl font-medium text-primary no-underline tracking-tight">Venuu</a>
-            <ul class="flex list-none m-0 p-0 gap-10">
+    <nav class="fixed top-0 left-0 right-0 bg-background/95 backdrop-blur-xl border-b border-primary/10 z-50 py-3 md:py-5">
+        <div class="max-w-7xl mx-auto px-4 md:px-10 flex justify-between items-center">
+            <a href="#" id="logo-link" class="text-xl md:text-2xl font-medium text-primary no-underline tracking-tight">Venuu</a>
+            
+            <!-- Desktop Navigation -->
+            <ul class="hidden md:flex list-none m-0 p-0 gap-6 lg:gap-10">
                 <li><a data-draw-line="" href="#events" class="text-draw">
                     <p class="text-draw__p">Events</p>
                     <div data-draw-line-box="" class="text-draw__box"></div>
@@ -165,116 +167,139 @@
                     <div data-draw-line-box="" class="text-draw__box"></div>
                 </a></li>
             </ul>
+
+            <!-- Mobile Menu Button -->
+            <button id="mobile-menu-btn" class="md:hidden p-2 text-primary hover:text-accent transition-colors duration-200">
+                <i class="fas fa-bars text-xl"></i>
+            </button>
+        </div>
+
+        <!-- Mobile Navigation Menu -->
+        <div id="mobile-menu" class="md:hidden bg-background/98 backdrop-blur-xl border-t border-primary/10 hidden">
+            <div class="px-4 py-4 space-y-4">
+                <a data-draw-line="" href="#events" class="block text-draw py-2">
+                    <p class="text-draw__p">Events</p>
+                    <div data-draw-line-box="" class="text-draw__box"></div>
+                </a>
+                <a data-draw-line="" href="#about" class="block text-draw py-2">
+                    <p class="text-draw__p">About</p>
+                    <div data-draw-line-box="" class="text-draw__box"></div>
+                </a>
+                <a data-draw-line="" href="#contact" class="block text-draw py-2">
+                    <p class="text-draw__p">Contact</p>
+                    <div data-draw-line-box="" class="text-draw__box"></div>
+                </a>
+            </div>
         </div>
     </nav>
 
     <!-- Hero Section -->
-    <section class="pt-36 pb-24 text-center max-w-4xl mx-auto px-10 relative bg-background">
-        <h1 class="mb-8 leading-tight"><a data-draw-line="" href="#" class="text-draw-hero">
+    <section class="pt-24 md:pt-36 pb-16 md:pb-24 text-center max-w-4xl mx-auto px-4 md:px-10 relative bg-background">
+        <h1 class="mb-6 md:mb-8 leading-tight"><a data-draw-line="" href="#" class="text-draw-hero">
             <p class="text-draw__p">Discover Events</p>
             <div data-draw-line-box="" class="text-draw__box"></div>
         </a></h1>
-        <p class="text-xl text-gray-600 mb-16 max-w-3xl mx-auto leading-relaxed font-light">Explore Iceland's vibrant cultural scene through carefully curated events that bring people together and create lasting memories.</p>
+        <p class="text-lg md:text-xl text-gray-600 mb-12 md:mb-16 max-w-3xl mx-auto leading-relaxed font-light">Explore Iceland's vibrant cultural scene through carefully curated events that bring people together and create lasting memories.</p>
     </section>
 
     <!-- Animated Carousel Section -->
-    <section class="py-20 bg-background">
-        <div class="max-w-6xl mx-auto px-10">
-            <ul id="c" class="relative w-full h-48">
-                <li class="absolute top-0 w-1/4 h-full opacity-0 transition-all duration-1000 ease-in-out">
-                    <div class="p-6 text-center h-full flex flex-col justify-center">
-                        <div class="w-24 h-24 mx-auto mb-4 rounded-full overflow-hidden bg-gray-100 flex items-center justify-center aspect-square">
+    <section class="py-12 md:py-20 bg-background">
+        <div class="max-w-6xl mx-auto px-4 md:px-10">
+            <ul id="c" class="relative w-full h-32 md:h-48">
+                <li class="absolute top-0 w-1/2 md:w-1/4 h-full opacity-0 transition-all duration-1000 ease-in-out">
+                    <div class="p-3 md:p-6 text-center h-full flex flex-col justify-center">
+                        <div class="w-16 h-16 md:w-24 md:h-24 mx-auto mb-2 md:mb-4 rounded-full overflow-hidden bg-gray-100 flex items-center justify-center aspect-square">
                             <img src="Images/3f117cff666f231104f270edda727dab.jpg" alt="Discover Events" class="w-full h-full object-cover rounded-full">
                         </div>
-                        <p class="text-sm text-gray-600 leading-relaxed font-light">Discover amazing events happening across Iceland's beautiful landscapes.</p>
+                        <p class="text-xs md:text-sm text-gray-600 leading-relaxed font-light">Discover amazing events happening across Iceland's beautiful landscapes.</p>
                     </div>
                 </li>
-                <li class="absolute top-0 w-1/4 h-full opacity-0 transition-all duration-1000 ease-in-out">
-                    <div class="p-6 text-center h-full flex flex-col justify-center">
-                        <div class="w-24 h-24 mx-auto mb-4 rounded-full overflow-hidden bg-gray-100 flex items-center justify-center aspect-square">
+                <li class="absolute top-0 w-1/2 md:w-1/4 h-full opacity-0 transition-all duration-1000 ease-in-out">
+                    <div class="p-3 md:p-6 text-center h-full flex flex-col justify-center">
+                        <div class="w-16 h-16 md:w-24 md:h-24 mx-auto mb-2 md:mb-4 rounded-full overflow-hidden bg-gray-100 flex items-center justify-center aspect-square">
                             <img src="Images/1d595e6dc1b6a3d963b932eb94de79d1.jpg" alt="Connect People" class="w-full h-full object-cover rounded-full">
                         </div>
-                        <p class="text-sm text-gray-600 leading-relaxed font-light">Connect with like-minded people and create unforgettable memories at cultural gatherings.</p>
+                        <p class="text-xs md:text-sm text-gray-600 leading-relaxed font-light">Connect with like-minded people and create unforgettable memories at cultural gatherings.</p>
                     </div>
                 </li>
-                <li class="absolute top-0 w-1/4 h-full opacity-0 transition-all duration-1000 ease-in-out">
-                    <div class="p-6 text-center h-full flex flex-col justify-center">
-                        <div class="w-24 h-24 mx-auto mb-4 rounded-full overflow-hidden bg-gray-100 flex items-center justify-center aspect-square">
+                <li class="absolute top-0 w-1/2 md:w-1/4 h-full opacity-0 transition-all duration-1000 ease-in-out">
+                    <div class="p-3 md:p-6 text-center h-full flex flex-col justify-center">
+                        <div class="w-16 h-16 md:w-24 md:h-24 mx-auto mb-2 md:mb-4 rounded-full overflow-hidden bg-gray-100 flex items-center justify-center aspect-square">
                             <img src="Images/233986128f46951bf66a727cca1b3a18.jpg" alt="Iceland Heritage" class="w-full h-full object-cover rounded-full">
                         </div>
-                        <p class="text-sm text-gray-600 leading-relaxed font-light">Experience the rich heritage and contemporary culture of Iceland through curated events.</p>
+                        <p class="text-xs md:text-sm text-gray-600 leading-relaxed font-light">Experience the rich heritage and contemporary culture of Iceland through curated events.</p>
                     </div>
                 </li>
-                <li class="absolute top-0 w-1/4 h-full opacity-0 transition-all duration-1000 ease-in-out">
-                    <div class="p-6 text-center h-full flex flex-col justify-center">
-                        <div class="w-24 h-24 mx-auto mb-4 rounded-full overflow-hidden bg-gray-100 flex items-center justify-center aspect-square">
+                <li class="absolute top-0 w-1/2 md:w-1/4 h-full opacity-0 transition-all duration-1000 ease-in-out">
+                    <div class="p-3 md:p-6 text-center h-full flex flex-col justify-center">
+                        <div class="w-16 h-16 md:w-24 md:h-24 mx-auto mb-2 md:mb-4 rounded-full overflow-hidden bg-gray-100 flex items-center justify-center aspect-square">
                             <img src="Images/3bd777f8c2760cbf585251808e738698.jpg" alt="Community" class="w-full h-full object-cover rounded-full">
                         </div>
-                        <p class="text-sm text-gray-600 leading-relaxed font-light">Join a community of event enthusiasts and discover your next favorite gathering.</p>
+                        <p class="text-xs md:text-sm text-gray-600 leading-relaxed font-light">Join a community of event enthusiasts and discover your next favorite gathering.</p>
                     </div>
                 </li>
-                <li class="absolute top-0 w-1/4 h-full opacity-0 transition-all duration-1000 ease-in-out">
-                    <div class="p-6 text-center h-full flex flex-col justify-center">
-                        <div class="w-24 h-24 mx-auto mb-4 rounded-full overflow-hidden bg-gray-100 flex items-center justify-center aspect-square">
+                <li class="absolute top-0 w-1/2 md:w-1/4 h-full opacity-0 transition-all duration-1000 ease-in-out">
+                    <div class="p-3 md:p-6 text-center h-full flex flex-col justify-center">
+                        <div class="w-16 h-16 md:w-24 md:h-24 mx-auto mb-2 md:mb-4 rounded-full overflow-hidden bg-gray-100 flex items-center justify-center aspect-square">
                             <img src="Images/3f117cff666f231104f270edda727dab.jpg" alt="Music & Art" class="w-full h-full object-cover rounded-full">
                         </div>
-                        <p class="text-sm text-gray-600 leading-relaxed font-light">From music festivals to art exhibitions, find events that match your interests.</p>
+                        <p class="text-xs md:text-sm text-gray-600 leading-relaxed font-light">From music festivals to art exhibitions, find events that match your interests.</p>
                     </div>
                 </li>
-                <li class="absolute top-0 w-1/4 h-full opacity-0 transition-all duration-1000 ease-in-out">
-                    <div class="p-6 text-center h-full flex flex-col justify-center">
-                        <div class="w-24 h-24 mx-auto mb-4 rounded-full overflow-hidden bg-gray-100 flex items-center justify-center aspect-square">
+                <li class="absolute top-0 w-1/2 md:w-1/4 h-full opacity-0 transition-all duration-1000 ease-in-out">
+                    <div class="p-3 md:p-6 text-center h-full flex flex-col justify-center">
+                        <div class="w-16 h-16 md:w-24 md:h-24 mx-auto mb-2 md:mb-4 rounded-full overflow-hidden bg-gray-100 flex items-center justify-center aspect-square">
                             <img src="Images/542dfd6b879d676a823e611028e40984.jpg" alt="Local Artists" class="w-full h-full object-cover rounded-full">
                         </div>
-                        <p class="text-sm text-gray-600 leading-relaxed font-light">Support local artists and performers while enjoying world-class entertainment.</p>
+                        <p class="text-xs md:text-sm text-gray-600 leading-relaxed font-light">Support local artists and performers while enjoying world-class entertainment.</p>
                     </div>
                 </li>
-                <li class="absolute top-0 w-1/4 h-full opacity-0 transition-all duration-1000 ease-in-out">
-                    <div class="p-6 text-center h-full flex flex-col justify-center">
-                        <div class="w-24 h-24 mx-auto mb-4 rounded-full overflow-hidden bg-gray-100 flex items-center justify-center aspect-square">
+                <li class="absolute top-0 w-1/2 md:w-1/4 h-full opacity-0 transition-all duration-1000 ease-in-out">
+                    <div class="p-3 md:p-6 text-center h-full flex flex-col justify-center">
+                        <div class="w-16 h-16 md:w-24 md:h-24 mx-auto mb-2 md:mb-4 rounded-full overflow-hidden bg-gray-100 flex items-center justify-center aspect-square">
                             <img src="Images/783d478fde50b0f1d23ed5db8e9e2dee.jpg" alt="Venues" class="w-full h-full object-cover rounded-full">
                         </div>
-                        <p class="text-sm text-gray-600 leading-relaxed font-light">Explore venues from cozy cafes to grand concert halls across the country.</p>
+                        <p class="text-xs md:text-sm text-gray-600 leading-relaxed font-light">Explore venues from cozy cafes to grand concert halls across the country.</p>
                     </div>
                 </li>
-                <li class="absolute top-0 w-1/4 h-full opacity-0 transition-all duration-1000 ease-in-out">
-                    <div class="p-6 text-center h-full flex flex-col justify-center">
-                        <div class="w-24 h-24 mx-auto mb-4 rounded-full overflow-hidden bg-gray-100 flex items-center justify-center aspect-square">
+                <li class="absolute top-0 w-1/2 md:w-1/4 h-full opacity-0 transition-all duration-1000 ease-in-out">
+                    <div class="p-3 md:p-6 text-center h-full flex flex-col justify-center">
+                        <div class="w-16 h-16 md:w-24 md:h-24 mx-auto mb-2 md:mb-4 rounded-full overflow-hidden bg-gray-100 flex items-center justify-center aspect-square">
                             <img src="Images/96ec819f4ad7e5237c653c05baf5cd8c.jpg" alt="Stay Updated" class="w-full h-full object-cover rounded-full">
                         </div>
-                        <p class="text-sm text-gray-600 leading-relaxed font-light">Stay updated with the latest events and never miss out on exciting opportunities.</p>
+                        <p class="text-xs md:text-sm text-gray-600 leading-relaxed font-light">Stay updated with the latest events and never miss out on exciting opportunities.</p>
                     </div>
                 </li>
-                <li class="absolute top-0 w-1/4 h-full opacity-0 transition-all duration-1000 ease-in-out">
-                    <div class="p-6 text-center h-full flex flex-col justify-center">
-                        <div class="w-24 h-24 mx-auto mb-4 rounded-full overflow-hidden bg-gray-100 flex items-center justify-center aspect-square">
+                <li class="absolute top-0 w-1/2 md:w-1/4 h-full opacity-0 transition-all duration-1000 ease-in-out">
+                    <div class="p-3 md:p-6 text-center h-full flex flex-col justify-center">
+                        <div class="w-16 h-16 md:w-24 md:h-24 mx-auto mb-2 md:mb-4 rounded-full overflow-hidden bg-gray-100 flex items-center justify-center aspect-square">
                             <img src="Images/b3a1e66d241d956c3de527627d3c0a8a.jpg" alt="Friendships" class="w-full h-full object-cover rounded-full">
                         </div>
-                        <p class="text-sm text-gray-600 leading-relaxed font-light">Build lasting friendships and connections through shared experiences and interests.</p>
+                        <p class="text-xs md:text-sm text-gray-600 leading-relaxed font-light">Build lasting friendships and connections through shared experiences and interests.</p>
                     </div>
                 </li>
-                <li class="absolute top-0 w-1/4 h-full opacity-0 transition-all duration-1000 ease-in-out">
-                    <div class="p-6 text-center h-full flex flex-col justify-center">
-                        <div class="w-24 h-24 mx-auto mb-4 rounded-full overflow-hidden bg-gray-100 flex items-center justify-center aspect-square">
+                <li class="absolute top-0 w-1/2 md:w-1/4 h-full opacity-0 transition-all duration-1000 ease-in-out">
+                    <div class="p-3 md:p-6 text-center h-full flex flex-col justify-center">
+                        <div class="w-16 h-16 md:w-24 md:h-24 mx-auto mb-2 md:mb-4 rounded-full overflow-hidden bg-gray-100 flex items-center justify-center aspect-square">
                             <img src="Images/068e9d4bef717cd1000843dc38c603ec.jpg" alt="Creative Community" class="w-full h-full object-cover rounded-full">
                         </div>
-                        <p class="text-sm text-gray-600 leading-relaxed font-light">Immerse yourself in Iceland's creative community and cultural diversity.</p>
+                        <p class="text-xs md:text-sm text-gray-600 leading-relaxed font-light">Immerse yourself in Iceland's creative community and cultural diversity.</p>
                     </div>
                 </li>
-                <li class="absolute top-0 w-1/4 h-full opacity-0 transition-all duration-1000 ease-in-out">
-                    <div class="p-6 text-center h-full flex flex-col justify-center">
-                        <div class="w-24 h-24 mx-auto mb-4 rounded-full overflow-hidden bg-gray-100 flex items-center justify-center aspect-square">
+                <li class="absolute top-0 w-1/2 md:w-1/4 h-full opacity-0 transition-all duration-1000 ease-in-out">
+                    <div class="p-3 md:p-6 text-center h-full flex flex-col justify-center">
+                        <div class="w-16 h-16 md:w-24 md:h-24 mx-auto mb-2 md:mb-4 rounded-full overflow-hidden bg-gray-100 flex items-center justify-center aspect-square">
                             <img src="Images/1d595e6dc1b6a3d963b932eb94de79d1.jpg" alt="Hidden Gems" class="w-full h-full object-cover rounded-full">
                         </div>
-                        <p class="text-sm text-gray-600 leading-relaxed font-light">Discover hidden gems and unique experiences that showcase Iceland's character.</p>
+                        <p class="text-xs md:text-sm text-gray-600 leading-relaxed font-light">Discover hidden gems and unique experiences that showcase Iceland's character.</p>
                     </div>
                 </li>
-                <li class="absolute top-0 w-1/4 h-full opacity-0 transition-all duration-1000 ease-in-out">
-                    <div class="p-6 text-center h-full flex flex-col justify-center">
-                        <div class="w-24 h-24 mx-auto mb-4 rounded-full overflow-hidden bg-gray-100 flex items-center justify-center aspect-square">
+                <li class="absolute top-0 w-1/2 md:w-1/4 h-full opacity-0 transition-all duration-1000 ease-in-out">
+                    <div class="p-3 md:p-6 text-center h-full flex flex-col justify-center">
+                        <div class="w-16 h-16 md:w-24 md:h-24 mx-auto mb-2 md:mb-4 rounded-full overflow-hidden bg-gray-100 flex items-center justify-center aspect-square">
                             <img src="Images/233986128f46951bf66a727cca1b3a18.jpg" alt="Trusted Platform" class="w-full h-full object-cover rounded-full">
                         </div>
-                        <p class="text-sm text-gray-600 leading-relaxed font-light">Join thousands of event-goers who trust Venuu for their entertainment needs.</p>
+                        <p class="text-xs md:text-sm text-gray-600 leading-relaxed font-light">Join thousands of event-goers who trust Venuu for their entertainment needs.</p>
                     </div>
                 </li>
             </ul>
@@ -282,18 +307,18 @@
     </section>
 
     <!-- About Section -->
-    <section class="py-24 bg-background" id="about">
-        <div class="text-center mb-20">
-            <h2 class="text-4xl md:text-5xl mb-6 text-primary font-light tracking-tight">About Venuu</h2>
-            <p class="text-lg text-gray-600 max-w-3xl mx-auto leading-relaxed font-light">From intimate gatherings to grand celebrations, Venuu showcases the best of Icelandic culture, music, and community. Each event is thoughtfully designed to bring people together and create lasting memories.</p>
+    <section class="py-16 md:py-24 bg-background" id="about">
+        <div class="text-center mb-12 md:mb-20 px-4 md:px-0">
+            <h2 class="text-3xl md:text-4xl lg:text-5xl mb-4 md:mb-6 text-primary font-light tracking-tight">About Venuu</h2>
+            <p class="text-base md:text-lg text-gray-600 max-w-3xl mx-auto leading-relaxed font-light">From intimate gatherings to grand celebrations, Venuu showcases the best of Icelandic culture, music, and community. Each event is thoughtfully designed to bring people together and create lasting memories.</p>
         </div>
 
         <!-- Image Carousel -->
-        <div class="max-w-6xl mx-auto px-10">
+        <div class="max-w-6xl mx-auto px-4 md:px-10">
             <div id="about-carousel" class="relative overflow-hidden rounded-2xl shadow-2xl">
                 <div class="flex transition-transform duration-500 ease-in-out" id="carousel-track">
                     <div class="w-full flex-shrink-0">
-                        <img src="Images/068e9d4bef717cd1000843dc38c603ec.jpg" alt="Iceland Events" class="w-full h-96 object-cover">
+                        <img src="Images/068e9d4bef717cd1000843dc38c603ec.jpg" alt="Iceland Events" class="w-full h-48 md:h-96 object-cover">
                     </div>
                     <div class="w-full flex-shrink-0">
                         <img src="Images/1d595e6dc1b6a3d963b932eb94de79d1.jpg" alt="Cultural Events" class="w-full h-96 object-cover">
@@ -322,39 +347,39 @@
     </section>
 
     <!-- Events Section -->
-    <section class="py-24 bg-background" id="events">
+    <section class="py-16 md:py-24 bg-background" id="events">
         <!-- Search & Filter System -->
-        <div class="max-w-5xl mx-auto mb-16">
+        <div class="max-w-5xl mx-auto mb-12 md:mb-16 px-4 md:px-0">
             <!-- Search Bar -->
-            <div class="relative mb-8">
-                <div class="absolute inset-y-0 left-0 pl-6 flex items-center pointer-events-none">
-                    <i class="fas fa-search text-gray-400 text-lg"></i>
+            <div class="relative mb-6 md:mb-8">
+                <div class="absolute inset-y-0 left-0 pl-4 md:pl-6 flex items-center pointer-events-none">
+                    <i class="fas fa-search text-gray-400 text-base md:text-lg"></i>
                 </div>
-                <input type="text" id="search-input" class="w-full pl-14 pr-6 py-5 bg-white/90 backdrop-blur-sm border border-gray-200/50 rounded-2xl text-lg placeholder-gray-500 focus:outline-none focus:border-accent/50 focus:bg-white focus:shadow-xl focus:shadow-accent/10 transition-all duration-300" placeholder="Search events, venues, or locations...">
+                <input type="text" id="search-input" class="w-full pl-12 md:pl-14 pr-4 md:pr-6 py-4 md:py-5 bg-white/90 backdrop-blur-sm border border-gray-200/50 rounded-2xl text-base md:text-lg placeholder-gray-500 focus:outline-none focus:border-accent/50 focus:bg-white focus:shadow-xl focus:shadow-accent/10 transition-all duration-300" placeholder="Search events, venues, or locations...">
             </div>
 
             <!-- Filters -->
-            <div class="bg-white/60 backdrop-blur-sm rounded-2xl p-6 border border-gray-200/50 shadow-lg">
-                <div class="flex flex-col lg:flex-row gap-4 items-center">
-                    <div class="flex flex-col sm:flex-row gap-3 flex-1">
-                        <select id="category-filter" class="px-5 py-3 bg-white/80 border border-gray-200/50 rounded-xl text-primary focus:outline-none focus:border-accent/50 focus:bg-white focus:shadow-lg transition-all duration-300 min-w-48">
+            <div class="bg-white/60 backdrop-blur-sm rounded-2xl p-4 md:p-6 border border-gray-200/50 shadow-lg">
+                <div class="flex flex-col gap-4">
+                    <div class="flex flex-col sm:flex-row gap-3">
+                        <select id="category-filter" class="px-4 md:px-5 py-3 bg-white/80 border border-gray-200/50 rounded-xl text-primary focus:outline-none focus:border-accent/50 focus:bg-white focus:shadow-lg transition-all duration-300 flex-1">
                             <option value="">All Categories</option>
                         </select>
-                        <select id="location-filter" class="px-5 py-3 bg-white/80 border border-gray-200/50 rounded-xl text-primary focus:outline-none focus:border-accent/50 focus:bg-white focus:shadow-lg transition-all duration-300 min-w-48">
+                        <select id="location-filter" class="px-4 md:px-5 py-3 bg-white/80 border border-gray-200/50 rounded-xl text-primary focus:outline-none focus:border-accent/50 focus:bg-white focus:shadow-lg transition-all duration-300 flex-1">
                             <option value="">All Locations</option>
                         </select>
-                        <select id="sort-filter" class="px-5 py-3 bg-white/80 border border-gray-200/50 rounded-xl text-primary focus:outline-none focus:border-accent/50 focus:bg-white focus:shadow-lg transition-all duration-300 min-w-48">
+                        <select id="sort-filter" class="px-4 md:px-5 py-3 bg-white/80 border border-gray-200/50 rounded-xl text-primary focus:outline-none focus:border-accent/50 focus:bg-white focus:shadow-lg transition-all duration-300 flex-1">
                             <option value="date">Sort by Date</option>
                             <option value="name">Sort by Name</option>
                             <option value="location">Sort by Location</option>
                         </select>
                     </div>
-                    <div class="flex gap-3">
-                        <button id="date-order-toggle" class="px-6 py-3 bg-gradient-to-r from-accent to-accent/80 text-white rounded-xl font-medium hover:from-accent/90 hover:to-accent/70 hover:shadow-lg hover:shadow-accent/25 transition-all duration-300 flex items-center gap-2">
+                    <div class="flex flex-col sm:flex-row gap-3">
+                        <button id="date-order-toggle" class="px-4 md:px-6 py-3 bg-gradient-to-r from-accent to-accent/80 text-white rounded-xl font-medium hover:from-accent/90 hover:to-accent/70 hover:shadow-lg hover:shadow-accent/25 transition-all duration-300 flex items-center justify-center gap-2 flex-1 sm:flex-none">
                             <i class="fas fa-sort-amount-up"></i>
                             <span id="date-order-text">Earliest First</span>
                         </button>
-                        <button id="clear-filters" class="px-6 py-3 bg-gray-100 hover:bg-gray-200 text-gray-700 rounded-xl font-medium transition-all duration-300 flex items-center gap-2">
+                        <button id="clear-filters" class="px-4 md:px-6 py-3 bg-gray-100 hover:bg-gray-200 text-gray-700 rounded-xl font-medium transition-all duration-300 flex items-center justify-center gap-2 flex-1 sm:flex-none">
                             <i class="fas fa-times"></i>
                             <span>Clear</span>
                         </button>
@@ -383,7 +408,7 @@
         </div>
 
         <!-- Events Grid -->
-        <div id="events-container" class="max-w-7xl mx-auto px-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-10"></div>
+        <div id="events-container" class="max-w-7xl mx-auto px-4 md:px-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 md:gap-10"></div>
         
         <!-- Load More Button -->
         <div id="load-more-container" class="text-center my-16 hidden">
@@ -406,19 +431,19 @@
     </main>
 
     <!-- Newsletter Section -->
-    <section class="py-24 bg-background">
-        <div class="text-center mb-20">
-            <h2 class="text-4xl md:text-5xl mb-6 text-primary font-light tracking-tight">Stay Updated</h2>
-            <p class="text-lg text-gray-600 max-w-3xl mx-auto leading-relaxed font-light">Get the latest news and updates about events happening across Iceland.</p>
+    <section class="py-16 md:py-24 bg-background">
+        <div class="text-center mb-12 md:mb-20 px-4 md:px-0">
+            <h2 class="text-3xl md:text-4xl lg:text-5xl mb-4 md:mb-6 text-primary font-light tracking-tight">Stay Updated</h2>
+            <p class="text-base md:text-lg text-gray-600 max-w-3xl mx-auto leading-relaxed font-light">Get the latest news and updates about events happening across Iceland.</p>
         </div>
         
-        <div class="max-w-2xl mx-auto px-10">
-            <div class="flex gap-3 mb-5">
-                <input type="text" placeholder="Name" class="flex-1 px-5 py-4 border-2 border-primary/10 bg-surface text-base transition-all duration-300 text-primary font-light focus:outline-none focus:border-accent focus:bg-background">
-                <input type="email" placeholder="Email" class="flex-1 px-5 py-4 border-2 border-primary/10 bg-surface text-base transition-all duration-300 text-primary font-light focus:outline-none focus:border-accent focus:bg-background">
+        <div class="max-w-2xl mx-auto px-4 md:px-10">
+            <div class="flex flex-col sm:flex-row gap-3 mb-5">
+                <input type="text" placeholder="Name" class="flex-1 px-4 md:px-5 py-3 md:py-4 border-2 border-primary/10 bg-surface text-base transition-all duration-300 text-primary font-light focus:outline-none focus:border-accent focus:bg-background">
+                <input type="email" placeholder="Email" class="flex-1 px-4 md:px-5 py-3 md:py-4 border-2 border-primary/10 bg-surface text-base transition-all duration-300 text-primary font-light focus:outline-none focus:border-accent focus:bg-background">
             </div>
             <div class="text-center">
-                <button class="px-10 py-4 bg-accent text-white border-none text-base cursor-pointer transition-all duration-300 font-normal tracking-wide hover:bg-accent/90 hover:-translate-y-0.5 hover:shadow-lg hover:shadow-accent/30">
+                <button class="px-8 md:px-10 py-3 md:py-4 bg-accent text-white border-none text-base cursor-pointer transition-all duration-300 font-normal tracking-wide hover:bg-accent/90 hover:-translate-y-0.5 hover:shadow-lg hover:shadow-accent/30">
                     Subscribe
                 </button>
             </div>
@@ -426,30 +451,30 @@
     </section>
 
     <!-- Footer -->
-    <footer class="bg-gray-800 text-gray-100 py-20" id="contact">
-        <div class="max-w-7xl mx-auto px-10 grid grid-cols-1 md:grid-cols-2 gap-16">
+    <footer class="bg-gray-800 text-gray-100 py-12 md:py-20" id="contact">
+        <div class="max-w-7xl mx-auto px-4 md:px-10 grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-16">
             <div>
-                <h3 class="text-sm mb-5 font-medium">Contact</h3>
+                <h3 class="text-sm mb-4 md:mb-5 font-medium">Contact</h3>
                 <p class="text-xs text-gray-400 mb-2">Reykjavik, Iceland</p>
                 <p class="text-xs text-gray-400 mb-2">info@venuu.is</p>
                 <p class="text-xs text-gray-400 mb-2">+354 123 4567</p>
             </div>
             <div>
-                <h3 class="text-sm mb-5 font-medium">About</h3>
+                <h3 class="text-sm mb-4 md:mb-5 font-medium">About</h3>
                 <p class="text-xs text-gray-400 mb-2">Venuu connects people through Iceland's vibrant cultural events.</p>
                 <p class="text-xs text-gray-400 mb-2">© 2024 Venuu. All rights reserved.</p>
             </div>
         </div>
         
         <!-- Footer Bottom -->
-        <div class="border-t border-gray-600 mt-10 pt-5">
-            <div class="max-w-7xl mx-auto px-10 flex justify-between items-center flex-wrap gap-5">
-                <div class="flex gap-8">
+        <div class="border-t border-gray-600 mt-8 md:mt-10 pt-4 md:pt-5">
+            <div class="max-w-7xl mx-auto px-4 md:px-10 flex flex-col sm:flex-row justify-between items-center gap-4 md:gap-5">
+                <div class="flex flex-col sm:flex-row gap-4 md:gap-8 text-center sm:text-left">
                     <a href="#" class="text-gray-400 no-underline text-xs transition-colors duration-200 hover:text-white">Privacy Policy</a>
                     <a href="#" class="text-gray-400 no-underline text-xs transition-colors duration-200 hover:text-white">Terms of Service</a>
                     <a href="#" class="text-gray-400 no-underline text-xs transition-colors duration-200 hover:text-white">Support</a>
                 </div>
-                <div class="flex gap-5">
+                <div class="flex gap-4 md:gap-5">
                     <a href="#" class="text-gray-400 no-underline text-sm transition-colors duration-200 hover:text-white">Instagram</a>
                     <a href="#" class="text-gray-400 no-underline text-sm transition-colors duration-200 hover:text-white">Facebook</a>
                     <a href="#" class="text-gray-400 no-underline text-sm transition-colors duration-200 hover:text-white">Twitter</a>
@@ -850,47 +875,61 @@
             max: 12,
             
             init() {
-                // Initialize first 4 items
+                // Initialize first items based on screen size
                 this.showItems(0);
                 
                 // Start the carousel
                 setInterval(() => {
                     this.cycleItems();
                 }, this.timer);
+                
+                // Handle window resize
+                window.addEventListener('resize', () => {
+                    this.showItems(this.i);
+                });
+            },
+            
+            getItemsPerView() {
+                // Return number of items to show based on screen size
+                return window.innerWidth < 768 ? 2 : 4;
             },
             
             showItems(startIndex) {
                 const items = document.querySelectorAll('#c > li');
+                const itemsPerView = this.getItemsPerView();
+                const itemWidth = 100 / itemsPerView;
                 
                 // Remove active class from all items
                 items.forEach(item => item.classList.remove('active'));
                 
-                // Show 4 items starting from startIndex
-                for (let j = 0; j < 4; j++) {
+                // Show items starting from startIndex
+                for (let j = 0; j < itemsPerView; j++) {
                     const index = (startIndex + j) % this.max;
                     const item = items[index];
                     if (item) {
                         item.classList.add('active');
-                        item.style.left = `${j * 25}%`;
+                        item.style.left = `${j * itemWidth}%`;
                     }
                 }
             },
             
             cycleItems() {
                 const items = document.querySelectorAll('#c > li');
+                const itemsPerView = this.getItemsPerView();
                 
                 // Remove active class from all items
                 items.forEach(item => item.classList.remove('active'));
                 
-                // Move to next set of 4 items
-                this.i = (this.i + 4) % this.max;
+                // Move to next set of items
+                this.i = (this.i + itemsPerView) % this.max;
                 
                 // Show new items with staggered delays
-                for (let j = 0; j < 4; j++) {
+                for (let j = 0; j < itemsPerView; j++) {
                     const index = (this.i + j) % this.max;
                     const item = items[index];
                     if (item) {
-                        item.style.left = `${j * 25}%`;
+                        const itemWidth = 100 / itemsPerView;
+                        item.style.left = `${j * itemWidth}%`;
                         setTimeout(() => {
                             item.classList.add('active');
                         }, j * 250); // Staggered appearance
@@ -967,6 +1006,37 @@
             }
         };
 
+        // Mobile Menu Manager
+        const MobileMenuManager = {
+            init() {
+                const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+                const mobileMenu = document.getElementById('mobile-menu');
+                
+                if (mobileMenuBtn && mobileMenu) {
+                    mobileMenuBtn.addEventListener('click', () => {
+                        mobileMenu.classList.toggle('hidden');
+                        
+                        // Toggle icon between hamburger and X
+                        const icon = mobileMenuBtn.querySelector('i');
+                        if (mobileMenu.classList.contains('hidden')) {
+                            icon.className = 'fas fa-bars text-xl';
+                        } else {
+                            icon.className = 'fas fa-times text-xl';
+                        }
+                    });
+                    
+                    // Close mobile menu when clicking on a link
+                    mobileMenu.querySelectorAll('a').forEach(link => {
+                        link.addEventListener('click', () => {
+                            mobileMenu.classList.add('hidden');
+                            const icon = mobileMenuBtn.querySelector('i');
+                            icon.className = 'fas fa-bars text-xl';
+                        });
+                    });
+                }
+            }
+        };
+
         // Initialize Application
         const init = () => {
             Utils.log('Initializing Iceland Events App');
@@ -974,6 +1044,7 @@
             SearchManager.init();
             CarouselManager.init();
             AboutCarouselManager.init();
+            MobileMenuManager.init();
         };
 
         // Start the app
