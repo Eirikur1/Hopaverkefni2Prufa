@@ -105,7 +105,7 @@
             color: #FF340A;
             text-decoration: none;
             font-family: 'RubikMonoOne', monospace;
-            font-size: clamp(56px, 9vw, 140px);
+            font-size: clamp(32px, 8vw, 140px);
             font-weight: normal;
             letter-spacing: -0.04em;
             transition: color 0.2s ease;
@@ -559,11 +559,11 @@
         .search-input {
             width: 100%;
             padding: 12px 16px 12px 40px;
-            border: 1px solid rgba(52, 8, 36, 0.1);
+            border: 3px solid #1F2937;
             border-radius: 25px;
             font-size: 14px;
             background-color: transparent;
-            color: #340824;
+            color: #1F2937;
             transition: all 0.3s ease;
             outline: none;
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
@@ -571,13 +571,13 @@
         }
 
         .search-input:focus {
-            border-color: rgba(52, 8, 36, 0.2);
+            border-color: #1F2937;
             background-color: rgba(254, 250, 238, 0.3);
-            box-shadow: 0 0 0 2px rgba(52, 8, 36, 0.05);
+            box-shadow: 0 0 0 4px rgba(31, 41, 55, 0.2);
         }
 
         .search-input::placeholder {
-            color: rgba(52, 8, 36, 0.5);
+            color: #1F2937;
             font-weight: 300;
         }
 
@@ -604,7 +604,7 @@
         .search-btn svg {
             width: 16px;
             height: 16px;
-            fill: rgba(52, 8, 36, 0.6);
+            fill: #1F2937;
         }
 
         /* Recommended Events Carousel Styles */
@@ -668,7 +668,7 @@
 
         .recommended-event-title {
             font-size: 18px;
-            color: #340824;
+            color: #1F2937;
             font-weight: 700;
             margin-bottom: 8px;
             line-height: 1.2;
@@ -678,7 +678,7 @@
 
         .recommended-event-location {
             font-size: 14px;
-            color: #6b7280;
+            color: #1F2937;
             margin-bottom: 6px;
             font-weight: 500;
             display: flex;
@@ -696,12 +696,12 @@
             background-position: center;
             display: inline-block;
             flex-shrink: 0;
-            filter: brightness(0) saturate(100%);
+            filter: brightness(0) saturate(100%) invert(20%) sepia(8%) saturate(1000%) hue-rotate(200deg) brightness(95%) contrast(90%);
         }
 
         .recommended-event-date {
             font-size: 13px;
-            color: #9ca3af;
+            color: #1F2937;
             font-weight: 500;
             display: flex;
             align-items: center;
@@ -718,6 +718,7 @@
             background-position: center;
             display: inline-block;
             flex-shrink: 0;
+            filter: brightness(0) saturate(100%) invert(20%) sepia(8%) saturate(1000%) hue-rotate(200deg) brightness(95%) contrast(90%);
         }
 
         .carousel-nav {
@@ -792,13 +793,73 @@
                 width: 32px;
                 height: 32px;
             }
+            
+            /* Mobile search bar adjustments */
+            .search-input {
+                font-size: 16px; /* Prevents zoom on iOS */
+                padding: 14px 16px 14px 44px;
+            }
+            
+            .search-btn {
+                left: 10px;
+            }
+            
+            /* Mobile carousel adjustments */
+            .recommended-carousel-container {
+                padding: 0 8px;
+            }
+            
+            /* Mobile section spacing */
+            .py-12 {
+                padding-top: 2rem;
+                padding-bottom: 2rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .recommended-event-card {
+                flex: 0 0 260px;
+                height: 340px;
+            }
+            
+            .recommended-event-image img {
+                height: 180px;
+            }
+            
+            .recommended-event-title {
+                font-size: 15px;
+            }
+            
+            .recommended-event-location {
+                font-size: 13px;
+            }
+            
+            .recommended-event-date {
+                font-size: 12px;
+            }
+            
+            /* Extra small mobile adjustments */
+            .search-input {
+                padding: 12px 16px 12px 40px;
+                font-size: 16px;
+            }
+            
+            .carousel-nav {
+                width: 28px;
+                height: 28px;
+            }
+            
+            .carousel-nav svg {
+                width: 16px;
+                height: 16px;
+            }
         }
 
     </style>
 </head>
 <body class="bg-background text-primary font-sans text-base leading-relaxed m-0 p-0 min-h-full">
     <!-- Navigation -->
-    <nav class="fixed top-0 left-0 right-0 bg-background/95 backdrop-blur-xl border-b border-primary/10 z-50 py-2 md:py-3">
+    <nav class="fixed top-0 left-0 right-0 bg-background border-b border-primary/10 z-50 py-2 md:py-3">
         <div class="max-w-7xl mx-auto px-4 md:px-10 flex justify-between items-center">
             <a href="index.html" id="logo-link" class="no-underline">
                 <img src="Video/Negative-mask-effect1-ezgif.com-crop (1).gif" alt="Venuu" class="h-10 md:h-12 w-auto">
@@ -810,7 +871,7 @@
                     <p class="text-draw__p">Events</p>
                     <div data-draw-line-box="" class="text-draw__box"></div>
                 </a></li>
-                <li><a data-draw-line="" href="#about" class="text-draw">
+                <li><a data-draw-line="" href="#contact" class="text-draw">
                     <p class="text-draw__p">Create Event</p>
                     <div data-draw-line-box="" class="text-draw__box"></div>
                 </a></li>
@@ -833,14 +894,14 @@
         </div>
 
         <!-- Mobile Navigation Menu -->
-        <div id="mobile-menu" class="md:hidden bg-background/98 backdrop-blur-xl border-t border-primary/10 hidden">
+        <div id="mobile-menu" class="md:hidden bg-background border-t border-primary/10 hidden">
             <div class="px-4 py-4 space-y-4">
                 <a data-draw-line="" href="events.html" class="block text-draw py-2">
                     <p class="text-draw__p">Events</p>
                     <div data-draw-line-box="" class="text-draw__box"></div>
                 </a>
-                <a data-draw-line="" href="#about" class="block text-draw py-2">
-                    <p class="text-draw__p">About</p>
+                <a data-draw-line="" href="#contact" class="block text-draw py-2">
+                    <p class="text-draw__p">Create Event</p>
                     <div data-draw-line-box="" class="text-draw__box"></div>
                 </a>
                 <a data-draw-line="" href="#contact" class="block text-draw py-2">
@@ -873,8 +934,8 @@
                 <div class="search-bar">
                     <input type="text" class="search-input" placeholder="Search for events, locations, or categories..." id="searchInput">
                     <button class="search-btn" id="searchBtn">
-                        <svg viewBox="0 0 24 24">
-                            <path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/>
+                        <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#1F2937">
+                            <path d="M784-120 532-372q-30 24-69 38t-83 14q-109 0-184.5-75.5T120-580q0-109 75.5-184.5T380-840q109 0 184.5 75.5T640-580q0 44-14 83t-38 69l252 252-56 56ZM380-400q75 0 127.5-52.5T560-580q0-75-52.5-127.5T380-760q-75 0-127.5 52.5T200-580q0 75 52.5 127.5T380-400Z"/>
                         </svg>
                     </button>
                     <div class="search-dropdown" id="searchDropdown">
@@ -890,14 +951,15 @@
         <div class="max-w-full mx-auto px-2 md:px-4">
             <div class="mb-8 md:mb-12 flex justify-between items-end">
                 <div>
+                    <h2 class="text-draw-hero text-2xl md:text-3xl lg:text-4xl mb-4 font-light tracking-tight">Recommended for You</h2>
                     <p class="text-sm md:text-base text-draw font-bold flex items-center">
-                        Reccomended events for you
+                        Personalized events just for you
                         <svg class="w-6 h-6 ml-3 arrow-animate" fill="currentColor" viewBox="0 -960 960 960">
                             <path d="m560-240-56-58 142-142H160v-80h486L504-662l56-58 240 240-240 240Z"/>
                         </svg>
                     </p>
-                </div>
-                
+        </div>
+
                 <!-- Navigation Arrows -->
                 <div class="flex gap-1">
                     <button class="carousel-nav carousel-nav-prev bg-transparent border-none rounded-full w-8 h-8 flex items-center justify-center hover:bg-red-50/50 transition-all duration-300" id="prevBtn">
@@ -910,8 +972,8 @@
                             <path d="m321-80-71-71 329-329-329-329 71-71 400 400L321-80Z"/>
                         </svg>
                     </button>
-                </div>
-            </div>
+                    </div>
+                    </div>
             
             <div class="relative">
                 <!-- Carousel Container -->
@@ -919,92 +981,117 @@
                     <div class="recommended-carousel-track flex transition-transform duration-300 ease-out" id="recommendedCarousel">
                         <!-- Recommended events will be populated here -->
                     </div>
+                    </div>
+                    </div>
                 </div>
-            </div>
-        </div>
     </section>
 
-    <!-- Family Events Section -->
+    <!-- Recommended Events Section -->
     <section class="py-12 md:py-16 bg-background">
         <div class="max-w-full mx-auto px-2 md:px-4">
             <div class="mb-8 md:mb-12 flex justify-between items-end">
                 <div>
-                    <h2 class="text-draw-hero text-2xl md:text-3xl lg:text-4xl mb-4 font-light tracking-tight">Family Events</h2>
+                    <h2 class="text-draw-hero text-2xl md:text-3xl lg:text-4xl mb-4 font-light tracking-tight">Most Popular</h2>
                     <p class="text-sm md:text-base text-draw font-bold flex items-center">
-                        Perfect for families with children
+                        Trending events everyone loves
                         <svg class="w-6 h-6 ml-3 arrow-animate" fill="currentColor" viewBox="0 -960 960 960">
                             <path d="m560-240-56-58 142-142H160v-80h486L504-662l56-58 240 240-240 240Z"/>
                         </svg>
                     </p>
-                </div>
-                
+        </div>
+        
                 <!-- Navigation Arrows -->
                 <div class="flex gap-1">
-                    <button class="carousel-nav carousel-nav-prev bg-transparent border-none rounded-full w-8 h-8 flex items-center justify-center hover:bg-red-50/50 transition-all duration-300" id="familyPrevBtn">
+                    <button class="carousel-nav carousel-nav-prev bg-transparent border-none rounded-full w-8 h-8 flex items-center justify-center hover:bg-red-50/50 transition-all duration-300" id="recommendedPrevBtn">
                         <svg class="w-5 h-5" style="color: #FF340A;" fill="currentColor" viewBox="0 -960 960 960">
                             <path d="M640-80 240-480l400-400 71 71-329 329 329 329-71 71Z"/>
-                        </svg>
+                    </svg>
                     </button>
-                    <button class="carousel-nav carousel-nav-next bg-transparent border-none rounded-full w-8 h-8 flex items-center justify-center hover:bg-red-50/50 transition-all duration-300" id="familyNextBtn">
+                    <button class="carousel-nav carousel-nav-next bg-transparent border-none rounded-full w-8 h-8 flex items-center justify-center hover:bg-red-50/50 transition-all duration-300" id="recommendedNextBtn">
                         <svg class="w-5 h-5" style="color: #FF340A;" fill="currentColor" viewBox="0 -960 960 960">
                             <path d="m321-80-71-71 329-329-329-329 71-71 400 400L321-80Z"/>
-                        </svg>
+                    </svg>
                     </button>
-                </div>
-            </div>
+        </div>
+        </div>
             
             <div class="relative">
                 <!-- Carousel Container -->
-                <div class="recommended-carousel-container overflow-hidden cursor-grab active:cursor-grabbing" id="familyCarouselContainer">
-                    <div class="recommended-carousel-track flex transition-transform duration-300 ease-out" id="familyCarousel">
-                        <!-- Family events will be populated here -->
+                <div class="recommended-carousel-container overflow-hidden cursor-grab active:cursor-grabbing" id="recommendedCarouselContainer">
+                    <div class="recommended-carousel-track flex transition-transform duration-300 ease-out" id="recommendedCarousel">
+                        <!-- Recommended events -->
+                        <div class="recommended-event-card">
+                            <div class="recommended-event-image">
+                                <img src="Images/068e9d4bef717cd1000843dc38c603ec.jpg" alt="Iceland Music Festival" class="w-full h-full object-cover">
+                </div>
+                            <div class="recommended-event-content">
+                                <div class="recommended-event-title">Reykjavík Music Festival</div>
+                                <div class="recommended-event-location">Harpa Concert Hall, Reykjavík</div>
+                                <div class="recommended-event-date">March 15, 2024</div>
+                            </div>
+            </div>
+
+                        <div class="recommended-event-card">
+                            <div class="recommended-event-image">
+                                <img src="Images/1d595e6dc1b6a3d963b932eb94de79d1.jpg" alt="Art Exhibition" class="w-full h-full object-cover">
+                    </div>
+                            <div class="recommended-event-content">
+                                <div class="recommended-event-title">Modern Icelandic Art</div>
+                                <div class="recommended-event-location">National Gallery, Reykjavík</div>
+                                <div class="recommended-event-date">March 20, 2024</div>
                     </div>
                 </div>
+                        
+                        <div class="recommended-event-card">
+                            <div class="recommended-event-image">
+                                <img src="Images/233986128f46951bf66a727cca1b3a18.jpg" alt="Food Festival" class="w-full h-full object-cover">
+                            </div>
+                            <div class="recommended-event-content">
+                                <div class="recommended-event-title">Icelandic Food Festival</div>
+                                <div class="recommended-event-location">Harbor District, Reykjavík</div>
+                                <div class="recommended-event-date">March 25, 2024</div>
             </div>
         </div>
-    </section>
 
-    <!-- Free Events Section -->
-    <section class="py-12 md:py-16 bg-background">
-        <div class="max-w-full mx-auto px-2 md:px-4">
-            <div class="mb-8 md:mb-12 flex justify-between items-end">
-                <div>
-                    <h2 class="text-draw-hero text-2xl md:text-3xl lg:text-4xl mb-4 font-light tracking-tight">Free Events</h2>
-                    <p class="text-sm md:text-base text-draw font-bold flex items-center">
-                        No cost, maximum fun
-                        <svg class="w-6 h-6 ml-3 arrow-animate" fill="currentColor" viewBox="0 -960 960 960">
-                            <path d="m560-240-56-58 142-142H160v-80h486L504-662l56-58 240 240-240 240Z"/>
-                        </svg>
-                    </p>
-                </div>
-                
-                <!-- Navigation Arrows -->
-                <div class="flex gap-1">
-                    <button class="carousel-nav carousel-nav-prev bg-transparent border-none rounded-full w-8 h-8 flex items-center justify-center hover:bg-red-50/50 transition-all duration-300" id="freePrevBtn">
-                        <svg class="w-5 h-5" style="color: #FF340A;" fill="currentColor" viewBox="0 -960 960 960">
-                            <path d="M640-80 240-480l400-400 71 71-329 329 329 329-71 71Z"/>
-                        </svg>
-                    </button>
-                    <button class="carousel-nav carousel-nav-next bg-transparent border-none rounded-full w-8 h-8 flex items-center justify-center hover:bg-red-50/50 transition-all duration-300" id="freeNextBtn">
-                        <svg class="w-5 h-5" style="color: #FF340A;" fill="currentColor" viewBox="0 -960 960 960">
-                            <path d="m321-80-71-71 329-329-329-329 71-71 400 400L321-80Z"/>
-                        </svg>
-                    </button>
-                </div>
+                        <div class="recommended-event-card">
+                            <div class="recommended-event-image">
+                                <img src="Images/3bd777f8c2760cbf585251808e738698.jpg" alt="Family Fun Day" class="w-full h-full object-cover">
+                            </div>
+                            <div class="recommended-event-content">
+                                <div class="recommended-event-title">Family Fun Day</div>
+                                <div class="recommended-event-location">Laugardalslaug, Reykjavík</div>
+                                <div class="recommended-event-date">March 30, 2024</div>
             </div>
-            
-            <div class="relative">
-                <!-- Carousel Container -->
-                <div class="recommended-carousel-container overflow-hidden cursor-grab active:cursor-grabbing" id="freeCarouselContainer">
-                    <div class="recommended-carousel-track flex transition-transform duration-300 ease-out" id="freeCarousel">
-                        <!-- Free events will be populated here -->
+        </div>
+
+                        <div class="recommended-event-card">
+                            <div class="recommended-event-image">
+                                <img src="Images/3f117cff666f231104f270edda727dab.jpg" alt="Outdoor Adventure" class="w-full h-full object-cover">
+                </div>
+                            <div class="recommended-event-content">
+                                <div class="recommended-event-title">Golden Circle Tour</div>
+                                <div class="recommended-event-location">Golden Circle, Iceland</div>
+                                <div class="recommended-event-date">April 5, 2024</div>
+            </div>
+        </div>
+
+                        <div class="recommended-event-card">
+                            <div class="recommended-event-image">
+                                <img src="Images/542dfd6b879d676a823e611028e40984.jpg" alt="Business Conference" class="w-full h-full object-cover">
+        </div>
+                            <div class="recommended-event-content">
+                                <div class="recommended-event-title">Tech Innovation Summit</div>
+                                <div class="recommended-event-location">Harpa Concert Hall</div>
+                                <div class="recommended-event-date">April 10, 2024</div>
+        </div>
+                        </div>
                     </div>
-                </div>
-            </div>
-        </div>
+                        </div>
+                    </div>
+                        </div>
     </section>
 
-    <!-- Music Events Section -->
+    <!-- Tónlist Section -->
     <section class="py-12 md:py-16 bg-background">
         <div class="max-w-full mx-auto px-2 md:px-4">
             <div class="mb-8 md:mb-12 flex justify-between items-end">
@@ -1016,7 +1103,7 @@
                             <path d="m560-240-56-58 142-142H160v-80h486L504-662l56-58 240 240-240 240Z"/>
                         </svg>
                     </p>
-                </div>
+                    </div>
                 
                 <!-- Navigation Arrows -->
                 <div class="flex gap-1">
@@ -1030,407 +1117,101 @@
                             <path d="m321-80-71-71 329-329-329-329 71-71 400 400L321-80Z"/>
                         </svg>
                     </button>
-                </div>
-            </div>
+                        </div>
+                    </div>
             
             <div class="relative">
                 <!-- Carousel Container -->
                 <div class="recommended-carousel-container overflow-hidden cursor-grab active:cursor-grabbing" id="musicCarouselContainer">
                     <div class="recommended-carousel-track flex transition-transform duration-300 ease-out" id="musicCarousel">
                         <!-- Music events will be populated here -->
+                        </div>
                     </div>
-                </div>
-            </div>
-        </div>
+                        </div>
+                    </div>
     </section>
 
-    <!-- Art & Culture Events Section -->
+    <!-- Sviðslist Section -->
     <section class="py-12 md:py-16 bg-background">
         <div class="max-w-full mx-auto px-2 md:px-4">
             <div class="mb-8 md:mb-12 flex justify-between items-end">
                 <div>
-                    <h2 class="text-draw-hero text-2xl md:text-3xl lg:text-4xl mb-4 font-light tracking-tight">Art & Culture</h2>
+                    <h2 class="text-draw-hero text-2xl md:text-3xl lg:text-4xl mb-4 font-light tracking-tight">Theater Events</h2>
                     <p class="text-sm md:text-base text-draw font-bold flex items-center">
-                        Exhibitions and cultural experiences
+                        Theater and performing arts
                         <svg class="w-6 h-6 ml-3 arrow-animate" fill="currentColor" viewBox="0 -960 960 960">
                             <path d="m560-240-56-58 142-142H160v-80h486L504-662l56-58 240 240-240 240Z"/>
                         </svg>
                     </p>
-                </div>
+                        </div>
                 
                 <!-- Navigation Arrows -->
                 <div class="flex gap-1">
-                    <button class="carousel-nav carousel-nav-prev bg-transparent border-none rounded-full w-8 h-8 flex items-center justify-center hover:bg-red-50/50 transition-all duration-300" id="artPrevBtn">
+                    <button class="carousel-nav carousel-nav-prev bg-transparent border-none rounded-full w-8 h-8 flex items-center justify-center hover:bg-red-50/50 transition-all duration-300" id="theaterPrevBtn">
                         <svg class="w-5 h-5" style="color: #FF340A;" fill="currentColor" viewBox="0 -960 960 960">
                             <path d="M640-80 240-480l400-400 71 71-329 329 329 329-71 71Z"/>
                         </svg>
                     </button>
-                    <button class="carousel-nav carousel-nav-next bg-transparent border-none rounded-full w-8 h-8 flex items-center justify-center hover:bg-red-50/50 transition-all duration-300" id="artNextBtn">
+                    <button class="carousel-nav carousel-nav-next bg-transparent border-none rounded-full w-8 h-8 flex items-center justify-center hover:bg-red-50/50 transition-all duration-300" id="theaterNextBtn">
                         <svg class="w-5 h-5" style="color: #FF340A;" fill="currentColor" viewBox="0 -960 960 960">
                             <path d="m321-80-71-71 329-329-329-329 71-71 400 400L321-80Z"/>
                         </svg>
                     </button>
-                </div>
-            </div>
+                    </div>
+                        </div>
             
             <div class="relative">
                 <!-- Carousel Container -->
-                <div class="recommended-carousel-container overflow-hidden cursor-grab active:cursor-grabbing" id="artCarouselContainer">
-                    <div class="recommended-carousel-track flex transition-transform duration-300 ease-out" id="artCarousel">
-                        <!-- Art & Culture events will be populated here -->
+                <div class="recommended-carousel-container overflow-hidden cursor-grab active:cursor-grabbing" id="theaterCarouselContainer">
+                    <div class="recommended-carousel-track flex transition-transform duration-300 ease-out" id="theaterCarousel">
+                        <!-- Theater events will be populated here -->
                     </div>
-                </div>
-            </div>
-        </div>
+                        </div>
+                    </div>
+                        </div>
     </section>
 
-    <!-- Food & Drink Events Section -->
+    <!-- Dans Section -->
     <section class="py-12 md:py-16 bg-background">
         <div class="max-w-full mx-auto px-2 md:px-4">
             <div class="mb-8 md:mb-12 flex justify-between items-end">
                 <div>
-                    <h2 class="text-draw-hero text-2xl md:text-3xl lg:text-4xl mb-4 font-light tracking-tight">Food & Drink</h2>
+                    <h2 class="text-draw-hero text-2xl md:text-3xl lg:text-4xl mb-4 font-light tracking-tight">Dance Events</h2>
                     <p class="text-sm md:text-base text-draw font-bold flex items-center">
-                        Culinary experiences and tastings
+                        Dance events and performances
                         <svg class="w-6 h-6 ml-3 arrow-animate" fill="currentColor" viewBox="0 -960 960 960">
                             <path d="m560-240-56-58 142-142H160v-80h486L504-662l56-58 240 240-240 240Z"/>
                         </svg>
                     </p>
-                </div>
+                    </div>
                 
                 <!-- Navigation Arrows -->
                 <div class="flex gap-1">
-                    <button class="carousel-nav carousel-nav-prev bg-transparent border-none rounded-full w-8 h-8 flex items-center justify-center hover:bg-red-50/50 transition-all duration-300" id="foodPrevBtn">
+                    <button class="carousel-nav carousel-nav-prev bg-transparent border-none rounded-full w-8 h-8 flex items-center justify-center hover:bg-red-50/50 transition-all duration-300" id="dancePrevBtn">
                         <svg class="w-5 h-5" style="color: #FF340A;" fill="currentColor" viewBox="0 -960 960 960">
                             <path d="M640-80 240-480l400-400 71 71-329 329 329 329-71 71Z"/>
                         </svg>
                     </button>
-                    <button class="carousel-nav carousel-nav-next bg-transparent border-none rounded-full w-8 h-8 flex items-center justify-center hover:bg-red-50/50 transition-all duration-300" id="foodNextBtn">
+                    <button class="carousel-nav carousel-nav-next bg-transparent border-none rounded-full w-8 h-8 flex items-center justify-center hover:bg-red-50/50 transition-all duration-300" id="danceNextBtn">
                         <svg class="w-5 h-5" style="color: #FF340A;" fill="currentColor" viewBox="0 -960 960 960">
                             <path d="m321-80-71-71 329-329-329-329 71-71 400 400L321-80Z"/>
                         </svg>
                     </button>
-                </div>
-            </div>
+                        </div>
+                    </div>
             
             <div class="relative">
                 <!-- Carousel Container -->
-                <div class="recommended-carousel-container overflow-hidden cursor-grab active:cursor-grabbing" id="foodCarouselContainer">
-                    <div class="recommended-carousel-track flex transition-transform duration-300 ease-out" id="foodCarousel">
-                        <!-- Food & Drink events will be populated here -->
+                <div class="recommended-carousel-container overflow-hidden cursor-grab active:cursor-grabbing" id="danceCarouselContainer">
+                    <div class="recommended-carousel-track flex transition-transform duration-300 ease-out" id="danceCarousel">
+                        <!-- Dance events will be populated here -->
+                        </div>
                     </div>
-                </div>
             </div>
         </div>
     </section>
 
-    <!-- Sports & Fitness Events Section -->
-    <section class="py-12 md:py-16 bg-background">
-        <div class="max-w-full mx-auto px-2 md:px-4">
-            <div class="mb-8 md:mb-12 flex justify-between items-end">
-                <div>
-                    <h2 class="text-draw-hero text-2xl md:text-3xl lg:text-4xl mb-4 font-light tracking-tight">Sports & Fitness</h2>
-                    <p class="text-sm md:text-base text-draw font-bold flex items-center">
-                        Active events and competitions
-                        <svg class="w-6 h-6 ml-3 arrow-animate" fill="currentColor" viewBox="0 -960 960 960">
-                            <path d="m560-240-56-58 142-142H160v-80h486L504-662l56-58 240 240-240 240Z"/>
-                        </svg>
-                    </p>
-                </div>
-                
-                <!-- Navigation Arrows -->
-                <div class="flex gap-1">
-                    <button class="carousel-nav carousel-nav-prev bg-transparent border-none rounded-full w-8 h-8 flex items-center justify-center hover:bg-red-50/50 transition-all duration-300" id="sportsPrevBtn">
-                        <svg class="w-5 h-5" style="color: #FF340A;" fill="currentColor" viewBox="0 -960 960 960">
-                            <path d="M640-80 240-480l400-400 71 71-329 329 329 329-71 71Z"/>
-                        </svg>
-                    </button>
-                    <button class="carousel-nav carousel-nav-next bg-transparent border-none rounded-full w-8 h-8 flex items-center justify-center hover:bg-red-50/50 transition-all duration-300" id="sportsNextBtn">
-                        <svg class="w-5 h-5" style="color: #FF340A;" fill="currentColor" viewBox="0 -960 960 960">
-                            <path d="m321-80-71-71 329-329-329-329 71-71 400 400L321-80Z"/>
-                        </svg>
-                    </button>
-                </div>
-            </div>
-            
-            <div class="relative">
-                <!-- Carousel Container -->
-                <div class="recommended-carousel-container overflow-hidden cursor-grab active:cursor-grabbing" id="sportsCarouselContainer">
-                    <div class="recommended-carousel-track flex transition-transform duration-300 ease-out" id="sportsCarousel">
-                        <!-- Sports & Fitness events will be populated here -->
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
 
-    <!-- Outdoor Events Section -->
-    <section class="py-12 md:py-16 bg-background">
-        <div class="max-w-full mx-auto px-2 md:px-4">
-            <div class="mb-8 md:mb-12 flex justify-between items-end">
-                <div>
-                    <h2 class="text-draw-hero text-2xl md:text-3xl lg:text-4xl mb-4 font-light tracking-tight">Outdoor Events</h2>
-                    <p class="text-sm md:text-base text-draw font-bold flex items-center">
-                        Nature and adventure experiences
-                        <svg class="w-6 h-6 ml-3 arrow-animate" fill="currentColor" viewBox="0 -960 960 960">
-                            <path d="m560-240-56-58 142-142H160v-80h486L504-662l56-58 240 240-240 240Z"/>
-                        </svg>
-                    </p>
-                </div>
-                
-                <!-- Navigation Arrows -->
-                <div class="flex gap-1">
-                    <button class="carousel-nav carousel-nav-prev bg-transparent border-none rounded-full w-8 h-8 flex items-center justify-center hover:bg-red-50/50 transition-all duration-300" id="outdoorPrevBtn">
-                        <svg class="w-5 h-5" style="color: #FF340A;" fill="currentColor" viewBox="0 -960 960 960">
-                            <path d="M640-80 240-480l400-400 71 71-329 329 329 329-71 71Z"/>
-                        </svg>
-                    </button>
-                    <button class="carousel-nav carousel-nav-next bg-transparent border-none rounded-full w-8 h-8 flex items-center justify-center hover:bg-red-50/50 transition-all duration-300" id="outdoorNextBtn">
-                        <svg class="w-5 h-5" style="color: #FF340A;" fill="currentColor" viewBox="0 -960 960 960">
-                            <path d="m321-80-71-71 329-329-329-329 71-71 400 400L321-80Z"/>
-                        </svg>
-                    </button>
-                </div>
-            </div>
-            
-            <div class="relative">
-                <!-- Carousel Container -->
-                <div class="recommended-carousel-container overflow-hidden cursor-grab active:cursor-grabbing" id="outdoorCarouselContainer">
-                    <div class="recommended-carousel-track flex transition-transform duration-300 ease-out" id="outdoorCarousel">
-                        <!-- Outdoor events will be populated here -->
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Educational Events Section -->
-    <section class="py-12 md:py-16 bg-background">
-        <div class="max-w-full mx-auto px-2 md:px-4">
-            <div class="mb-8 md:mb-12 flex justify-between items-end">
-                <div>
-                    <h2 class="text-draw-hero text-2xl md:text-3xl lg:text-4xl mb-4 font-light tracking-tight">Educational</h2>
-                    <p class="text-sm md:text-base text-draw font-bold flex items-center">
-                        Workshops and learning experiences
-                        <svg class="w-6 h-6 ml-3 arrow-animate" fill="currentColor" viewBox="0 -960 960 960">
-                            <path d="m560-240-56-58 142-142H160v-80h486L504-662l56-58 240 240-240 240Z"/>
-                        </svg>
-                    </p>
-                </div>
-                
-                <!-- Navigation Arrows -->
-                <div class="flex gap-1">
-                    <button class="carousel-nav carousel-nav-prev bg-transparent border-none rounded-full w-8 h-8 flex items-center justify-center hover:bg-red-50/50 transition-all duration-300" id="educationPrevBtn">
-                        <svg class="w-5 h-5" style="color: #FF340A;" fill="currentColor" viewBox="0 -960 960 960">
-                            <path d="M640-80 240-480l400-400 71 71-329 329 329 329-71 71Z"/>
-                        </svg>
-                    </button>
-                    <button class="carousel-nav carousel-nav-next bg-transparent border-none rounded-full w-8 h-8 flex items-center justify-center hover:bg-red-50/50 transition-all duration-300" id="educationNextBtn">
-                        <svg class="w-5 h-5" style="color: #FF340A;" fill="currentColor" viewBox="0 -960 960 960">
-                            <path d="m321-80-71-71 329-329-329-329 71-71 400 400L321-80Z"/>
-                        </svg>
-                    </button>
-                </div>
-            </div>
-            
-            <div class="relative">
-                <!-- Carousel Container -->
-                <div class="recommended-carousel-container overflow-hidden cursor-grab active:cursor-grabbing" id="educationCarouselContainer">
-                    <div class="recommended-carousel-track flex transition-transform duration-300 ease-out" id="educationCarousel">
-                        <!-- Educational events will be populated here -->
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Business & Networking Events Section -->
-    <section class="py-12 md:py-16 bg-background">
-        <div class="max-w-full mx-auto px-2 md:px-4">
-            <div class="mb-8 md:mb-12 flex justify-between items-end">
-                <div>
-                    <h2 class="text-draw-hero text-2xl md:text-3xl lg:text-4xl mb-4 font-light tracking-tight">Business & Networking</h2>
-                    <p class="text-sm md:text-base text-draw font-bold flex items-center">
-                        Professional events and meetups
-                        <svg class="w-6 h-6 ml-3 arrow-animate" fill="currentColor" viewBox="0 -960 960 960">
-                            <path d="m560-240-56-58 142-142H160v-80h486L504-662l56-58 240 240-240 240Z"/>
-                        </svg>
-                    </p>
-                </div>
-                
-                <!-- Navigation Arrows -->
-                <div class="flex gap-1">
-                    <button class="carousel-nav carousel-nav-prev bg-transparent border-none rounded-full w-8 h-8 flex items-center justify-center hover:bg-red-50/50 transition-all duration-300" id="businessPrevBtn">
-                        <svg class="w-5 h-5" style="color: #FF340A;" fill="currentColor" viewBox="0 -960 960 960">
-                            <path d="M640-80 240-480l400-400 71 71-329 329 329 329-71 71Z"/>
-                        </svg>
-                    </button>
-                    <button class="carousel-nav carousel-nav-next bg-transparent border-none rounded-full w-8 h-8 flex items-center justify-center hover:bg-red-50/50 transition-all duration-300" id="businessNextBtn">
-                        <svg class="w-5 h-5" style="color: #FF340A;" fill="currentColor" viewBox="0 -960 960 960">
-                            <path d="m321-80-71-71 329-329-329-329 71-71 400 400L321-80Z"/>
-                        </svg>
-                    </button>
-                </div>
-            </div>
-            
-            <div class="relative">
-                <!-- Carousel Container -->
-                <div class="recommended-carousel-container overflow-hidden cursor-grab active:cursor-grabbing" id="businessCarouselContainer">
-                    <div class="recommended-carousel-track flex transition-transform duration-300 ease-out" id="businessCarousel">
-                        <!-- Business & Networking events will be populated here -->
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- About Section -->
-    <section class="py-16 md:py-24 bg-background" id="about">
-        <div class="text-center mb-12 md:mb-20 px-4 md:px-0">
-            <h2 class="tit-no-underline text-3xl md:text-4xl lg:text-5xl mb-4 md:mb-6 text-primary font-light tracking-tight">About Venuu</h2>
-        </div>
-
-        <!-- Image Carousel -->
-        <div class="max-w-6xl mx-auto px-4 md:px-10 mb-12 md:mb-20">
-            <div id="about-carousel" class="relative overflow-hidden rounded-2xl shadow-2xl">
-                <div class="flex transition-transform duration-500 ease-in-out" id="carousel-track">
-                    <div class="w-full flex-shrink-0">
-                        <img src="Images/068e9d4bef717cd1000843dc38c603ec.jpg" alt="Iceland Events" class="w-full h-48 md:h-96 object-cover">
-                    </div>
-                    <div class="w-full flex-shrink-0">
-                        <img src="Images/1d595e6dc1b6a3d963b932eb94de79d1.jpg" alt="Cultural Events" class="w-full h-96 object-cover">
-                    </div>
-                    <div class="w-full flex-shrink-0">
-                        <img src="Images/233986128f46951bf66a727cca1b3a18.jpg" alt="Community Events" class="w-full h-96 object-cover">
-                    </div>
-                    <div class="w-full flex-shrink-0">
-                        <img src="Images/3bd777f8c2760cbf585251808e738698.jpg" alt="Music Events" class="w-full h-96 object-cover">
-                    </div>
-                    <div class="w-full flex-shrink-0">
-                        <img src="Images/3f117cff666f231104f270edda727dab.jpg" alt="Art Events" class="w-full h-96 object-cover">
-                    </div>
-                </div>
-            </div>
-        </div>
-        
-        <!-- Navigation -->
-        <div class="flex justify-center -mt-4">
-            <ul class="nav">
-                <li class="nav__item nav__item--active" data-slide="0">
-                    <span>1</span>
-                    <svg width="100%" height="100%" viewBox="0 0 16 16">
-                        <circle cx="8" cy="8" r="6.215"></circle>
-                    </svg>
-                </li>
-                <li class="nav__item" data-slide="1">
-                    <span>2</span>
-                    <svg width="100%" height="100%" viewBox="0 0 16 16">
-                        <circle cx="8" cy="8" r="6.215"></circle>
-                    </svg>
-                </li>
-                <li class="nav__item" data-slide="2">
-                    <span>3</span>
-                    <svg width="100%" height="100%" viewBox="0 0 16 16">
-                        <circle cx="8" cy="8" r="6.215"></circle>
-                    </svg>
-                </li>
-                <li class="nav__item" data-slide="3">
-                    <span>4</span>
-                    <svg width="100%" height="100%" viewBox="0 0 16 16">
-                        <circle cx="8" cy="8" r="6.215"></circle>
-                    </svg>
-                </li>
-                <li class="nav__item" data-slide="4">
-                    <span>5</span>
-                    <svg width="100%" height="100%" viewBox="0 0 16 16">
-                        <circle cx="8" cy="8" r="6.215"></circle>
-                    </svg>
-                </li>
-            </ul>
-        </div>
-
-    </section>
-
-    <!-- Events Section -->
-    <section class="py-16 md:py-24 bg-background" id="events">
-        <!-- Search & Filter System -->
-        <div class="max-w-5xl mx-auto mb-12 md:mb-16 px-4 md:px-0">
-            <!-- Search Bar -->
-            <div class="relative mb-6 md:mb-8">
-                <div class="absolute inset-y-0 left-0 pl-4 md:pl-6 flex items-center pointer-events-none">
-                    <i class="fas fa-search text-gray-400 text-base md:text-lg"></i>
-                </div>
-                <input type="text" id="search-input" class="w-full pl-12 md:pl-14 pr-4 md:pr-6 py-4 md:py-5 bg-white/90 backdrop-blur-sm border border-gray-200/50 rounded-2xl text-base md:text-lg placeholder-gray-500 focus:outline-none focus:border-accent/50 focus:bg-white focus:shadow-xl focus:shadow-accent/10 transition-all duration-300" placeholder="Search events, venues, or locations...">
-            </div>
-
-            <!-- Filters -->
-            <div class="bg-white/60 backdrop-blur-sm rounded-2xl p-4 md:p-6 border border-gray-200/50 shadow-lg">
-                <div class="flex flex-col gap-4">
-                    <div class="flex flex-col sm:flex-row gap-3">
-                        <select id="category-filter" class="px-4 md:px-5 py-3 bg-white/80 border border-gray-200/50 rounded-xl text-primary focus:outline-none focus:border-accent/50 focus:bg-white focus:shadow-lg transition-all duration-300 flex-1">
-                            <option value="">All Categories</option>
-                        </select>
-                        <select id="location-filter" class="px-4 md:px-5 py-3 bg-white/80 border border-gray-200/50 rounded-xl text-primary focus:outline-none focus:border-accent/50 focus:bg-white focus:shadow-lg transition-all duration-300 flex-1">
-                            <option value="">All Locations</option>
-                        </select>
-                        <select id="sort-filter" class="px-4 md:px-5 py-3 bg-white/80 border border-gray-200/50 rounded-xl text-primary focus:outline-none focus:border-accent/50 focus:bg-white focus:shadow-lg transition-all duration-300 flex-1">
-                            <option value="date">Sort by Date</option>
-                            <option value="name">Sort by Name</option>
-                            <option value="location">Sort by Location</option>
-                        </select>
-                    </div>
-                    <div class="flex flex-col sm:flex-row gap-3">
-                        <button id="date-order-toggle" class="px-4 md:px-6 py-3 bg-gradient-to-r from-accent to-accent/80 text-white rounded-xl font-medium hover:from-accent/90 hover:to-accent/70 hover:shadow-lg hover:shadow-accent/25 transition-all duration-300 flex items-center justify-center gap-2 flex-1 sm:flex-none">
-                            <i class="fas fa-sort-amount-up"></i>
-                            <span id="date-order-text">Earliest First</span>
-                        </button>
-                        <button id="clear-filters" class="px-4 md:px-6 py-3 bg-gray-100 hover:bg-gray-200 text-gray-700 rounded-xl font-medium transition-all duration-300 flex items-center justify-center gap-2 flex-1 sm:flex-none">
-                            <i class="fas fa-times"></i>
-                            <span>Clear</span>
-                        </button>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Loading State -->
-        <div id="loading" class="text-center py-20">
-            <div class="inline-flex flex-col items-center">
-                <div class="animate-spin rounded-full h-12 w-12 border-b-2 border-primary mb-4"></div>
-                <p class="text-gray-600 text-lg">Loading events...</p>
-            </div>
-        </div>
-
-        <!-- Error State -->
-        <div id="error" class="hidden bg-red-50 border-2 border-red-200 p-6 mb-8 max-w-7xl mx-auto">
-            <div class="flex items-center">
-                <i class="fas fa-exclamation-triangle text-red-500 text-xl mr-3"></i>
-                <div>
-                    <h3 class="text-red-800 font-bold uppercase tracking-wide">Error loading events</h3>
-                    <p class="text-red-700 text-sm mt-1" id="error-message"></p>
-                </div>
-            </div>
-        </div>
-
-        <!-- Events Grid -->
-        <div id="events-container" class="events-grid"></div>
-        
-        <!-- Load More Button -->
-        <div id="load-more-container" class="text-center my-16 hidden">
-            <button id="load-more-btn" class="px-10 py-5 bg-transparent border-2 border-accent text-accent text-base cursor-pointer transition-all duration-300 font-normal tracking-wide hover:bg-accent hover:text-white hover:-translate-y-0.5 hover:shadow-lg hover:shadow-accent/30">
-                <span id="load-more-text">Load More Events</span>
-                <i id="load-more-spinner" class="fas fa-spinner fa-spin ml-2 hidden"></i>
-            </button>
-        </div>
-
-        <!-- Events Counter -->
-        <div id="events-counter" class="text-center mt-6 text-gray-600">
-            <p class="text-sm">
-                Showing <span id="displayed-count" class="font-medium text-primary">0</span> 
-                of <span id="total-count" class="font-medium text-primary">0</span> events
-            </p>
-        </div>
-    </section>
 
             </div>
         </div>
@@ -1449,7 +1230,7 @@
                 <input type="email" placeholder="Email" class="flex-1 px-4 md:px-5 py-3 md:py-4 border-2 border-primary/10 bg-surface text-base transition-all duration-300 text-primary font-light focus:outline-none focus:border-accent focus:bg-background">
             </div>
             <div class="text-center">
-                <button class="px-8 md:px-10 py-3 md:py-4 bg-accent text-white border-none text-base cursor-pointer transition-all duration-300 font-normal tracking-wide hover:bg-accent/90 hover:-translate-y-0.5 hover:shadow-lg hover:shadow-accent/30">
+                <button class="px-8 md:px-10 py-3 md:py-4 bg-transparent text-[#1F2937] border-2 border-[#1F2937] text-base cursor-pointer transition-all duration-300 font-normal tracking-wide hover:bg-[#1F2937] hover:text-background hover:-translate-y-0.5 hover:shadow-lg hover:shadow-[#1F2937]/20 rounded-full">
                     Subscribe
                 </button>
             </div>
@@ -1457,11 +1238,7 @@
     </section>
 
     <!-- Footer -->
-    <footer class="bg-gradient-to-br from-gray-800 to-gray-900 text-background py-12 md:py-20 relative overflow-hidden" id="contact">
-        <!-- Subtle background pattern -->
-        <div class="absolute inset-0 opacity-5">
-            <div class="absolute top-0 left-0 w-full h-full" style="background-image: radial-gradient(circle at 25% 25%, #E55050 2px, transparent 2px), radial-gradient(circle at 75% 75%, #E55050 2px, transparent 2px); background-size: 60px 60px;"></div>
-        </div>
+    <footer class="bg-[#1F2937] text-background py-12 md:py-20 relative overflow-hidden" id="contact">
         <div class="max-w-7xl mx-auto px-4 md:px-10 grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-16 relative z-10">
             <div>
                 <h3 class="tit-no-underline text-sm mb-4 md:mb-5 font-medium text-background">Contact</h3>
@@ -1625,207 +1402,23 @@
                     Utils.log(`Loaded ${events.length} events`);
                     
                     App.events = events;
-                    App.filteredEvents = [...events];
                     
-                    Utils.hide('loading');
-                    Utils.setText('total-count', events.length);
-                    Utils.show('events-counter');
-                    
-                    this.populateLocationFilter();
-                    this.populateCategoryFilter();
-                    this.displayEvents();
-                    this.setupLoadMore();
+                    // Initialize carousels after data is loaded
+                    this.initializeCarousels();
                     
                 } catch (error) {
                     Utils.error('Failed to load events', error);
-                    Utils.hide('loading');
-                    Utils.show('error');
-                    Utils.setText('error-message', error.message);
                 }
             },
 
-            populateLocationFilter() {
-                // Get unique postal codes from events
-                const postalCodes = [...new Set(App.events
-                    .map(event => event.postal)
-                    .filter(postal => postal && postal.trim() !== '')
-                )].sort((a, b) => parseInt(a) - parseInt(b));
-
-                Utils.log(`Found ${postalCodes.length} unique postal codes with events`);
-
-                // Postal code to city mapping
-                const postalToCity = {
-                    '101': 'Reykjavík miðborg', '102': 'Reykjavík miðborg', '103': 'Reykjavík miðborg', '104': 'Reykjavík miðborg', '105': 'Reykjavík miðborg',
-                    '107': 'Reykjavík miðborg', '108': 'Reykjavík miðborg', '109': 'Reykjavík miðborg', '110': 'Reykjavík', '111': 'Reykjavík',
-                    '112': 'Reykjavík', '113': 'Reykjavík', '116': 'Kjalarnes', '121': 'Reykjavík', '123': 'Reykjavík', '124': 'Reykjavík',
-                    '125': 'Reykjavík', '127': 'Reykjavík', '128': 'Reykjavík', '129': 'Reykjavík', '130': 'Reykjavík', '132': 'Reykjavík',
-                    '150': 'Reykjavík', '155': 'Reykjavík', '170': 'Seltjarnarnes', '172': 'Seltjarnarnes', '190': 'Vogar',
-                    '200': 'Kópavogur', '201': 'Kópavogur', '202': 'Kópavogur', '203': 'Kópavogur', '210': 'Garðabær', '212': 'Garðabær',
-                    '220': 'Hafnarfjörður', '221': 'Hafnarfjörður', '222': 'Hafnarfjörður', '225': 'Garðabær', '230': 'Reykjanesbær',
-                    '232': 'Reykjanesbær', '233': 'Reykjanesbær', '235': 'Keflavík', '240': 'Grindavík', '245': 'Sandgerði',
-                    '250': 'Garður', '260': 'Reykjanesbær', '270': 'Mosfellsbær', '271': 'Mosfellsbær', '276': 'Mosfellsbær',
-                    '300': 'Akranes', '301': 'Akranes', '310': 'Borgarnes', '311': 'Borgarnes', '320': 'Reykholt í Borgarfirði',
-                    '340': 'Stykkishólmur', '345': 'Flatey á Breiðafirði', '350': 'Grundarfjörður', '355': 'Ólafsvík', '356': 'Snæfellsbær',
-                    '360': 'Hellissandur', '370': 'Búðardalur', '371': 'Búðardalur', '380': 'Reykhólar', '400': 'Ísafjörður',
-                    '401': 'Ísafjörður', '410': 'Hnífsdalur', '415': 'Bolungarvík', '420': 'Súðavík', '425': 'Flateyri',
-                    '430': 'Suðureyri', '450': 'Patreksfjörður', '451': 'Patreksfjörður', '460': 'Tálknafjörður', '465': 'Bíldudalur',
-                    '470': 'Þingeyri', '471': 'Þingeyri', '500': 'Staður', '510': 'Hólmavík', '512': 'Hólmavík', '520': 'Drangsnes',
-                    '524': 'Árneshreppur', '530': 'Hvammstangi', '531': 'Hvammstangi', '540': 'Blönduós', '541': 'Blönduós',
-                    '545': 'Skagaströnd', '550': 'Sauðárkrókur', '551': 'Sauðárkrókur', '560': 'Varmahlíð', '565': 'Hofsós',
-                    '566': 'Hofsós', '570': 'Fljót', '580': 'Siglufjörður', '600': 'Akureyri', '601': 'Akureyri', '602': 'Akureyri',
-                    '603': 'Akureyri', '610': 'Grenivík', '611': 'Grímsey', '620': 'Dalvík', '621': 'Dalvík', '625': 'Ólafsfjörður',
-                    '630': 'Hrísey', '640': 'Húsavík', '641': 'Húsavík', '645': 'Fosshóll', '650': 'Laugar', '660': 'Mývatn',
-                    '670': 'Kópasker', '671': 'Kópasker', '675': 'Raufarhöfn', '680': 'Þórshöfn', '681': 'Þórshöfn', '685': 'Bakkafjörður',
-                    '690': 'Vopnafjörður', '700': 'Egilsstaðir', '701': 'Egilsstaðir', '710': 'Seyðisfjörður', '715': 'Mjóifjörður',
-                    '720': 'Borgarfjörður eystri', '730': 'Reyðarfjörður', '735': 'Eskifjörður', '740': 'Neskaupstaður',
-                    '750': 'Fáskrúðsfjörður', '755': 'Stöðvarfjörður', '760': 'Breiðdalsvík', '765': 'Djúpivogur',
-                    '780': 'Höfn í Hornafirði', '781': 'Höfn í Hornafirði', '785': 'Öræfi', '800': 'Selfoss', '801': 'Selfoss',
-                    '802': 'Selfoss', '810': 'Hveragerði', '815': 'Þorlákshöfn', '820': 'Eyrarbakki', '825': 'Stokkseyri',
-                    '840': 'Laugarvatn', '845': 'Flúðir', '850': 'Hellu', '860': 'Hvolsvöllur', '861': 'Hvolsvöllur',
-                    '870': 'Vík', '871': 'Vík', '880': 'Kirkjubæjarklaustur', '900': 'Vestmannaeyjar', '902': 'Vestmannaeyjar'
-                };
-
-                // Update the location filter dropdown
-                const locationFilter = document.getElementById('location-filter');
-                if (locationFilter) {
-                    // Clear existing options except the first one
-                    locationFilter.innerHTML = '<option value="">Allar staðsetningar</option>';
-                    
-                    // Add only postal codes that have events
-                    postalCodes.forEach(postalCode => {
-                        const city = postalToCity[postalCode] || 'Unknown';
-                        const option = document.createElement('option');
-                        option.value = postalCode;
-                        option.textContent = `${postalCode} - ${city}`;
-                        locationFilter.appendChild(option);
-                    });
-                }
+            initializeCarousels() {
+                // Initialize all carousel managers after events are loaded
+                if (window.RecommendedCarouselManager) RecommendedCarouselManager.init();
+                if (window.MusicCarouselManager) MusicCarouselManager.init();
+                if (window.TheaterCarouselManager) TheaterCarouselManager.init();
+                if (window.DanceCarouselManager) DanceCarouselManager.init();
             },
 
-            populateCategoryFilter() {
-                // Get unique categories from events
-                const categories = [...new Set(App.events
-                    .map(event => event.categories?.[0]?.name)
-                    .filter(category => category && category.trim() !== '')
-                )].sort();
-
-                Utils.log(`Found ${categories.length} unique categories with events`);
-
-                // Update the category filter dropdown
-                const categoryFilter = document.getElementById('category-filter');
-                if (categoryFilter) {
-                    // Clear existing options except the first one
-                    categoryFilter.innerHTML = '<option value="">Allar flokkar</option>';
-                    
-                    // Add only categories that have events
-                    categories.forEach(category => {
-                        const option = document.createElement('option');
-                        option.value = category;
-                        option.textContent = category;
-                        categoryFilter.appendChild(option);
-                    });
-                }
-            },
-
-            displayEvents() {
-                const container = document.getElementById('events-container');
-                const startIndex = App.currentPage * App.eventsPerPage;
-                const endIndex = Math.min(startIndex + App.eventsPerPage, App.filteredEvents.length);
-                const eventsToShow = App.filteredEvents.slice(startIndex, endIndex);
-                
-                eventsToShow.forEach((event, index) => {
-                    const card = EventCard.create(event);
-                    container.appendChild(card);
-                });
-                
-                App.currentPage++;
-                Utils.setText('displayed-count', Math.min(App.currentPage * App.eventsPerPage, App.filteredEvents.length));
-                
-                if (App.currentPage * App.eventsPerPage >= App.filteredEvents.length) {
-                    Utils.hide('load-more-container');
-                }
-            },
-
-            setupLoadMore() {
-                if (App.filteredEvents.length > App.eventsPerPage) {
-                    Utils.show('load-more-container');
-                    const button = document.getElementById('load-more-btn');
-                    button.onclick = this.loadMore.bind(this);
-                }
-            },
-
-            async loadMore() {
-                if (App.isLoading) return;
-                
-                App.isLoading = true;
-                const button = document.getElementById('load-more-btn');
-                const text = document.getElementById('load-more-text');
-                const spinner = document.getElementById('load-more-spinner');
-                
-                text.textContent = 'Loading...';
-                spinner.classList.remove('hidden');
-                button.disabled = true;
-                
-                await new Promise(resolve => setTimeout(resolve, 500));
-                
-                this.displayEvents();
-                
-                text.textContent = 'Load More Events';
-                spinner.classList.add('hidden');
-                button.disabled = false;
-                App.isLoading = false;
-            },
-
-            filterEvents() {
-                App.filteredEvents = App.events.filter(event => {
-                    const title = (event.language?.is?.title || event.language?.en?.title || event.title || '').toLowerCase();
-                    const description = (event.language?.is?.text || event.language?.en?.text || '').toLowerCase();
-                    const location = (event.formatted_address || event.city || '').toLowerCase();
-                    const category = (event.categories?.[0]?.name || '').toLowerCase();
-                    const postalCode = event.postal || '';
-                    
-                    const matchesSearch = !App.searchTerm || 
-                        title.includes(App.searchTerm) || 
-                        description.includes(App.searchTerm) || 
-                        location.includes(App.searchTerm);
-                    
-                    const matchesCategory = !App.filters.category || category.includes(App.filters.category.toLowerCase());
-                    const matchesLocation = !App.filters.location || postalCode === App.filters.location;
-                    
-                    return matchesSearch && matchesCategory && matchesLocation;
-                });
-                
-                this.sortEvents();
-                this.resetAndDisplay();
-            },
-
-            sortEvents() {
-                App.filteredEvents.sort((a, b) => {
-                    switch (App.filters.sort) {
-                        case 'name':
-                            const nameA = (a.language?.is?.title || a.language?.en?.title || a.title || '').toLowerCase();
-                            const nameB = (b.language?.is?.title || b.language?.en?.title || b.title || '').toLowerCase();
-                            return nameA.localeCompare(nameB);
-                        case 'location':
-                            const locA = (a.formatted_address || a.city || '').toLowerCase();
-                            const locB = (b.formatted_address || b.city || '').toLowerCase();
-                            return locA.localeCompare(locB);
-                        case 'date':
-                        default:
-                            const dateA = new Date(a.start || 0);
-                            const dateB = new Date(b.start || 0);
-                            return App.dateOrder === 'asc' ? dateA - dateB : dateB - dateA;
-                    }
-                });
-            },
-
-            resetAndDisplay() {
-                App.currentPage = 0;
-                document.getElementById('events-container').innerHTML = '';
-                Utils.setText('total-count', App.filteredEvents.length);
-                this.displayEvents();
-                this.setupLoadMore();
-            }
         };
 
         // Search Bar Manager
@@ -2202,8 +1795,8 @@
                     category: category,
                     filterFunction: filterFunction,
                     title: title,
-                    
-                    init() {
+            
+            init() {
                         this.carouselTrack = document.getElementById(`${category}Carousel`);
                         this.carouselContainer = document.getElementById(`${category}CarouselContainer`);
                         const prevBtn = document.getElementById(`${category}PrevBtn`);
@@ -2284,18 +1877,18 @@
                     next() {
                         if (this.currentIndex < this.totalItems - this.itemsPerView) {
                             this.currentIndex++;
-                            this.updateCarousel();
+                this.updateCarousel();
                         }
-                    },
-                    
+            },
+            
                     previous() {
                         if (this.currentIndex > 0) {
                             this.currentIndex--;
-                            this.updateCarousel();
+                this.updateCarousel();
                         }
-                    },
-                    
-                    updateCarousel() {
+            },
+            
+            updateCarousel() {
                         const cardWidth = 320 + 24; // card width + gap
                         const translateX = -this.currentIndex * cardWidth;
                         this.carouselTrack.style.transform = `translateX(${translateX}px)`;
@@ -2305,14 +1898,13 @@
                     setupDrag() {
                         // Mouse events
                         this.carouselContainer.addEventListener('mousedown', this.startDrag.bind(this));
-                        this.carouselContainer.addEventListener('mousemove', this.drag.bind(this));
-                        this.carouselContainer.addEventListener('mouseup', this.endDrag.bind(this));
-                        this.carouselContainer.addEventListener('mouseleave', this.endDrag.bind(this));
+                        document.addEventListener('mousemove', this.drag.bind(this));
+                        document.addEventListener('mouseup', this.endDrag.bind(this));
                         
                         // Touch events
                         this.carouselContainer.addEventListener('touchstart', this.startDrag.bind(this));
-                        this.carouselContainer.addEventListener('touchmove', this.drag.bind(this));
-                        this.carouselContainer.addEventListener('touchend', this.endDrag.bind(this));
+                        document.addEventListener('touchmove', this.drag.bind(this));
+                        document.addEventListener('touchend', this.endDrag.bind(this));
                         
                         // Prevent default drag behavior
                         this.carouselContainer.addEventListener('dragstart', (e) => e.preventDefault());
@@ -2340,9 +1932,8 @@
                     drag(e) {
                         if (!this.isDragging) return;
                         
-                        // Always prevent default to stop scrolling
+                        // Prevent default to stop scrolling
                         e.preventDefault();
-                        e.stopPropagation();
                         
                         const clientX = e.type === 'touchmove' ? e.touches[0].clientX : e.clientX;
                         this.currentX = clientX;
@@ -2378,7 +1969,7 @@
                                 // Dragging left - go to next
                                 this.currentIndex++;
                                 this.updateCarousel();
-                            } else {
+                    } else {
                                 // At boundary, snap back
                                 this.updateCarousel();
                             }
@@ -2652,122 +2243,152 @@
             }
         };
 
+        // Recommended Events Carousel Manager
+        window.RecommendedCarouselManager = {
+            carouselTrack: null,
+            carouselContainer: null,
+            currentIndex: 0,
+            totalItems: 6,
+            isDragging: false,
+            startX: 0,
+            currentX: 0,
+            initialTransform: 0,
+            
+            init() {
+                this.carouselTrack = document.getElementById('recommendedCarousel');
+                this.carouselContainer = document.getElementById('recommendedCarouselContainer');
+                const prevBtn = document.getElementById('recommendedPrevBtn');
+                const nextBtn = document.getElementById('recommendedNextBtn');
+                
+                if (!this.carouselTrack || !this.carouselContainer || !prevBtn || !nextBtn) return;
+                
+                this.setupNavigation();
+                this.setupDrag();
+            },
+            
+            setupNavigation() {
+                const prevBtn = document.getElementById('recommendedPrevBtn');
+                const nextBtn = document.getElementById('recommendedNextBtn');
+                
+                prevBtn.addEventListener('click', () => this.previous());
+                nextBtn.addEventListener('click', () => this.next());
+                
+                this.updateNavigation();
+            },
+            
+            next() {
+                if (this.currentIndex < this.totalItems - 1) {
+                    this.currentIndex++;
+                    this.updateCarousel();
+                }
+            },
+            
+            previous() {
+                if (this.currentIndex > 0) {
+                    this.currentIndex--;
+                    this.updateCarousel();
+                }
+            },
+            
+            updateCarousel() {
+                const cardWidth = 320; // Width of each card including margin
+                const translateX = -this.currentIndex * cardWidth;
+                this.carouselTrack.style.transform = `translateX(${translateX}px)`;
+                this.updateNavigation();
+            },
+            
+            updateNavigation() {
+                const prevBtn = document.getElementById('recommendedPrevBtn');
+                const nextBtn = document.getElementById('recommendedNextBtn');
+                
+                if (prevBtn) prevBtn.style.opacity = this.currentIndex === 0 ? '0.5' : '1';
+                if (nextBtn) nextBtn.style.opacity = this.currentIndex >= this.totalItems - 1 ? '0.5' : '1';
+            },
+            
+            setupDrag() {
+                this.carouselContainer.addEventListener('mousedown', (e) => this.startDrag(e));
+                this.carouselContainer.addEventListener('touchstart', (e) => this.startDrag(e.touches[0]));
+                
+                document.addEventListener('mousemove', (e) => this.drag(e));
+                document.addEventListener('touchmove', (e) => this.drag(e.touches[0]));
+                
+                document.addEventListener('mouseup', () => this.endDrag());
+                document.addEventListener('touchend', () => this.endDrag());
+            },
+            
+            startDrag(e) {
+                this.isDragging = true;
+                this.startX = e.clientX;
+                this.initialTransform = -this.currentIndex * 320;
+                this.carouselContainer.classList.add('dragging');
+            },
+            
+            drag(e) {
+                if (!this.isDragging) return;
+                e.preventDefault();
+                
+                this.currentX = e.clientX;
+                const deltaX = this.currentX - this.startX;
+                const newTransform = this.initialTransform + deltaX;
+                
+                this.carouselTrack.style.transform = `translateX(${newTransform}px)`;
+            },
+            
+            endDrag() {
+                if (!this.isDragging) return;
+                this.isDragging = false;
+                this.carouselContainer.classList.remove('dragging');
+                
+                const deltaX = this.currentX - this.startX;
+                const threshold = 50;
+                
+                if (Math.abs(deltaX) > threshold) {
+                    if (deltaX > 0 && this.currentIndex > 0) {
+                        this.currentIndex--;
+                    } else if (deltaX < 0 && this.currentIndex < this.totalItems - 1) {
+                        this.currentIndex++;
+                    }
+                }
+                
+                this.updateCarousel();
+            }
+        };
+
+        // Initialize category carousels (make them global)
+        window.MusicCarouselManager = CategoryCarouselManager.createManager('music', 
+            (event) => {
+                const title = (event.language?.is?.title || event.language?.en?.title || event.title || '').toLowerCase();
+                const description = (event.language?.is?.text || event.language?.en?.text || '').toLowerCase();
+                return title.includes('tónlist') || title.includes('music') || title.includes('concert') || 
+                       title.includes('festival') || title.includes('band') || title.includes('söngur') ||
+                       description.includes('tónlist') || description.includes('music') || description.includes('concert');
+            }, 'Music Events');
+        
+        window.TheaterCarouselManager = CategoryCarouselManager.createManager('theater',
+            (event) => {
+                const title = (event.language?.is?.title || event.language?.en?.title || event.title || '').toLowerCase();
+                const description = (event.language?.is?.text || event.language?.en?.text || '').toLowerCase();
+                return title.includes('sviðslist') || title.includes('theater') || title.includes('leikur') || 
+                       title.includes('drama') || title.includes('leikhús') || title.includes('sýning') ||
+                       description.includes('sviðslist') || description.includes('theater') || description.includes('leikur');
+            }, 'Theater Events');
+        
+        window.DanceCarouselManager = CategoryCarouselManager.createManager('dance',
+            (event) => {
+                const title = (event.language?.is?.title || event.language?.en?.title || event.title || '').toLowerCase();
+                const description = (event.language?.is?.text || event.language?.en?.text || '').toLowerCase();
+                return title.includes('dans') || title.includes('dance') || title.includes('ballett') || 
+                       title.includes('ballet') || title.includes('dansleikur') || title.includes('dansflokkur') ||
+                       description.includes('dans') || description.includes('dance') || description.includes('ballett');
+            }, 'Dance Events');
+
         // Initialize Application
         const init = () => {
             Utils.log('Initializing Iceland Events App');
             DataManager.loadEvents();
             SearchManager.init();
             SearchBarManager.init();
-            RecommendedCarouselManager.init();
             
-            // Initialize category carousels
-            const FamilyCarouselManager = CategoryCarouselManager.createManager('family', 
-                (event) => {
-                    const title = (event.language?.is?.title || event.language?.en?.title || event.title || '').toLowerCase();
-                    const description = (event.language?.is?.text || event.language?.en?.text || '').toLowerCase();
-                    return title.includes('family') || title.includes('children') || title.includes('kids') || 
-                           description.includes('family') || description.includes('children') || description.includes('kids');
-                }, 'Family Events');
-            
-            const FreeCarouselManager = CategoryCarouselManager.createManager('free',
-                (event) => {
-                    const title = (event.language?.is?.title || event.language?.en?.title || event.title || '').toLowerCase();
-                    const description = (event.language?.is?.text || event.language?.en?.text || '').toLowerCase();
-                    return title.includes('free') || title.includes('gratis') || 
-                           description.includes('free') || description.includes('gratis') ||
-                           (event.price && event.price === 0);
-                }, 'Free Events');
-            
-            const MusicCarouselManager = CategoryCarouselManager.createManager('music',
-                (event) => {
-                    const title = (event.language?.is?.title || event.language?.en?.title || event.title || '').toLowerCase();
-                    const description = (event.language?.is?.text || event.language?.en?.text || '').toLowerCase();
-                    const category = (event.categories?.[0]?.name || '').toLowerCase();
-                    return title.includes('music') || title.includes('concert') || title.includes('band') || 
-                           description.includes('music') || description.includes('concert') || description.includes('band') ||
-                           category.includes('music') || category.includes('concert');
-                }, 'Music Events');
-            
-            const ArtCarouselManager = CategoryCarouselManager.createManager('art',
-                (event) => {
-                    const title = (event.language?.is?.title || event.language?.en?.title || event.title || '').toLowerCase();
-                    const description = (event.language?.is?.text || event.language?.en?.text || '').toLowerCase();
-                    const category = (event.categories?.[0]?.name || '').toLowerCase();
-                    return title.includes('art') || title.includes('exhibition') || title.includes('gallery') || 
-                           description.includes('art') || description.includes('exhibition') || description.includes('gallery') ||
-                           category.includes('art') || category.includes('culture') || category.includes('exhibition');
-                }, 'Art & Culture');
-            
-            const FoodCarouselManager = CategoryCarouselManager.createManager('food',
-                (event) => {
-                    const title = (event.language?.is?.title || event.language?.en?.title || event.title || '').toLowerCase();
-                    const description = (event.language?.is?.text || event.language?.en?.text || '').toLowerCase();
-                    const category = (event.categories?.[0]?.name || '').toLowerCase();
-                    return title.includes('food') || title.includes('drink') || title.includes('wine') || title.includes('beer') || 
-                           title.includes('tasting') || title.includes('culinary') || title.includes('restaurant') ||
-                           description.includes('food') || description.includes('drink') || description.includes('wine') || 
-                           description.includes('beer') || description.includes('tasting') || description.includes('culinary') ||
-                           category.includes('food') || category.includes('drink') || category.includes('culinary');
-                }, 'Food & Drink');
-            
-            const SportsCarouselManager = CategoryCarouselManager.createManager('sports',
-                (event) => {
-                    const title = (event.language?.is?.title || event.language?.en?.title || event.title || '').toLowerCase();
-                    const description = (event.language?.is?.text || event.language?.en?.text || '').toLowerCase();
-                    const category = (event.categories?.[0]?.name || '').toLowerCase();
-                    return title.includes('sport') || title.includes('fitness') || title.includes('run') || title.includes('marathon') || 
-                           title.includes('football') || title.includes('soccer') || title.includes('basketball') || title.includes('tennis') ||
-                           description.includes('sport') || description.includes('fitness') || description.includes('run') || 
-                           description.includes('marathon') || description.includes('football') || description.includes('soccer') ||
-                           category.includes('sport') || category.includes('fitness') || category.includes('athletic');
-                }, 'Sports & Fitness');
-            
-            const OutdoorCarouselManager = CategoryCarouselManager.createManager('outdoor',
-                (event) => {
-                    const title = (event.language?.is?.title || event.language?.en?.title || event.title || '').toLowerCase();
-                    const description = (event.language?.is?.text || event.language?.en?.text || '').toLowerCase();
-                    const category = (event.categories?.[0]?.name || '').toLowerCase();
-                    return title.includes('outdoor') || title.includes('hiking') || title.includes('nature') || title.includes('adventure') || 
-                           title.includes('camping') || title.includes('trail') || title.includes('mountain') || title.includes('forest') ||
-                           description.includes('outdoor') || description.includes('hiking') || description.includes('nature') || 
-                           description.includes('adventure') || description.includes('camping') || description.includes('trail') ||
-                           category.includes('outdoor') || category.includes('nature') || category.includes('adventure');
-                }, 'Outdoor Events');
-            
-            const EducationCarouselManager = CategoryCarouselManager.createManager('education',
-                (event) => {
-                    const title = (event.language?.is?.title || event.language?.en?.title || event.title || '').toLowerCase();
-                    const description = (event.language?.is?.text || event.language?.en?.text || '').toLowerCase();
-                    const category = (event.categories?.[0]?.name || '').toLowerCase();
-                    return title.includes('workshop') || title.includes('seminar') || title.includes('class') || title.includes('course') || 
-                           title.includes('learning') || title.includes('education') || title.includes('training') || title.includes('lecture') ||
-                           description.includes('workshop') || description.includes('seminar') || description.includes('class') || 
-                           description.includes('course') || description.includes('learning') || description.includes('education') ||
-                           category.includes('education') || category.includes('workshop') || category.includes('learning');
-                }, 'Educational');
-            
-            const BusinessCarouselManager = CategoryCarouselManager.createManager('business',
-                (event) => {
-                    const title = (event.language?.is?.title || event.language?.en?.title || event.title || '').toLowerCase();
-                    const description = (event.language?.is?.text || event.language?.en?.text || '').toLowerCase();
-                    const category = (event.categories?.[0]?.name || '').toLowerCase();
-                    return title.includes('business') || title.includes('networking') || title.includes('conference') || title.includes('meetup') || 
-                           title.includes('professional') || title.includes('career') || title.includes('startup') || title.includes('entrepreneur') ||
-                           description.includes('business') || description.includes('networking') || description.includes('conference') || 
-                           description.includes('meetup') || description.includes('professional') || description.includes('career') ||
-                           category.includes('business') || category.includes('networking') || category.includes('professional');
-                }, 'Business & Networking');
-            
-            // Initialize all carousels
-            FamilyCarouselManager.init();
-            FreeCarouselManager.init();
-            MusicCarouselManager.init();
-            ArtCarouselManager.init();
-            FoodCarouselManager.init();
-            SportsCarouselManager.init();
-            OutdoorCarouselManager.init();
-            EducationCarouselManager.init();
-            BusinessCarouselManager.init();
             
             CarouselManager.init();
             MobileMenuManager.init();
