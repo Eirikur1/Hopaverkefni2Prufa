@@ -131,29 +131,6 @@
             position: relative;
         }
 
-        /* Animated Carousel Styles */
-        #c > li.active {
-            opacity: 1;
-        }
-
-        /* Force perfect circles for carousel images */
-        #c .rounded-full {
-            border-radius: 50% !important;
-            width: 96px !important;
-            height: 96px !important;
-            min-width: 96px !important;
-            min-height: 96px !important;
-            max-width: 96px !important;
-            max-height: 96px !important;
-        }
-
-        #c .rounded-full img {
-            border-radius: 50% !important;
-            width: 100% !important;
-            height: 100% !important;
-            object-fit: cover !important;
-            object-position: center !important;
-        }
 
         /* Text Animation Styles */
         .splitted-word {
@@ -1372,9 +1349,6 @@
             </ul>
         </div>
 
-        <div class="text-center px-4 md:px-0 mt-12 md:mt-16">
-            <p class="tit text-base md:text-lg text-gray-600 max-w-3xl mx-auto leading-relaxed font-light">From intimate gatherings to grand celebrations, Venuu showcases the best of Icelandic culture, music, and community. Each event is thoughtfully designed to bring people together and create lasting memories.</p>
-        </div>
     </section>
 
     <!-- Events Section -->
@@ -1458,109 +1432,6 @@
         </div>
     </section>
 
-    <!-- Animated Carousel Section -->
-    <section class="py-12 md:py-20 bg-background">
-        <div class="max-w-6xl mx-auto px-4 md:px-10">
-            <ul id="c" class="relative w-full h-32 md:h-48">
-                <li class="absolute top-0 w-1/2 md:w-1/4 h-full opacity-0 transition-all duration-1000 ease-in-out">
-                    <div class="p-3 md:p-6 text-center h-full flex flex-col justify-center">
-                        <div class="w-16 h-16 md:w-24 md:h-24 mx-auto mb-2 md:mb-4 rounded-full overflow-hidden bg-gray-100 flex items-center justify-center aspect-square">
-                            <img src="Images/3f117cff666f231104f270edda727dab.jpg" alt="Discover Events" class="w-full h-full object-cover rounded-full">
-                        </div>
-                        <p class="text-xs md:text-sm text-gray-600 leading-relaxed font-light">Discover amazing events happening across Iceland's beautiful landscapes.</p>
-                    </div>
-                </li>
-                <li class="absolute top-0 w-1/2 md:w-1/4 h-full opacity-0 transition-all duration-1000 ease-in-out">
-                    <div class="p-3 md:p-6 text-center h-full flex flex-col justify-center">
-                        <div class="w-16 h-16 md:w-24 md:h-24 mx-auto mb-2 md:mb-4 rounded-full overflow-hidden bg-gray-100 flex items-center justify-center aspect-square">
-                            <img src="Images/1d595e6dc1b6a3d963b932eb94de79d1.jpg" alt="Connect People" class="w-full h-full object-cover rounded-full">
-                        </div>
-                        <p class="text-xs md:text-sm text-gray-600 leading-relaxed font-light">Connect with like-minded people and create unforgettable memories at cultural gatherings.</p>
-                    </div>
-                </li>
-                <li class="absolute top-0 w-1/2 md:w-1/4 h-full opacity-0 transition-all duration-1000 ease-in-out">
-                    <div class="p-3 md:p-6 text-center h-full flex flex-col justify-center">
-                        <div class="w-16 h-16 md:w-24 md:h-24 mx-auto mb-2 md:mb-4 rounded-full overflow-hidden bg-gray-100 flex items-center justify-center aspect-square">
-                            <img src="Images/233986128f46951bf66a727cca1b3a18.jpg" alt="Iceland Heritage" class="w-full h-full object-cover rounded-full">
-                        </div>
-                        <p class="text-xs md:text-sm text-gray-600 leading-relaxed font-light">Experience the rich heritage and contemporary culture of Iceland through curated events.</p>
-                    </div>
-                </li>
-                <li class="absolute top-0 w-1/2 md:w-1/4 h-full opacity-0 transition-all duration-1000 ease-in-out">
-                    <div class="p-3 md:p-6 text-center h-full flex flex-col justify-center">
-                        <div class="w-16 h-16 md:w-24 md:h-24 mx-auto mb-2 md:mb-4 rounded-full overflow-hidden bg-gray-100 flex items-center justify-center aspect-square">
-                            <img src="Images/3bd777f8c2760cbf585251808e738698.jpg" alt="Community" class="w-full h-full object-cover rounded-full">
-                        </div>
-                        <p class="text-xs md:text-sm text-gray-600 leading-relaxed font-light">Join a community of event enthusiasts and discover your next favorite gathering.</p>
-                    </div>
-                </li>
-                <li class="absolute top-0 w-1/2 md:w-1/4 h-full opacity-0 transition-all duration-1000 ease-in-out">
-                    <div class="p-3 md:p-6 text-center h-full flex flex-col justify-center">
-                        <div class="w-16 h-16 md:w-24 md:h-24 mx-auto mb-2 md:mb-4 rounded-full overflow-hidden bg-gray-100 flex items-center justify-center aspect-square">
-                            <img src="Images/3f117cff666f231104f270edda727dab.jpg" alt="Music & Art" class="w-full h-full object-cover rounded-full">
-                        </div>
-                        <p class="text-xs md:text-sm text-gray-600 leading-relaxed font-light">From music festivals to art exhibitions, find events that match your interests.</p>
-                    </div>
-                </li>
-                <li class="absolute top-0 w-1/2 md:w-1/4 h-full opacity-0 transition-all duration-1000 ease-in-out">
-                    <div class="p-3 md:p-6 text-center h-full flex flex-col justify-center">
-                        <div class="w-16 h-16 md:w-24 md:h-24 mx-auto mb-2 md:mb-4 rounded-full overflow-hidden bg-gray-100 flex items-center justify-center aspect-square">
-                            <img src="Images/542dfd6b879d676a823e611028e40984.jpg" alt="Local Artists" class="w-full h-full object-cover rounded-full">
-                        </div>
-                        <p class="text-xs md:text-sm text-gray-600 leading-relaxed font-light">Support local artists and performers while enjoying world-class entertainment.</p>
-                    </div>
-                </li>
-                <li class="absolute top-0 w-1/2 md:w-1/4 h-full opacity-0 transition-all duration-1000 ease-in-out">
-                    <div class="p-3 md:p-6 text-center h-full flex flex-col justify-center">
-                        <div class="w-16 h-16 md:w-24 md:h-24 mx-auto mb-2 md:mb-4 rounded-full overflow-hidden bg-gray-100 flex items-center justify-center aspect-square">
-                            <img src="Images/783d478fde50b0f1d23ed5db8e9e2dee.jpg" alt="Venues" class="w-full h-full object-cover rounded-full">
-                        </div>
-                        <p class="text-xs md:text-sm text-gray-600 leading-relaxed font-light">Explore venues from cozy cafes to grand concert halls across the country.</p>
-                    </div>
-                </li>
-                <li class="absolute top-0 w-1/2 md:w-1/4 h-full opacity-0 transition-all duration-1000 ease-in-out">
-                    <div class="p-3 md:p-6 text-center h-full flex flex-col justify-center">
-                        <div class="w-16 h-16 md:w-24 md:h-24 mx-auto mb-2 md:mb-4 rounded-full overflow-hidden bg-gray-100 flex items-center justify-center aspect-square">
-                            <img src="Images/96ec819f4ad7e5237c653c05baf5cd8c.jpg" alt="Stay Updated" class="w-full h-full object-cover rounded-full">
-                        </div>
-                        <p class="text-xs md:text-sm text-gray-600 leading-relaxed font-light">Stay updated with the latest events and never miss out on exciting opportunities.</p>
-                    </div>
-                </li>
-                <li class="absolute top-0 w-1/2 md:w-1/4 h-full opacity-0 transition-all duration-1000 ease-in-out">
-                    <div class="p-3 md:p-6 text-center h-full flex flex-col justify-center">
-                        <div class="w-16 h-16 md:w-24 md:h-24 mx-auto mb-2 md:mb-4 rounded-full overflow-hidden bg-gray-100 flex items-center justify-center aspect-square">
-                            <img src="Images/b3a1e66d241d956c3de527627d3c0a8a.jpg" alt="Friendships" class="w-full h-full object-cover rounded-full">
-                        </div>
-                        <p class="text-xs md:text-sm text-gray-600 leading-relaxed font-light">Build lasting friendships and connections through shared experiences and interests.</p>
-                    </div>
-                </li>
-                <li class="absolute top-0 w-1/2 md:w-1/4 h-full opacity-0 transition-all duration-1000 ease-in-out">
-                    <div class="p-3 md:p-6 text-center h-full flex flex-col justify-center">
-                        <div class="w-16 h-16 md:w-24 md:h-24 mx-auto mb-2 md:mb-4 rounded-full overflow-hidden bg-gray-100 flex items-center justify-center aspect-square">
-                            <img src="Images/068e9d4bef717cd1000843dc38c603ec.jpg" alt="Creative Community" class="w-full h-full object-cover rounded-full">
-                        </div>
-                        <p class="text-xs md:text-sm text-gray-600 leading-relaxed font-light">Immerse yourself in Iceland's creative community and cultural diversity.</p>
-                    </div>
-                </li>
-                <li class="absolute top-0 w-1/2 md:w-1/4 h-full opacity-0 transition-all duration-1000 ease-in-out">
-                    <div class="p-3 md:p-6 text-center h-full flex flex-col justify-center">
-                        <div class="w-16 h-16 md:w-24 md:h-24 mx-auto mb-2 md:mb-4 rounded-full overflow-hidden bg-gray-100 flex items-center justify-center aspect-square">
-                            <img src="Images/1d595e6dc1b6a3d963b932eb94de79d1.jpg" alt="Hidden Gems" class="w-full h-full object-cover rounded-full">
-                        </div>
-                        <p class="text-xs md:text-sm text-gray-600 leading-relaxed font-light">Discover hidden gems and unique experiences that showcase Iceland's character.</p>
-                    </div>
-                </li>
-                <li class="absolute top-0 w-1/2 md:w-1/4 h-full opacity-0 transition-all duration-1000 ease-in-out">
-                    <div class="p-3 md:p-6 text-center h-full flex flex-col justify-center">
-                        <div class="w-16 h-16 md:w-24 md:h-24 mx-auto mb-2 md:mb-4 rounded-full overflow-hidden bg-gray-100 flex items-center justify-center aspect-square">
-                            <img src="Images/233986128f46951bf66a727cca1b3a18.jpg" alt="Trusted Platform" class="w-full h-full object-cover rounded-full">
-                        </div>
-                        <p class="text-xs md:text-sm text-gray-600 leading-relaxed font-light">Join thousands of event-goers who trust Venuu for their entertainment needs.</p>
-                    </div>
-                </li>
-            </ul>
-        </div>
-    </section>
             </div>
         </div>
     </main>
@@ -2314,71 +2185,6 @@
             }
         };
 
-        // About Carousel Manager
-        const AboutCarouselManager = {
-            currentSlide: 0,
-            totalSlides: 5,
-            autoPlayInterval: null,
-            
-            init() {
-                this.setupCarousel();
-                this.startAutoPlay();
-            },
-            
-            setupCarousel() {
-                const track = document.getElementById('carousel-track');
-                const navItems = document.querySelectorAll('.nav__item');
-                
-                // Add click handlers to navigation items
-                navItems.forEach((item, index) => {
-                    item.addEventListener('click', () => {
-                        this.goToSlide(index);
-                    });
-                });
-                
-                // Initialize first slide
-                this.updateCarousel();
-            },
-            
-            goToSlide(slideIndex) {
-                this.currentSlide = slideIndex;
-                this.updateCarousel();
-                this.resetAutoPlay();
-            },
-            
-            nextSlide() {
-                this.currentSlide = (this.currentSlide + 1) % this.totalSlides;
-                this.updateCarousel();
-            },
-            
-            updateCarousel() {
-                const track = document.getElementById('carousel-track');
-                const navItems = document.querySelectorAll('.nav__item');
-                
-                // Move track
-                track.style.transform = `translateX(-${this.currentSlide * 100}%)`;
-                
-                // Update navigation items
-                navItems.forEach((item, index) => {
-                    if (index === this.currentSlide) {
-                        item.classList.add('nav__item--active');
-                    } else {
-                        item.classList.remove('nav__item--active');
-                    }
-                });
-            },
-            
-            startAutoPlay() {
-                this.autoPlayInterval = setInterval(() => {
-                    this.nextSlide();
-                }, 4000);
-            },
-            
-            resetAutoPlay() {
-                clearInterval(this.autoPlayInterval);
-                this.startAutoPlay();
-            }
-        };
 
         // Category Carousel Manager (Base class for all category carousels)
         const CategoryCarouselManager = {
@@ -2964,7 +2770,6 @@
             BusinessCarouselManager.init();
             
             CarouselManager.init();
-            AboutCarouselManager.init();
             MobileMenuManager.init();
         };
 
