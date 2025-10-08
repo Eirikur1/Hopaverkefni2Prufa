@@ -2428,6 +2428,19 @@
                         const categoryEvents = App.events.filter(this.filterFunction).slice(0, 8);
                         this.totalItems = categoryEvents.length;
                         
+                        // Hide the entire carousel section if no events found
+                        const carouselSection = this.carouselContainer.closest('section');
+                        if (this.totalItems === 0) {
+                            if (carouselSection) {
+                                carouselSection.style.display = 'none';
+                            }
+                            return;
+                        } else {
+                            if (carouselSection) {
+                                carouselSection.style.display = 'block';
+                            }
+                        }
+                        
                         this.carouselTrack.innerHTML = categoryEvents.map((event, index) => {
                             const title = event.language?.is?.title || event.language?.en?.title || event.title || 'Untitled Event';
                             const location = event.formatted_address || event.city || 'Location TBD';
@@ -2629,6 +2642,19 @@
                 // Get recommended events (first 8 events for now)
                 const recommendedEvents = App.events.slice(0, 8);
                 this.totalItems = recommendedEvents.length;
+                
+                // Hide the entire carousel section if no events found
+                const carouselSection = this.carouselContainer.closest('section');
+                if (this.totalItems === 0) {
+                    if (carouselSection) {
+                        carouselSection.style.display = 'none';
+                    }
+                    return;
+                } else {
+                    if (carouselSection) {
+                        carouselSection.style.display = 'block';
+                    }
+                }
                 
                 this.carouselTrack.innerHTML = recommendedEvents.map((event, index) => {
                     const title = event.language?.is?.title || event.language?.en?.title || event.title || 'Untitled Event';
