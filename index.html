@@ -1036,12 +1036,12 @@
 
                 <!-- Navigation Arrows -->
                 <div class="flex gap-1" role="group" aria-label="Carousel navigation">
-                    <button class="carousel-nav carousel-nav-prev bg-transparent border-none rounded-full w-8 h-8 flex items-center justify-center hover:bg-red-50/50 transition-all duration-300" id="recommendedPrevBtn" aria-label="Previous events" type="button">
+                    <button class="carousel-nav carousel-nav-prev bg-transparent border-none rounded-full w-8 h-8 flex items-center justify-center hover:bg-red-50/50 transition-all duration-300" id="prevBtn" aria-label="Previous events" type="button">
                         <svg class="w-5 h-5" style="color: #FF340A;" fill="currentColor" viewBox="0 -960 960 960" aria-hidden="true">
                             <path d="M640-80 240-480l400-400 71 71-329 329 329 329-71 71Z"/>
                         </svg>
                     </button>
-                    <button class="carousel-nav carousel-nav-next bg-transparent border-none rounded-full w-8 h-8 flex items-center justify-center hover:bg-red-50/50 transition-all duration-300" id="recommendedNextBtn" aria-label="Next events" type="button">
+                    <button class="carousel-nav carousel-nav-next bg-transparent border-none rounded-full w-8 h-8 flex items-center justify-center hover:bg-red-50/50 transition-all duration-300" id="nextBtn" aria-label="Next events" type="button">
                         <svg class="w-5 h-5" style="color: #FF340A;" fill="currentColor" viewBox="0 -960 960 960" aria-hidden="true">
                             <path d="m321-80-71-71 329-329-329-329 71-71 400 400L321-80Z"/>
                         </svg>
@@ -1051,7 +1051,7 @@
             
             <div class="relative">
                 <!-- Carousel Container -->
-                <div class="recommended-carousel-container overflow-hidden cursor-grab active:cursor-grabbing" id="recommendedCarouselContainer" role="region" aria-label="Recommended events carousel" aria-live="polite">
+                <div class="recommended-carousel-container overflow-hidden cursor-grab active:cursor-grabbing" id="carouselContainer" role="region" aria-label="Recommended events carousel" aria-live="polite">
                     <div class="recommended-carousel-track flex transition-transform duration-300 ease-out" id="recommendedCarousel" role="list" aria-label="List of recommended events">
                         <!-- Recommended events will be populated here -->
                     </div>
@@ -1093,7 +1093,72 @@
                 <!-- Carousel Container -->
                 <div class="recommended-carousel-container overflow-hidden cursor-grab active:cursor-grabbing" id="recommendedCarouselContainer">
                     <div class="recommended-carousel-track flex transition-transform duration-300 ease-out" id="recommendedCarousel">
-                        <!-- Recommended events will be populated here -->
+                        <!-- Recommended events -->
+                        <div class="recommended-event-card">
+                            <div class="recommended-event-image">
+                                <img src="Images/068e9d4bef717cd1000843dc38c603ec.jpg" alt="Iceland Music Festival" class="w-full h-full object-cover">
+                </div>
+                            <div class="recommended-event-content">
+                                <div class="recommended-event-title">Reykjavík Music Festival</div>
+                                <div class="recommended-event-location">Harpa Concert Hall, Reykjavík</div>
+                                <div class="recommended-event-date">March 15, 2024</div>
+                            </div>
+            </div>
+
+                        <div class="recommended-event-card">
+                            <div class="recommended-event-image">
+                                <img src="Images/1d595e6dc1b6a3d963b932eb94de79d1.jpg" alt="Art Exhibition" class="w-full h-full object-cover">
+                    </div>
+                            <div class="recommended-event-content">
+                                <div class="recommended-event-title">Modern Icelandic Art</div>
+                                <div class="recommended-event-location">National Gallery, Reykjavík</div>
+                                <div class="recommended-event-date">March 20, 2024</div>
+                    </div>
+                </div>
+                        
+                        <div class="recommended-event-card">
+                            <div class="recommended-event-image">
+                                <img src="Images/233986128f46951bf66a727cca1b3a18.jpg" alt="Food Festival" class="w-full h-full object-cover">
+                            </div>
+                            <div class="recommended-event-content">
+                                <div class="recommended-event-title">Icelandic Food Festival</div>
+                                <div class="recommended-event-location">Harbor District, Reykjavík</div>
+                                <div class="recommended-event-date">March 25, 2024</div>
+            </div>
+        </div>
+
+                        <div class="recommended-event-card">
+                            <div class="recommended-event-image">
+                                <img src="Images/3bd777f8c2760cbf585251808e738698.jpg" alt="Family Fun Day" class="w-full h-full object-cover">
+                            </div>
+                            <div class="recommended-event-content">
+                                <div class="recommended-event-title">Family Fun Day</div>
+                                <div class="recommended-event-location">Laugardalslaug, Reykjavík</div>
+                                <div class="recommended-event-date">March 30, 2024</div>
+            </div>
+        </div>
+
+                        <div class="recommended-event-card">
+                            <div class="recommended-event-image">
+                                <img src="Images/3f117cff666f231104f270edda727dab.jpg" alt="Outdoor Adventure" class="w-full h-full object-cover">
+                </div>
+                            <div class="recommended-event-content">
+                                <div class="recommended-event-title">Golden Circle Tour</div>
+                                <div class="recommended-event-location">Golden Circle, Iceland</div>
+                                <div class="recommended-event-date">April 5, 2024</div>
+            </div>
+        </div>
+
+                        <div class="recommended-event-card">
+                            <div class="recommended-event-image">
+                                <img src="Images/542dfd6b879d676a823e611028e40984.jpg" alt="Business Conference" class="w-full h-full object-cover">
+        </div>
+                            <div class="recommended-event-content">
+                                <div class="recommended-event-title">Tech Innovation Summit</div>
+                                <div class="recommended-event-location">Harpa Concert Hall</div>
+                                <div class="recommended-event-date">April 10, 2024</div>
+        </div>
+                        </div>
                     </div>
                         </div>
                     </div>
@@ -2282,74 +2347,8 @@
                 
                 if (!this.carouselTrack || !this.carouselContainer || !prevBtn || !nextBtn) return;
                 
-                this.populateCarousel();
                 this.setupNavigation();
                 this.setupDrag();
-            },
-            
-            populateCarousel() {
-                // Hardcoded recommended events for the carousel
-                const recommendedEvents = [
-                    {
-                        id: 'rec-1',
-                        title: 'Reykjavík Music Festival',
-                        location: 'Harpa Concert Hall, Reykjavík',
-                        date: 'March 15, 2024',
-                        image: 'Images/068e9d4bef717cd1000843dc38c603ec.jpg'
-                    },
-                    {
-                        id: 'rec-2',
-                        title: 'Modern Icelandic Art',
-                        location: 'National Gallery, Reykjavík',
-                        date: 'March 20, 2024',
-                        image: 'Images/1d595e6dc1b6a3d963b932eb94de79d1.jpg'
-                    },
-                    {
-                        id: 'rec-3',
-                        title: 'Icelandic Food Festival',
-                        location: 'Harbor District, Reykjavík',
-                        date: 'March 25, 2024',
-                        image: 'Images/233986128f46951bf66a727cca1b3a18.jpg'
-                    },
-                    {
-                        id: 'rec-4',
-                        title: 'Family Fun Day',
-                        location: 'Laugardalslaug, Reykjavík',
-                        date: 'March 30, 2024',
-                        image: 'Images/3bd777f8c2760cbf585251808e738698.jpg'
-                    },
-                    {
-                        id: 'rec-5',
-                        title: 'Golden Circle Tour',
-                        location: 'Golden Circle, Iceland',
-                        date: 'April 5, 2024',
-                        image: 'Images/3f117cff666f231104f270edda727dab.jpg'
-                    },
-                    {
-                        id: 'rec-6',
-                        title: 'Tech Innovation Summit',
-                        location: 'Harpa Concert Hall',
-                        date: 'April 10, 2024',
-                        image: 'Images/542dfd6b879d676a823e611028e40984.jpg'
-                    }
-                ];
-                
-                this.totalItems = recommendedEvents.length;
-                
-                const carouselHTML = recommendedEvents.map(event => `
-                    <div class="recommended-event-card" data-event-id="${event.id}">
-                        <div class="recommended-event-image">
-                            <img src="${event.image}" alt="${event.title}" class="w-full h-full object-cover">
-                        </div>
-                        <div class="recommended-event-content">
-                            <div class="recommended-event-title">${event.title}</div>
-                            <div class="recommended-event-location">${event.location}</div>
-                            <div class="recommended-event-date">${event.date}</div>
-                        </div>
-                    </div>
-                `).join('');
-                
-                this.carouselTrack.innerHTML = carouselHTML;
             },
             
             setupNavigation() {
