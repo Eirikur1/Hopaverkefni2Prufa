@@ -855,32 +855,102 @@
             }
         }
 
+        /* Accessibility Styles */
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border: 0;
+        }
+
+        .sr-only:focus {
+            position: static;
+            width: auto;
+            height: auto;
+            padding: inherit;
+            margin: inherit;
+            overflow: visible;
+            clip: auto;
+            white-space: normal;
+        }
+
+        /* Enhanced focus indicators */
+        *:focus {
+            outline: 2px solid #1F2937;
+            outline-offset: 2px;
+        }
+
+        /* Skip link styling */
+        .skip-link {
+            position: absolute;
+            top: -40px;
+            left: 6px;
+            background: #1F2937;
+            color: white;
+            padding: 8px;
+            text-decoration: none;
+            border-radius: 4px;
+            z-index: 1000;
+        }
+
+        .skip-link:focus {
+            top: 6px;
+        }
+
+        /* High contrast mode support */
+        @media (prefers-contrast: high) {
+            .text-draw-hero {
+                text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+            }
+            
+            .search-input {
+                border-width: 3px;
+            }
+        }
+
+        /* Reduced motion support */
+        @media (prefers-reduced-motion: reduce) {
+            * {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+
     </style>
 </head>
 <body class="bg-background text-primary font-sans text-base leading-relaxed m-0 p-0 min-h-full">
+    <!-- Skip Navigation Link -->
+    <a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 bg-[#1F2937] text-white px-4 py-2 rounded z-50">Skip to main content</a>
+    
     <!-- Navigation -->
-    <nav class="fixed top-0 left-0 right-0 bg-background border-b border-primary/10 z-50 py-2 md:py-3">
+    <nav class="fixed top-0 left-0 right-0 bg-background border-b border-primary/10 z-50 py-2 md:py-3" role="navigation" aria-label="Main navigation">
         <div class="max-w-7xl mx-auto px-4 md:px-10 flex justify-between items-center">
-            <a href="index.html" id="logo-link" class="no-underline">
-                <img src="Video/Negative-mask-effect1-ezgif.com-crop (1).gif" alt="Venuu" class="h-10 md:h-12 w-auto">
+            <a href="index.html" id="logo-link" class="no-underline" aria-label="Venuu - Go to homepage">
+                <img src="Video/Negative-mask-effect1-ezgif.com-crop (1).gif" alt="Venuu logo - animated logo" class="h-10 md:h-12 w-auto">
             </a>
             
             <!-- Desktop Navigation -->
-            <ul class="hidden md:flex list-none m-0 p-0 gap-6 lg:gap-10">
-                <li><a data-draw-line="" href="events.html" class="text-draw">
+            <ul class="hidden md:flex list-none m-0 p-0 gap-6 lg:gap-10" role="menubar" aria-label="Main navigation menu">
+                <li role="none"><a data-draw-line="" href="events.html" class="text-draw" role="menuitem" aria-label="View all events">
                     <p class="text-draw__p">Events</p>
                     <div data-draw-line-box="" class="text-draw__box"></div>
                 </a></li>
-                <li><a data-draw-line="" href="#contact" class="text-draw">
+                <li role="none"><a data-draw-line="" href="#contact" class="text-draw" role="menuitem" aria-label="Create a new event">
                     <p class="text-draw__p">Create Event</p>
                     <div data-draw-line-box="" class="text-draw__box"></div>
                 </a></li>
-                <li><a data-draw-line="" href="#contact" class="text-draw">
+                <li role="none"><a data-draw-line="" href="#contact" class="text-draw" role="menuitem" aria-label="Log in to your account">
                     <p class="text-draw__p">Log In</p>
                     <div data-draw-line-box="" class="text-draw__box"></div>
                 </a></li>
-                <li><a data-draw-line="" href="#" class="text-draw">
-                    <svg xmlns="http://www.w3.org/2000/svg" height="20px" viewBox="0 -960 960 960" width="20px" fill="#FF340A">
+                <li role="none"><a data-draw-line="" href="#" class="text-draw" role="menuitem" aria-label="User profile and account">
+                    <svg xmlns="http://www.w3.org/2000/svg" height="20px" viewBox="0 -960 960 960" width="20px" fill="#FF340A" aria-hidden="true">
                         <path d="M480-340q63 0 112-39t63-101h-83q-12 27-37 43.5T480-420q-30 0-55-16.5T388-480h-83q14 62 63 101t112 39ZM370-540q21 0 35.5-14.5T420-590q0-21-14.5-35.5T370-640q-21 0-35.5 14.5T320-590q0 21 14.5 35.5T370-540Zm220 0q21 0 35.5-14.5T640-590q0-21-14.5-35.5T590-640q-21 0-35.5 14.5T540-590q0 21 14.5 35.5T590-540ZM480-120l-58-50q-101-88-167-152T150-437q-39-51-54.5-94T80-620q0-94 63-157t157-63q52 0 99 22t81 62q34-40 81-62t99-22q94 0 157 63t63 157q0 46-15.5 89T810-437q-39 51-105 115T538-170l-58 50Zm0-108q96-83 158-141t98-102.5q36-44.5 50-79t14-69.5q0-60-40-100t-100-40q-47 0-87 26.5T518-666h-76q-15-41-55-67.5T300-760q-60 0-100 40t-40 100q0 35 14 69.5t50 79Q260-427 322-369t158 141Zm0-266Z"/>
                     </svg>
                     <div data-draw-line-box="" class="text-draw__box"></div>
@@ -888,28 +958,28 @@
             </ul>
 
             <!-- Mobile Menu Button -->
-            <button id="mobile-menu-btn" class="md:hidden p-2 text-primary hover:text-accent transition-colors duration-200">
-                <i class="fas fa-bars text-xl"></i>
+            <button id="mobile-menu-btn" class="md:hidden p-2 text-primary hover:text-accent transition-colors duration-200" aria-label="Open mobile navigation menu" aria-expanded="false" aria-controls="mobile-menu">
+                <i class="fas fa-bars text-xl" aria-hidden="true"></i>
             </button>
         </div>
 
         <!-- Mobile Navigation Menu -->
-        <div id="mobile-menu" class="md:hidden bg-background border-t border-primary/10 hidden">
+        <div id="mobile-menu" class="md:hidden bg-background border-t border-primary/10 hidden" role="menu" aria-label="Mobile navigation menu">
             <div class="px-4 py-4 space-y-4">
-                <a data-draw-line="" href="events.html" class="block text-draw py-2">
+                <a data-draw-line="" href="events.html" class="block text-draw py-2" role="menuitem" aria-label="View all events">
                     <p class="text-draw__p">Events</p>
                     <div data-draw-line-box="" class="text-draw__box"></div>
                 </a>
-                <a data-draw-line="" href="#contact" class="block text-draw py-2">
+                <a data-draw-line="" href="#contact" class="block text-draw py-2" role="menuitem" aria-label="Create a new event">
                     <p class="text-draw__p">Create Event</p>
                     <div data-draw-line-box="" class="text-draw__box"></div>
                 </a>
-                <a data-draw-line="" href="#contact" class="block text-draw py-2">
+                <a data-draw-line="" href="#contact" class="block text-draw py-2" role="menuitem" aria-label="Contact information">
                     <p class="text-draw__p">Contact</p>
                     <div data-draw-line-box="" class="text-draw__box"></div>
                 </a>
-                <a data-draw-line="" href="#" class="block text-draw py-2">
-                    <svg xmlns="http://www.w3.org/2000/svg" height="20px" viewBox="0 -960 960 960" width="20px" fill="#FF340A">
+                <a data-draw-line="" href="#" class="block text-draw py-2" role="menuitem" aria-label="User profile and account">
+                    <svg xmlns="http://www.w3.org/2000/svg" height="20px" viewBox="0 -960 960 960" width="20px" fill="#FF340A" aria-hidden="true">
                         <path d="M480-340q63 0 112-39t63-101h-83q-12 27-37 43.5T480-420q-30 0-55-16.5T388-480h-83q14 62 63 101t112 39ZM370-540q21 0 35.5-14.5T420-590q0-21-14.5-35.5T370-640q-21 0-35.5 14.5T320-590q0 21 14.5 35.5T370-540Zm220 0q21 0 35.5-14.5T640-590q0-21-14.5-35.5T590-640q-21 0-35.5 14.5T540-590q0 21 14.5 35.5T590-540ZM480-120l-58-50q-101-88-167-152T150-437q-39-51-54.5-94T80-620q0-94 63-157t157-63q52 0 99 22t81 62q34-40 81-62t99-22q94 0 157 63t63 157q0 46-15.5 89T810-437q-39 51-105 115T538-170l-58 50Zm0-108q96-83 158-141t98-102.5q36-44.5 50-79t14-69.5q0-60-40-100t-100-40q-47 0-87 26.5T518-666h-76q-15-41-55-67.5T300-760q-60 0-100 40t-40 100q0 35 14 69.5t50 79Q260-427 322-369t158 141Zm0-266Z"/>
                     </svg>
                     <div data-draw-line-box="" class="text-draw__box"></div>
@@ -918,57 +988,61 @@
         </div>
     </nav>
 
+    <!-- Main Content -->
+    <main id="main-content" role="main">
     <!-- Hero Section -->
-    <section class="pt-24 md:pt-36 pb-8 md:pb-12 text-center max-w-4xl mx-auto px-4 md:px-10 relative bg-background">
-        <h1 class="mb-2 md:mb-3 leading-tight"><a data-draw-line="" href="#" class="text-draw-hero">
+        <section class="pt-24 md:pt-36 pb-8 md:pb-12 text-center max-w-4xl mx-auto px-4 md:px-10 relative bg-background" aria-labelledby="hero-title">
+            <h1 id="hero-title" class="mb-2 md:mb-3 leading-tight"><a data-draw-line="" href="#" class="text-draw-hero" aria-label="Discover Events - Main heading">
             <p class="text-draw__p">Discover Events</p>
             <div data-draw-line-box="" class="text-draw__box"></div>
         </a></h1>
     </section>
 
     <!-- Search Bar Section -->
-    <section class="py-2 md:py-3 bg-background">
+    <section class="py-2 md:py-3 bg-background" aria-labelledby="search-heading">
         <div class="max-w-4xl mx-auto px-4 md:px-10">
             <!-- Search and Filter Bar -->
             <div class="search-container">
                 <div class="search-bar">
-                    <input type="text" class="search-input" placeholder="Search for events, locations, or categories..." id="searchInput">
-                    <button class="search-btn" id="searchBtn">
-                        <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#1F2937">
+                    <label for="searchInput" class="sr-only">Search for events, locations, or categories</label>
+                    <input type="text" class="search-input" placeholder="Search for events, locations, or categories..." id="searchInput" aria-describedby="search-help" autocomplete="off" role="searchbox">
+                    <button class="search-btn" id="searchBtn" type="button" aria-label="Search" aria-describedby="search-help">
+                        <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#1F2937" aria-hidden="true">
                             <path d="M784-120 532-372q-30 24-69 38t-83 14q-109 0-184.5-75.5T120-580q0-109 75.5-184.5T380-840q109 0 184.5 75.5T640-580q0 44-14 83t-38 69l252 252-56 56ZM380-400q75 0 127.5-52.5T560-580q0-75-52.5-127.5T380-760q-75 0-127.5 52.5T200-580q0 75 52.5 127.5T380-400Z"/>
                         </svg>
                     </button>
-                    <div class="search-dropdown" id="searchDropdown">
+                    <div class="search-dropdown" id="searchDropdown" role="listbox" aria-label="Search suggestions" aria-live="polite">
                         <!-- Search suggestions will be populated here -->
                     </div>
+                    <div id="search-help" class="sr-only">Type to search for events by name, location, or category. Use arrow keys to navigate suggestions and Enter to select.</div>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Recommended Events Section -->
-    <section class="py-12 md:py-16 bg-background">
+    <section class="py-12 md:py-16 bg-background" aria-labelledby="recommended-heading">
         <div class="max-w-full mx-auto px-2 md:px-4">
             <div class="mb-8 md:mb-12 flex justify-between items-end">
                 <div>
-                    <h2 class="text-draw-hero text-2xl md:text-3xl lg:text-4xl mb-4 font-light tracking-tight">Recommended for You</h2>
+                    <h2 id="recommended-heading" class="text-draw-hero text-2xl md:text-3xl lg:text-4xl mb-4 font-light tracking-tight">Recommended for You</h2>
                     <p class="text-sm md:text-base text-draw font-bold flex items-center">
                         Personalized events just for you
-                        <svg class="w-6 h-6 ml-3 arrow-animate" fill="currentColor" viewBox="0 -960 960 960">
+                        <svg class="w-6 h-6 ml-3 arrow-animate" fill="currentColor" viewBox="0 -960 960 960" aria-hidden="true">
                             <path d="m560-240-56-58 142-142H160v-80h486L504-662l56-58 240 240-240 240Z"/>
                         </svg>
                     </p>
         </div>
 
                 <!-- Navigation Arrows -->
-                <div class="flex gap-1">
-                    <button class="carousel-nav carousel-nav-prev bg-transparent border-none rounded-full w-8 h-8 flex items-center justify-center hover:bg-red-50/50 transition-all duration-300" id="prevBtn">
-                        <svg class="w-5 h-5" style="color: #FF340A;" fill="currentColor" viewBox="0 -960 960 960">
+                <div class="flex gap-1" role="group" aria-label="Carousel navigation">
+                    <button class="carousel-nav carousel-nav-prev bg-transparent border-none rounded-full w-8 h-8 flex items-center justify-center hover:bg-red-50/50 transition-all duration-300" id="recommendedPrevBtn" aria-label="Previous events" type="button">
+                        <svg class="w-5 h-5" style="color: #FF340A;" fill="currentColor" viewBox="0 -960 960 960" aria-hidden="true">
                             <path d="M640-80 240-480l400-400 71 71-329 329 329 329-71 71Z"/>
                         </svg>
                     </button>
-                    <button class="carousel-nav carousel-nav-next bg-transparent border-none rounded-full w-8 h-8 flex items-center justify-center hover:bg-red-50/50 transition-all duration-300" id="nextBtn">
-                        <svg class="w-5 h-5" style="color: #FF340A;" fill="currentColor" viewBox="0 -960 960 960">
+                    <button class="carousel-nav carousel-nav-next bg-transparent border-none rounded-full w-8 h-8 flex items-center justify-center hover:bg-red-50/50 transition-all duration-300" id="recommendedNextBtn" aria-label="Next events" type="button">
+                        <svg class="w-5 h-5" style="color: #FF340A;" fill="currentColor" viewBox="0 -960 960 960" aria-hidden="true">
                             <path d="m321-80-71-71 329-329-329-329 71-71 400 400L321-80Z"/>
                         </svg>
                     </button>
@@ -977,8 +1051,8 @@
             
             <div class="relative">
                 <!-- Carousel Container -->
-                <div class="recommended-carousel-container overflow-hidden cursor-grab active:cursor-grabbing" id="carouselContainer">
-                    <div class="recommended-carousel-track flex transition-transform duration-300 ease-out" id="recommendedCarousel">
+                <div class="recommended-carousel-container overflow-hidden cursor-grab active:cursor-grabbing" id="recommendedCarouselContainer" role="region" aria-label="Recommended events carousel" aria-live="polite">
+                    <div class="recommended-carousel-track flex transition-transform duration-300 ease-out" id="recommendedCarousel" role="list" aria-label="List of recommended events">
                         <!-- Recommended events will be populated here -->
                     </div>
                     </div>
@@ -1019,72 +1093,7 @@
                 <!-- Carousel Container -->
                 <div class="recommended-carousel-container overflow-hidden cursor-grab active:cursor-grabbing" id="recommendedCarouselContainer">
                     <div class="recommended-carousel-track flex transition-transform duration-300 ease-out" id="recommendedCarousel">
-                        <!-- Recommended events -->
-                        <div class="recommended-event-card">
-                            <div class="recommended-event-image">
-                                <img src="Images/068e9d4bef717cd1000843dc38c603ec.jpg" alt="Iceland Music Festival" class="w-full h-full object-cover">
-                </div>
-                            <div class="recommended-event-content">
-                                <div class="recommended-event-title">Reykjavík Music Festival</div>
-                                <div class="recommended-event-location">Harpa Concert Hall, Reykjavík</div>
-                                <div class="recommended-event-date">March 15, 2024</div>
-                            </div>
-            </div>
-
-                        <div class="recommended-event-card">
-                            <div class="recommended-event-image">
-                                <img src="Images/1d595e6dc1b6a3d963b932eb94de79d1.jpg" alt="Art Exhibition" class="w-full h-full object-cover">
-                    </div>
-                            <div class="recommended-event-content">
-                                <div class="recommended-event-title">Modern Icelandic Art</div>
-                                <div class="recommended-event-location">National Gallery, Reykjavík</div>
-                                <div class="recommended-event-date">March 20, 2024</div>
-                    </div>
-                </div>
-                        
-                        <div class="recommended-event-card">
-                            <div class="recommended-event-image">
-                                <img src="Images/233986128f46951bf66a727cca1b3a18.jpg" alt="Food Festival" class="w-full h-full object-cover">
-                            </div>
-                            <div class="recommended-event-content">
-                                <div class="recommended-event-title">Icelandic Food Festival</div>
-                                <div class="recommended-event-location">Harbor District, Reykjavík</div>
-                                <div class="recommended-event-date">March 25, 2024</div>
-            </div>
-        </div>
-
-                        <div class="recommended-event-card">
-                            <div class="recommended-event-image">
-                                <img src="Images/3bd777f8c2760cbf585251808e738698.jpg" alt="Family Fun Day" class="w-full h-full object-cover">
-                            </div>
-                            <div class="recommended-event-content">
-                                <div class="recommended-event-title">Family Fun Day</div>
-                                <div class="recommended-event-location">Laugardalslaug, Reykjavík</div>
-                                <div class="recommended-event-date">March 30, 2024</div>
-            </div>
-        </div>
-
-                        <div class="recommended-event-card">
-                            <div class="recommended-event-image">
-                                <img src="Images/3f117cff666f231104f270edda727dab.jpg" alt="Outdoor Adventure" class="w-full h-full object-cover">
-                </div>
-                            <div class="recommended-event-content">
-                                <div class="recommended-event-title">Golden Circle Tour</div>
-                                <div class="recommended-event-location">Golden Circle, Iceland</div>
-                                <div class="recommended-event-date">April 5, 2024</div>
-            </div>
-        </div>
-
-                        <div class="recommended-event-card">
-                            <div class="recommended-event-image">
-                                <img src="Images/542dfd6b879d676a823e611028e40984.jpg" alt="Business Conference" class="w-full h-full object-cover">
-        </div>
-                            <div class="recommended-event-content">
-                                <div class="recommended-event-title">Tech Innovation Summit</div>
-                                <div class="recommended-event-location">Harpa Concert Hall</div>
-                                <div class="recommended-event-date">April 10, 2024</div>
-        </div>
-                        </div>
+                        <!-- Recommended events will be populated here -->
                     </div>
                         </div>
                     </div>
@@ -1218,33 +1227,44 @@
     </main>
 
     <!-- Newsletter Section -->
-    <section class="py-16 md:py-24 bg-background">
+    <section class="py-16 md:py-24 bg-background" aria-labelledby="newsletter-heading">
         <div class="text-center mb-12 md:mb-20 px-4 md:px-0">
-            <h2 class="tit text-3xl md:text-4xl lg:text-5xl mb-4 md:mb-6 text-primary font-light tracking-tight">Stay Updated</h2>
+            <h2 id="newsletter-heading" class="tit text-3xl md:text-4xl lg:text-5xl mb-4 md:mb-6 text-primary font-light tracking-tight">Stay Updated</h2>
             <p class="tit-no-underline text-base md:text-lg text-gray-600 max-w-3xl mx-auto leading-relaxed font-light">Get the latest news and updates about events happening across Iceland.</p>
         </div>
         
-        <div class="max-w-2xl mx-auto px-4 md:px-10">
+        <form class="max-w-2xl mx-auto px-4 md:px-10" aria-labelledby="newsletter-heading">
+            <fieldset class="border-none p-0 m-0">
+                <legend class="sr-only">Newsletter subscription form</legend>
             <div class="flex flex-col sm:flex-row gap-3 mb-5">
-                <input type="text" placeholder="Name" class="flex-1 px-4 md:px-5 py-3 md:py-4 border-2 border-primary/10 bg-surface text-base transition-all duration-300 text-primary font-light focus:outline-none focus:border-accent focus:bg-background">
-                <input type="email" placeholder="Email" class="flex-1 px-4 md:px-5 py-3 md:py-4 border-2 border-primary/10 bg-surface text-base transition-all duration-300 text-primary font-light focus:outline-none focus:border-accent focus:bg-background">
+                    <div class="flex-1">
+                        <label for="newsletter-name" class="sr-only">Your name</label>
+                        <input type="text" id="newsletter-name" name="name" placeholder="Name" class="w-full px-4 md:px-5 py-3 md:py-4 border-2 border-primary/10 bg-surface text-base transition-all duration-300 text-primary font-light focus:outline-none focus:border-accent focus:bg-background" required>
+                    </div>
+                    <div class="flex-1">
+                        <label for="newsletter-email" class="sr-only">Your email address</label>
+                        <input type="email" id="newsletter-email" name="email" placeholder="Email" class="w-full px-4 md:px-5 py-3 md:py-4 border-2 border-primary/10 bg-surface text-base transition-all duration-300 text-primary font-light focus:outline-none focus:border-accent focus:bg-background" required>
+                    </div>
             </div>
             <div class="text-center">
-                <button class="px-8 md:px-10 py-3 md:py-4 bg-transparent text-[#1F2937] border-2 border-[#1F2937] text-base cursor-pointer transition-all duration-300 font-normal tracking-wide hover:bg-[#1F2937] hover:text-background hover:-translate-y-0.5 hover:shadow-lg hover:shadow-[#1F2937]/20 rounded-full">
+                    <button type="submit" class="px-8 md:px-10 py-3 md:py-4 bg-transparent text-[#1F2937] border-2 border-[#1F2937] text-base cursor-pointer transition-all duration-300 font-normal tracking-wide hover:bg-[#1F2937] hover:text-background hover:-translate-y-0.5 hover:shadow-lg hover:shadow-[#1F2937]/20 rounded-full">
                     Subscribe
                 </button>
             </div>
-        </div>
+            </fieldset>
+        </form>
     </section>
 
     <!-- Footer -->
-    <footer class="bg-[#1F2937] text-background py-12 md:py-20 relative overflow-hidden" id="contact">
+    <footer class="bg-[#1F2937] text-background py-12 md:py-20 relative overflow-hidden" id="contact" role="contentinfo">
         <div class="max-w-7xl mx-auto px-4 md:px-10 grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-16 relative z-10">
             <div>
                 <h3 class="tit-no-underline text-sm mb-4 md:mb-5 font-medium text-background">Contact</h3>
-                <p class="text-xs text-background/80 mb-2">Reykjavik, Iceland</p>
-                <p class="text-xs text-background/80 mb-2">info@venuu.is</p>
-                <p class="text-xs text-background/80 mb-2">+354 123 4567</p>
+                <address class="text-xs text-background/80 mb-2 not-italic">
+                    <p>Reykjavik, Iceland</p>
+                    <p><a href="mailto:info@venuu.is" class="text-background/80 hover:text-background transition-colors">info@venuu.is</a></p>
+                    <p><a href="tel:+3541234567" class="text-background/80 hover:text-background transition-colors">+354 123 4567</a></p>
+                </address>
             </div>
             <div>
                 <h3 class="tit-no-underline text-sm mb-4 md:mb-5 font-medium text-background">About</h3>
@@ -2262,8 +2282,74 @@
                 
                 if (!this.carouselTrack || !this.carouselContainer || !prevBtn || !nextBtn) return;
                 
+                this.populateCarousel();
                 this.setupNavigation();
                 this.setupDrag();
+            },
+            
+            populateCarousel() {
+                // Hardcoded recommended events for the carousel
+                const recommendedEvents = [
+                    {
+                        id: 'rec-1',
+                        title: 'Reykjavík Music Festival',
+                        location: 'Harpa Concert Hall, Reykjavík',
+                        date: 'March 15, 2024',
+                        image: 'Images/068e9d4bef717cd1000843dc38c603ec.jpg'
+                    },
+                    {
+                        id: 'rec-2',
+                        title: 'Modern Icelandic Art',
+                        location: 'National Gallery, Reykjavík',
+                        date: 'March 20, 2024',
+                        image: 'Images/1d595e6dc1b6a3d963b932eb94de79d1.jpg'
+                    },
+                    {
+                        id: 'rec-3',
+                        title: 'Icelandic Food Festival',
+                        location: 'Harbor District, Reykjavík',
+                        date: 'March 25, 2024',
+                        image: 'Images/233986128f46951bf66a727cca1b3a18.jpg'
+                    },
+                    {
+                        id: 'rec-4',
+                        title: 'Family Fun Day',
+                        location: 'Laugardalslaug, Reykjavík',
+                        date: 'March 30, 2024',
+                        image: 'Images/3bd777f8c2760cbf585251808e738698.jpg'
+                    },
+                    {
+                        id: 'rec-5',
+                        title: 'Golden Circle Tour',
+                        location: 'Golden Circle, Iceland',
+                        date: 'April 5, 2024',
+                        image: 'Images/3f117cff666f231104f270edda727dab.jpg'
+                    },
+                    {
+                        id: 'rec-6',
+                        title: 'Tech Innovation Summit',
+                        location: 'Harpa Concert Hall',
+                        date: 'April 10, 2024',
+                        image: 'Images/542dfd6b879d676a823e611028e40984.jpg'
+                    }
+                ];
+                
+                this.totalItems = recommendedEvents.length;
+                
+                const carouselHTML = recommendedEvents.map(event => `
+                    <div class="recommended-event-card" data-event-id="${event.id}">
+                        <div class="recommended-event-image">
+                            <img src="${event.image}" alt="${event.title}" class="w-full h-full object-cover">
+                        </div>
+                        <div class="recommended-event-content">
+                            <div class="recommended-event-title">${event.title}</div>
+                            <div class="recommended-event-location">${event.location}</div>
+                            <div class="recommended-event-date">${event.date}</div>
+                        </div>
+                    </div>
+                `).join('');
+                
+                this.carouselTrack.innerHTML = carouselHTML;
             },
             
             setupNavigation() {
