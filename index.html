@@ -2060,7 +2060,7 @@
                             if (deltaX > 0 && this.currentIndex > 0) {
                                 // Dragging right - go to previous
                                 this.currentIndex--;
-                                this.updateCarousel();
+                this.updateCarousel();
                             } else if (deltaX < 0 && this.currentIndex < this.totalItems - this.itemsPerView) {
                                 // Dragging left - go to next
                                 this.currentIndex++;
@@ -2311,14 +2311,38 @@
         // Lottie Logo Manager
         const initLottieLogo = () => {
             const logoContainer = document.getElementById('lottie-logo');
+            console.log('Initializing Lottie logo...', logoContainer, typeof lottie);
+            
             if (logoContainer && typeof lottie !== 'undefined') {
-                lottie.loadAnimation({
-                    container: logoContainer,
-                    renderer: 'svg',
-                    loop: true,
-                    autoplay: true,
-                    path: 'Video/Negative-mask-effect.json'
-                });
+                try {
+                    const animation = lottie.loadAnimation({
+                        container: logoContainer,
+                        renderer: 'svg',
+                        loop: true,
+                        autoplay: true,
+                        path: 'Video/Negative-mask-effect.json'
+                    });
+                    
+                    animation.addEventListener('data_failed', () => {
+                        console.error('Failed to load Lottie animation data');
+                        logoContainer.innerHTML = '<img src="Video/Negative-mask-effect1-ezgif.com-crop (1).gif" alt="Venuu logo - animated logo" class="h-10 md:h-12 w-auto">';
+                    });
+                    
+                    animation.addEventListener('data_ready', () => {
+                        console.log('Lottie animation data ready');
+                    });
+                    
+                    console.log('Lottie animation loaded:', animation);
+                } catch (error) {
+                    console.error('Error loading Lottie animation:', error);
+                    logoContainer.innerHTML = '<img src="Video/Negative-mask-effect1-ezgif.com-crop (1).gif" alt="Venuu logo - animated logo" class="h-10 md:h-12 w-auto">';
+                }
+            } else {
+                console.error('Lottie not available or container not found');
+                // Fallback: show the original GIF
+                if (logoContainer) {
+                    logoContainer.innerHTML = '<img src="Video/Negative-mask-effect1-ezgif.com-crop (1).gif" alt="Venuu logo - animated logo" class="h-10 md:h-12 w-auto">';
+                }
             }
         };
 
@@ -2499,8 +2523,10 @@
             SearchManager.init();
             SearchBarManager.init();
             
-            // Initialize Lottie Logo
-            initLottieLogo();
+            // Initialize Lottie Logo with a small delay to ensure library is loaded
+            setTimeout(() => {
+                initLottieLogo();
+            }, 100);
             
             CarouselManager.init();
             MobileMenuManager.init();
