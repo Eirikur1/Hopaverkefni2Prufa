@@ -933,7 +933,7 @@
     <nav class="fixed top-0 left-0 right-0 bg-background border-b border-primary/10 z-50 py-2 md:py-3" role="navigation" aria-label="Main navigation">
         <div class="max-w-7xl mx-auto px-4 md:px-10 flex justify-between items-center">
             <a href="index.html" id="logo-link" class="no-underline" aria-label="Venuu - Go to homepage">
-                <div id="lottie-logo" class="h-10 md:h-12 w-auto"></div>
+                <div id="lottie-logo" class="h-12 md:h-16 w-auto"></div>
             </a>
             
             <!-- Desktop Navigation -->
@@ -1737,40 +1737,55 @@
                 const sortFilter = document.getElementById('sort-filter');
                 const dateOrderToggle = document.getElementById('date-order-toggle');
                 const dateOrderText = document.getElementById('date-order-text');
-                const dateOrderIcon = dateOrderToggle.querySelector('i');
+                const dateOrderIcon = dateOrderToggle ? dateOrderToggle.querySelector('i') : null;
                 const clearFiltersBtn = document.getElementById('clear-filters');
                 
+                // Only initialize if elements exist (for events page)
+                if (!searchInput) {
+                    console.log('Search elements not found - skipping SearchManager initialization');
+                    return;
+                }
+                
+                if (searchInput) {
                 searchInput.addEventListener('input', (e) => {
                     App.searchTerm = e.target.value.toLowerCase();
                     DataManager.filterEvents();
                 });
+                }
                 
+                if (categoryFilter) {
                 categoryFilter.addEventListener('change', (e) => {
                     App.filters.category = e.target.value;
                     DataManager.filterEvents();
                 });
+                }
                 
+                if (locationFilter) {
                 locationFilter.addEventListener('change', (e) => {
                     App.filters.location = e.target.value;
                     DataManager.filterEvents();
                 });
+                }
                 
+                if (sortFilter) {
                 sortFilter.addEventListener('change', (e) => {
                     App.filters.sort = e.target.value;
                     DataManager.filterEvents();
                 });
+                }
 
+                if (dateOrderToggle) {
                 dateOrderToggle.addEventListener('click', () => {
                     // Toggle between ascending and descending
                     App.dateOrder = App.dateOrder === 'asc' ? 'desc' : 'asc';
                     
                     // Update button text and icon
                     if (App.dateOrder === 'asc') {
-                        dateOrderText.textContent = 'Earliest First';
-                        dateOrderIcon.className = 'fas fa-sort-amount-up';
+                        if (dateOrderText) dateOrderText.textContent = 'Earliest First';
+                        if (dateOrderIcon) dateOrderIcon.className = 'fas fa-sort-amount-up';
                     } else {
-                        dateOrderText.textContent = 'Latest First';
-                        dateOrderIcon.className = 'fas fa-sort-amount-down';
+                        if (dateOrderText) dateOrderText.textContent = 'Latest First';
+                        if (dateOrderIcon) dateOrderIcon.className = 'fas fa-sort-amount-down';
                     }
                     
                     // Only re-sort if currently sorting by date
@@ -1778,16 +1793,18 @@
                         DataManager.filterEvents();
                     }
                 });
+                }
 
+                if (clearFiltersBtn) {
                 clearFiltersBtn.addEventListener('click', () => {
                     // Clear search input
-                    searchInput.value = '';
+                        if (searchInput) searchInput.value = '';
                     App.searchTerm = '';
                     
                     // Reset all filters to default values
-                    categoryFilter.value = '';
-                    locationFilter.value = '';
-                    sortFilter.value = 'date';
+                        if (categoryFilter) categoryFilter.value = '';
+                        if (locationFilter) locationFilter.value = '';
+                        if (sortFilter) sortFilter.value = 'date';
                     
                     App.filters.category = '';
                     App.filters.location = '';
@@ -1795,12 +1812,13 @@
                     
                     // Reset date order to default
                     App.dateOrder = 'asc';
-                    dateOrderText.textContent = 'Earliest First';
-                    dateOrderIcon.className = 'fas fa-sort-amount-up';
+                        if (dateOrderText) dateOrderText.textContent = 'Earliest First';
+                        if (dateOrderIcon) dateOrderIcon.className = 'fas fa-sort-amount-up';
                     
                     // Re-filter events
                     DataManager.filterEvents();
                 });
+                }
             }
         };
 
@@ -2325,7 +2343,7 @@
                     
                     animation.addEventListener('data_failed', () => {
                         console.error('Failed to load Lottie animation data');
-                        logoContainer.innerHTML = '<img src="Video/Negative-mask-effect1-ezgif.com-crop (1).gif" alt="Venuu logo - animated logo" class="h-10 md:h-12 w-auto">';
+                        logoContainer.innerHTML = '<img src="Video/Negative-mask-effect1-ezgif.com-crop (1).gif" alt="Venuu logo - animated logo" class="h-12 md:h-16 w-auto">';
                     });
                     
                     animation.addEventListener('data_ready', () => {
@@ -2335,13 +2353,13 @@
                     console.log('Lottie animation loaded:', animation);
                 } catch (error) {
                     console.error('Error loading Lottie animation:', error);
-                    logoContainer.innerHTML = '<img src="Video/Negative-mask-effect1-ezgif.com-crop (1).gif" alt="Venuu logo - animated logo" class="h-10 md:h-12 w-auto">';
+                    logoContainer.innerHTML = '<img src="Video/Negative-mask-effect1-ezgif.com-crop (1).gif" alt="Venuu logo - animated logo" class="h-12 md:h-16 w-auto">';
                 }
             } else {
                 console.error('Lottie not available or container not found');
                 // Fallback: show the original GIF
                 if (logoContainer) {
-                    logoContainer.innerHTML = '<img src="Video/Negative-mask-effect1-ezgif.com-crop (1).gif" alt="Venuu logo - animated logo" class="h-10 md:h-12 w-auto">';
+                    logoContainer.innerHTML = '<img src="Video/Negative-mask-effect1-ezgif.com-crop (1).gif" alt="Venuu logo - animated logo" class="h-12 md:h-16 w-auto">';
                 }
             }
         };
