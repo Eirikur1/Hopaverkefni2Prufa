@@ -298,10 +298,10 @@
 </head>
 <body class="bg-background text-primary font-sans text-base leading-relaxed m-0 p-0 min-h-full">
     <!-- Navigation -->
-    <nav class="fixed top-0 left-0 right-0 bg-background/95 backdrop-blur-xl border-b border-primary/10 z-50 py-2 md:py-3">
+    <nav class="fixed top-0 left-0 right-0 bg-background/95 backdrop-blur-xl border-b border-primary/10 z-50 py-1 md:py-2">
         <div class="max-w-7xl mx-auto px-4 md:px-10 flex justify-between items-center">
             <a href="index.html" id="logo-link" class="no-underline">
-                <div id="lottie-logo" class="h-12 md:h-16 w-auto"></div>
+                <div id="lottie-logo" class="h-16 md:h-20 w-auto"></div>
             </a>
             
             <!-- Desktop Navigation -->
@@ -893,7 +893,7 @@
                     
                     animation.addEventListener('data_failed', () => {
                         console.error('Failed to load Lottie animation data');
-                        logoContainer.innerHTML = '<img src="Video/Negative-mask-effect1-ezgif.com-crop (1).gif" alt="Venuu logo - animated logo" class="h-12 md:h-16 w-auto">';
+                        logoContainer.innerHTML = '<img src="Video/Negative-mask-effect1-ezgif.com-crop (1).gif" alt="Venuu logo - animated logo" class="h-16 md:h-20 w-auto">';
                     });
                     
                     animation.addEventListener('data_ready', () => {
@@ -903,13 +903,13 @@
                     console.log('Lottie animation loaded:', animation);
                 } catch (error) {
                     console.error('Error loading Lottie animation:', error);
-                    logoContainer.innerHTML = '<img src="Video/Negative-mask-effect1-ezgif.com-crop (1).gif" alt="Venuu logo - animated logo" class="h-12 md:h-16 w-auto">';
+                    logoContainer.innerHTML = '<img src="Video/Negative-mask-effect1-ezgif.com-crop (1).gif" alt="Venuu logo - animated logo" class="h-16 md:h-20 w-auto">';
                 }
             } else {
                 console.error('Lottie not available or container not found');
                 // Fallback: show the original GIF
                 if (logoContainer) {
-                    logoContainer.innerHTML = '<img src="Video/Negative-mask-effect1-ezgif.com-crop (1).gif" alt="Venuu logo - animated logo" class="h-12 md:h-16 w-auto">';
+                    logoContainer.innerHTML = '<img src="Video/Negative-mask-effect1-ezgif.com-crop (1).gif" alt="Venuu logo - animated logo" class="h-16 md:h-20 w-auto">';
                 }
             }
         };
