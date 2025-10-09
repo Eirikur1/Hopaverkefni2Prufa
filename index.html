@@ -930,10 +930,10 @@
     <a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 bg-[#1F2937] text-white px-4 py-2 rounded z-50">Skip to main content</a>
     
     <!-- Navigation -->
-    <nav class="fixed top-0 left-0 right-0 bg-background border-b border-primary/10 z-50 py-1 md:py-2" role="navigation" aria-label="Main navigation">
+    <nav class="fixed top-0 left-0 right-0 bg-background border-b border-primary/10 z-50 py-0.5 md:py-1" role="navigation" aria-label="Main navigation">
         <div class="max-w-7xl mx-auto px-4 md:px-10 flex justify-between items-center">
             <a href="index.html" id="logo-link" class="no-underline" aria-label="Venuu - Go to homepage">
-                <div id="lottie-logo" class="h-16 md:h-20 w-auto"></div>
+                <div id="lottie-logo" class="h-12 md:h-14 w-auto"></div>
             </a>
             
             <!-- Desktop Navigation -->
@@ -1332,7 +1332,7 @@
     </section>
 
     <!-- Footer -->
-    <footer class="bg-[#1F2937] text-background py-12 md:py-20 relative overflow-hidden" id="contact" role="contentinfo">
+    <footer class="bg-[#1e40af] text-background py-12 md:py-20 relative overflow-hidden" id="contact" role="contentinfo">
         <div class="max-w-7xl mx-auto px-4 md:px-10 grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-16 relative z-10">
             <div>
                 <h3 class="tit-no-underline text-sm mb-4 md:mb-5 font-medium text-background">Contact</h3>
@@ -1350,7 +1350,7 @@
         </div>
         
         <!-- Footer Bottom -->
-        <div class="border-t border-accent/20 mt-8 md:mt-10 pt-4 md:pt-5 relative z-10">
+        <div class="mt-8 md:mt-10 pt-4 md:pt-5 relative z-10">
             <div class="max-w-7xl mx-auto px-4 md:px-10 flex flex-col sm:flex-row justify-between items-center gap-4 md:gap-5">
                 <div class="flex flex-col sm:flex-row gap-4 md:gap-8 text-center sm:text-left">
                     <a href="#" class="text-background/70 no-underline text-xs transition-colors duration-200 hover:text-accent">Privacy Policy</a>
@@ -2338,12 +2338,12 @@
                         renderer: 'svg',
                         loop: true,
                         autoplay: true,
-                        path: 'Video/HeaderLogoBlue.json'
+                        path: 'Video/FinalBlueLogo.json'
                     });
                     
                     animation.addEventListener('data_failed', () => {
                         console.error('Failed to load Lottie animation data');
-                        logoContainer.innerHTML = '<img src="Video/Negative-mask-effect1-ezgif.com-crop (1).gif" alt="Venuu logo - animated logo" class="h-16 md:h-20 w-auto">';
+                        logoContainer.innerHTML = '<img src="Video/Negative-mask-effect1-ezgif.com-crop (1).gif" alt="Venuu logo - animated logo" class="h-12 md:h-14 w-auto">';
                     });
                     
                     animation.addEventListener('data_ready', () => {
@@ -2353,13 +2353,13 @@
                     console.log('Lottie animation loaded:', animation);
                 } catch (error) {
                     console.error('Error loading Lottie animation:', error);
-                    logoContainer.innerHTML = '<img src="Video/Negative-mask-effect1-ezgif.com-crop (1).gif" alt="Venuu logo - animated logo" class="h-16 md:h-20 w-auto">';
+                    logoContainer.innerHTML = '<img src="Video/Negative-mask-effect1-ezgif.com-crop (1).gif" alt="Venuu logo - animated logo" class="h-12 md:h-14 w-auto">';
                 }
             } else {
                 console.error('Lottie not available or container not found');
                 // Fallback: show the original GIF
                 if (logoContainer) {
-                    logoContainer.innerHTML = '<img src="Video/Negative-mask-effect1-ezgif.com-crop (1).gif" alt="Venuu logo - animated logo" class="h-16 md:h-20 w-auto">';
+                    logoContainer.innerHTML = '<img src="Video/Negative-mask-effect1-ezgif.com-crop (1).gif" alt="Venuu logo - animated logo" class="h-12 md:h-14 w-auto">';
                 }
             }
         };
