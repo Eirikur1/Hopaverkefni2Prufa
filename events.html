@@ -10,6 +10,7 @@
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/DrawSVGPlugin.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollToPlugin.min.js"></script>
     <script src="https://unpkg.com/in-view@0.6.1/dist/in-view.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.12.2/lottie.min.js"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <style>
         @font-face {
@@ -300,7 +301,7 @@
     <nav class="fixed top-0 left-0 right-0 bg-background/95 backdrop-blur-xl border-b border-primary/10 z-50 py-2 md:py-3">
         <div class="max-w-7xl mx-auto px-4 md:px-10 flex justify-between items-center">
             <a href="index.html" id="logo-link" class="no-underline">
-                <img src="Video/Negative-mask-effect1-ezgif.com-crop (1).gif" alt="Venuu" class="h-10 md:h-12 w-auto">
+                <div id="lottie-logo" class="h-10 md:h-12 w-auto"></div>
             </a>
             
             <!-- Desktop Navigation -->
@@ -875,6 +876,20 @@
             }
         };
 
+        // Lottie Logo Manager
+        const initLottieLogo = () => {
+            const logoContainer = document.getElementById('lottie-logo');
+            if (logoContainer && typeof lottie !== 'undefined') {
+                lottie.loadAnimation({
+                    container: logoContainer,
+                    renderer: 'svg',
+                    loop: true,
+                    autoplay: true,
+                    path: 'Video/Negative-mask-effect.json'
+                });
+            }
+        };
+
         // Mobile Menu Manager
         const MobileMenuManager = {
             init() {
@@ -918,6 +933,10 @@
             Utils.log('Initializing Events Page');
             DataManager.loadEvents();
             SearchManager.init();
+            
+            // Initialize Lottie Logo
+            initLottieLogo();
+            
             MobileMenuManager.init();
         };
 
