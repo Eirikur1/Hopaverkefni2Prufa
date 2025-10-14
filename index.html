@@ -2035,9 +2035,11 @@
                     },
                     
                     next() {
-                        if (this.currentIndex < this.totalItems - this.itemsPerView) {
+                        // Allow scrolling to show the last items properly
+                        const maxIndex = Math.max(0, this.totalItems - this.itemsPerView);
+                        if (this.currentIndex < maxIndex) {
                             this.currentIndex++;
-                this.updateCarousel();
+                            this.updateCarousel();
                         }
             },
             
@@ -2125,10 +2127,16 @@
                                 // Dragging right - go to previous
                                 this.currentIndex--;
                 this.updateCarousel();
-                            } else if (deltaX < 0 && this.currentIndex < this.totalItems - this.itemsPerView) {
+                            } else if (deltaX < 0) {
                                 // Dragging left - go to next
-                                this.currentIndex++;
-                                this.updateCarousel();
+                                const maxIndex = Math.max(0, this.totalItems - this.itemsPerView);
+                                if (this.currentIndex < maxIndex) {
+                                    this.currentIndex++;
+                                    this.updateCarousel();
+                                } else {
+                                    // At boundary, snap back
+                                    this.updateCarousel();
+                                }
                     } else {
                                 // At boundary, snap back
                                 this.updateCarousel();
@@ -2149,8 +2157,10 @@
                         }
                         
                         if (nextBtn) {
-                            nextBtn.style.opacity = this.currentIndex < this.totalItems - this.itemsPerView ? '1' : '0.5';
-                            nextBtn.disabled = this.currentIndex >= this.totalItems - this.itemsPerView;
+                            // Allow navigation until we can show the last items properly
+                            const maxIndex = Math.max(0, this.totalItems - this.itemsPerView);
+                            nextBtn.style.opacity = this.currentIndex < maxIndex ? '1' : '0.5';
+                            nextBtn.disabled = this.currentIndex >= maxIndex;
                         }
                     }
                 };
