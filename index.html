@@ -27,8 +27,8 @@
                     colors: {
                         'primary': '#340824',
                         'accent': '#E55050',
-                        'background': '#fefaee',
-                        'surface': 'rgba(254, 250, 238, 0.8)',
+                        'background': '#FFFDF8',
+                        'surface': 'rgba(255, 253, 248, 0.8)',
                         'surface-hover': 'rgba(229, 80, 80, 0.05)',
                     },
                     fontFamily: {
@@ -67,7 +67,7 @@
 
         /* Text Draw Effect Styles */
         .text-draw {
-            color: #1e40af;
+            color: #340AFF;
             text-decoration: none;
             font-size: 14px;
             font-weight: 400;
@@ -77,7 +77,7 @@
         }
 
         .text-draw:hover {
-            color: #1e40af;
+            color: #340AFF;
         }
 
         .text-draw__p {
@@ -88,7 +88,7 @@
         }
 
         .text-draw__box {
-            color: #FF3409;
+            color: #340AFF;
             width: 100%;
             height: 0.625em;
             position: relative;
@@ -103,7 +103,7 @@
 
         /* Hero Text Draw Effect */
         .text-draw-hero {
-            color: #1e40af;
+            color: #340AFF;
             text-decoration: none;
             font-family: 'RubikMonoOne', monospace;
             font-size: clamp(32px, 8vw, 140px);
@@ -115,7 +115,7 @@
         }
 
         .text-draw-hero:hover {
-            color: #1e40af;
+            color: #340AFF;
         }
 
         .text-draw-hero .text-draw__p {
@@ -126,6 +126,37 @@
         }
 
         .text-draw-hero .text-draw__box {
+            color: #340AFF;
+            width: 100%;
+            height: 0.8em;
+            position: relative;
+        }
+
+        /* Hero Text Draw Effect - Special color for main hero */
+        .text-draw-hero-main {
+            color: #FF3409;
+            text-decoration: none;
+            font-family: 'RubikMonoOne', monospace;
+            font-size: clamp(32px, 8vw, 140px);
+            font-weight: normal;
+            line-height: 0.9;
+            display: inline-block;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .text-draw-hero-main:hover {
+            color: #FF3409;
+        }
+
+        .text-draw-hero-main .text-draw__p {
+            margin-bottom: 0;
+            font-size: 1em;
+            font-weight: 300;
+            line-height: 0.9;
+        }
+
+        .text-draw-hero-main .text-draw__box {
             color: #FF3409;
             width: 100%;
             height: 0.8em;
@@ -152,7 +183,7 @@
             content: '';
             position: absolute;
             z-index: -1;
-            background: #FF3409;
+            background: #340AFF;
             height: 7px;
             width: 0%;
             top: 90%;
@@ -185,7 +216,7 @@
             content: '';
             position: absolute;
             z-index: -1;
-            background: #FF3409;
+            background: #340AFF;
             height: 7px;
             width: 0%;
             top: 90%;
@@ -499,7 +530,7 @@
             top: 100%;
             left: 0;
             right: 0;
-            background: rgba(254, 250, 238, 0.98);
+            background: rgba(255, 253, 248, 0.98);
             backdrop-filter: blur(20px);
             border: 1px solid rgba(255, 52, 10, 0.1);
             border-top: none;
@@ -535,7 +566,7 @@
 
         .suggestion-title {
             font-weight: 500;
-            color: #1e40af;
+            color: #340AFF;
             margin-bottom: 4px;
             font-size: 15px;
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
@@ -573,7 +604,7 @@
 
         .search-input:focus {
             border-color: #1F2937;
-            background-color: rgba(254, 250, 238, 0.3);
+            background-color: rgba(255, 253, 248, 0.3);
             box-shadow: 0 0 0 4px rgba(31, 41, 55, 0.2);
         }
 
@@ -905,7 +936,7 @@
 
         /* High contrast mode support */
         @media (prefers-contrast: high) {
-            .text-draw-hero {
+            .text-draw-hero, .text-draw-hero-main {
                 text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
             }
             
@@ -922,6 +953,7 @@
                 transition-duration: 0.01ms !important;
             }
         }
+
 
     </style>
 </head>
@@ -942,18 +974,16 @@
                     <span class="text-draw__p">Events</span>
                     <div data-draw-line-box="" class="text-draw__box"></div>
                 </a></li>
-                <li role="none"><a data-draw-line="" href="#contact" class="text-draw" role="menuitem" aria-label="Create a new event">
+                <li role="none"><a data-draw-line="" href="#" class="text-draw" role="menuitem" aria-label="Create a new event" onclick="openCreateEventModal(); return false;">
                     <span class="text-draw__p">Create Event</span>
                     <div data-draw-line-box="" class="text-draw__box"></div>
                 </a></li>
-                <li role="none"><a data-draw-line="" href="#contact" class="text-draw" role="menuitem" aria-label="Log in to your account">
+                <li role="none"><a data-draw-line="" href="login.html" class="text-draw" role="menuitem" aria-label="Log in to your account">
                     <span class="text-draw__p">Log In</span>
                     <div data-draw-line-box="" class="text-draw__box"></div>
                 </a></li>
-                <li role="none"><a data-draw-line="" href="#" class="text-draw" role="menuitem" aria-label="User profile and account">
-                    <svg xmlns="http://www.w3.org/2000/svg" height="20px" viewBox="0 -960 960 960" width="20px" fill="#1e40af" aria-hidden="true">
-                        <path d="M480-340q63 0 112-39t63-101h-83q-12 27-37 43.5T480-420q-30 0-55-16.5T388-480h-83q14 62 63 101t112 39ZM370-540q21 0 35.5-14.5T420-590q0-21-14.5-35.5T370-640q-21 0-35.5 14.5T320-590q0 21 14.5 35.5T370-540Zm220 0q21 0 35.5-14.5T640-590q0-21-14.5-35.5T590-640q-21 0-35.5 14.5T540-590q0 21 14.5 35.5T590-540ZM480-120l-58-50q-101-88-167-152T150-437q-39-51-54.5-94T80-620q0-94 63-157t157-63q52 0 99 22t81 62q34-40 81-62t99-22q94 0 157 63t63 157q0 46-15.5 89T810-437q-39 51-105 115T538-170l-58 50Zm0-108q96-83 158-141t98-102.5q36-44.5 50-79t14-69.5q0-60-40-100t-100-40q-47 0-87 26.5T518-666h-76q-15-41-55-67.5T300-760q-60 0-100 40t-40 100q0 35 14 69.5t50 79Q260-427 322-369t158 141Zm0-266Z"/>
-                    </svg>
+                <li role="none"><a data-draw-line="" href="#" class="text-draw" role="menuitem" aria-label="View your favorite events">
+                    <span class="text-draw__p">Favorites</span>
                     <div data-draw-line-box="" class="text-draw__box"></div>
                 </a></li>
             </ul>
@@ -971,16 +1001,20 @@
                     <span class="text-draw__p">Events</span>
                     <div data-draw-line-box="" class="text-draw__box"></div>
                 </a>
-                <a data-draw-line="" href="#contact" class="block text-draw py-2" role="menuitem" aria-label="Create a new event">
+                <a data-draw-line="" href="#" class="block text-draw py-2" role="menuitem" aria-label="Create a new event" onclick="openCreateEventModal(); return false;">
                     <span class="text-draw__p">Create Event</span>
                     <div data-draw-line-box="" class="text-draw__box"></div>
                 </a>
-                <a data-draw-line="" href="#contact" class="block text-draw py-2" role="menuitem" aria-label="Contact information">
-                    <span class="text-draw__p">Contact</span>
+                <a data-draw-line="" href="login.html" class="block text-draw py-2" role="menuitem" aria-label="Log in to your account">
+                    <span class="text-draw__p">Log In</span>
+                    <div data-draw-line-box="" class="text-draw__box"></div>
+                </a>
+                <a data-draw-line="" href="#" class="block text-draw py-2" role="menuitem" aria-label="View your favorite events">
+                    <span class="text-draw__p">Favorites</span>
                     <div data-draw-line-box="" class="text-draw__box"></div>
                 </a>
                 <a data-draw-line="" href="#" class="block text-draw py-2" role="menuitem" aria-label="User profile and account">
-                    <svg xmlns="http://www.w3.org/2000/svg" height="20px" viewBox="0 -960 960 960" width="20px" fill="#1e40af" aria-hidden="true">
+                    <svg xmlns="http://www.w3.org/2000/svg" height="20px" viewBox="0 -960 960 960" width="20px" fill="#340AFF" aria-hidden="true">
                         <path d="M480-340q63 0 112-39t63-101h-83q-12 27-37 43.5T480-420q-30 0-55-16.5T388-480h-83q14 62 63 101t112 39ZM370-540q21 0 35.5-14.5T420-590q0-21-14.5-35.5T370-640q-21 0-35.5 14.5T320-590q0 21 14.5 35.5T370-540Zm220 0q21 0 35.5-14.5T640-590q0-21-14.5-35.5T590-640q-21 0-35.5 14.5T540-590q0 21 14.5 35.5T590-540ZM480-120l-58-50q-101-88-167-152T150-437q-39-51-54.5-94T80-620q0-94 63-157t157-63q52 0 99 22t81 62q34-40 81-62t99-22q94 0 157 63t63 157q0 46-15.5 89T810-437q-39 51-105 115T538-170l-58 50Zm0-108q96-83 158-141t98-102.5q36-44.5 50-79t14-69.5q0-60-40-100t-100-40q-47 0-87 26.5T518-666h-76q-15-41-55-67.5T300-760q-60 0-100 40t-40 100q0 35 14 69.5t50 79Q260-427 322-369t158 141Zm0-266Z"/>
                     </svg>
                     <div data-draw-line-box="" class="text-draw__box"></div>
@@ -990,10 +1024,10 @@
     </nav>
 
     <!-- Main Content -->
-    <main id="main-content" role="main">
+    <main id="main-content" role="main" class="relative z-5">
     <!-- Hero Section -->
         <section class="pt-24 md:pt-36 pb-8 md:pb-12 text-center max-w-4xl mx-auto px-4 md:px-10 relative bg-background" aria-labelledby="hero-title">
-            <h1 id="hero-title" class="mb-2 md:mb-3 leading-tight"><a data-draw-line="" href="#" class="text-draw-hero" aria-label="Discover Events - Main heading">
+            <h1 id="hero-title" class="mb-2 md:mb-3 leading-tight"><a data-draw-line="" href="#" class="text-draw-hero-main" aria-label="Discover Events - Main heading">
             <span class="text-draw__p">Discover Events</span>
             <div data-draw-line-box="" class="text-draw__box"></div>
         </a></h1>
@@ -1021,153 +1055,89 @@
         </div>
     </section>
 
-    <!-- Recommended Events Section -->
-    <section class="py-12 md:py-16 bg-background" aria-labelledby="recommended-heading">
+
+    <!-- Recommended for You Section -->
+    <section class="py-12 md:py-16 bg-background">
         <div class="max-w-full mx-auto px-2 md:px-4">
             <div class="mb-8 md:mb-12 flex justify-between items-end">
                 <div>
-                    <h2 id="recommended-heading" class="text-draw-hero text-2xl md:text-3xl lg:text-4xl mb-4 font-light tracking-tight">Recommended for You</h2>
+                    <h2 class="text-draw-hero text-2xl md:text-3xl lg:text-4xl mb-4 font-light tracking-tight">Recommended</h2>
                     <p class="text-sm md:text-base text-draw font-bold flex items-center">
-                        Personalized events just for you
-                        <svg class="w-6 h-6 ml-3 arrow-animate" fill="currentColor" viewBox="0 -960 960 960" aria-hidden="true">
+                        Personalized event suggestions
+                        <svg class="w-6 h-6 ml-3 arrow-animate" fill="currentColor" viewBox="0 -960 960 960">
                             <path d="m560-240-56-58 142-142H160v-80h486L504-662l56-58 240 240-240 240Z"/>
                         </svg>
                     </p>
-        </div>
-
+                    </div>
+                
                 <!-- Navigation Arrows -->
-                <div class="flex gap-1" role="group" aria-label="Carousel navigation">
-                    <button class="carousel-nav carousel-nav-prev bg-transparent border-none rounded-full w-8 h-8 flex items-center justify-center hover:bg-red-50/50 transition-all duration-300" id="prevBtn" type="button">
-                        <span class="sr-only">Previous events</span>
-                        <svg class="w-5 h-5" style="color: #1e40af;" fill="currentColor" viewBox="0 -960 960 960" aria-hidden="true">
+                <div class="flex gap-1">
+                    <button class="carousel-nav carousel-nav-prev bg-transparent border-none rounded-full w-8 h-8 flex items-center justify-center hover:bg-red-50/50 transition-all duration-300" id="recommendedPrevBtn" type="button">
+                        <span class="sr-only">Previous recommended events</span>
+                        <svg class="w-5 h-5" style="color: #340AFF;" fill="currentColor" viewBox="0 -960 960 960" aria-hidden="true">
                             <path d="M640-80 240-480l400-400 71 71-329 329 329 329-71 71Z"/>
                         </svg>
                     </button>
-                    <button class="carousel-nav carousel-nav-next bg-transparent border-none rounded-full w-8 h-8 flex items-center justify-center hover:bg-red-50/50 transition-all duration-300" id="nextBtn" type="button">
-                        <span class="sr-only">Next events</span>
-                        <svg class="w-5 h-5" style="color: #1e40af;" fill="currentColor" viewBox="0 -960 960 960" aria-hidden="true">
+                    <button class="carousel-nav carousel-nav-next bg-transparent border-none rounded-full w-8 h-8 flex items-center justify-center hover:bg-red-50/50 transition-all duration-300" id="recommendedNextBtn" type="button">
+                        <span class="sr-only">Next recommended events</span>
+                        <svg class="w-5 h-5" style="color: #340AFF;" fill="currentColor" viewBox="0 -960 960 960" aria-hidden="true">
                             <path d="m321-80-71-71 329-329-329-329 71-71 400 400L321-80Z"/>
                         </svg>
                     </button>
-                    </div>
+                        </div>
                     </div>
             
             <div class="relative">
                 <!-- Carousel Container -->
-                <div class="recommended-carousel-container overflow-hidden cursor-grab active:cursor-grabbing" id="carouselContainer" role="region" aria-label="Recommended events carousel" aria-live="polite">
-                    <div class="recommended-carousel-track flex transition-transform duration-300 ease-out" id="recommendedCarousel" role="list" aria-label="List of recommended events">
+                <div class="recommended-carousel-container overflow-hidden cursor-grab active:cursor-grabbing" id="recommendedCarouselContainer">
+                    <div class="recommended-carousel-track flex transition-transform duration-300 ease-out" id="recommendedCarousel">
                         <!-- Recommended events will be populated here -->
+                        </div>
                     </div>
+                        </div>
                     </div>
-                    </div>
-                </div>
     </section>
 
-    <!-- Recommended Events Section -->
+    <!-- Most Popular Section -->
     <section class="py-12 md:py-16 bg-background">
         <div class="max-w-full mx-auto px-2 md:px-4">
             <div class="mb-8 md:mb-12 flex justify-between items-end">
                 <div>
                     <h2 class="text-draw-hero text-2xl md:text-3xl lg:text-4xl mb-4 font-light tracking-tight">Most Popular</h2>
                     <p class="text-sm md:text-base text-draw font-bold flex items-center">
-                        Trending events everyone loves
+                        Live music and concerts
                         <svg class="w-6 h-6 ml-3 arrow-animate" fill="currentColor" viewBox="0 -960 960 960">
                             <path d="m560-240-56-58 142-142H160v-80h486L504-662l56-58 240 240-240 240Z"/>
                         </svg>
                     </p>
-        </div>
-        
+                    </div>
+                
                 <!-- Navigation Arrows -->
                 <div class="flex gap-1">
-                    <button class="carousel-nav carousel-nav-prev bg-transparent border-none rounded-full w-8 h-8 flex items-center justify-center hover:bg-red-50/50 transition-all duration-300" id="recommendedPrevBtn" type="button">
-                        <span class="sr-only">Previous recommended events</span>
-                        <svg class="w-5 h-5" style="color: #1e40af;" fill="currentColor" viewBox="0 -960 960 960" aria-hidden="true">
+                    <button class="carousel-nav carousel-nav-prev bg-transparent border-none rounded-full w-8 h-8 flex items-center justify-center hover:bg-red-50/50 transition-all duration-300" id="mostPopularPrevBtn" type="button">
+                        <span class="sr-only">Previous most popular events</span>
+                        <svg class="w-5 h-5" style="color: #340AFF;" fill="currentColor" viewBox="0 -960 960 960" aria-hidden="true">
                             <path d="M640-80 240-480l400-400 71 71-329 329 329 329-71 71Z"/>
-                    </svg>
+                        </svg>
                     </button>
-                    <button class="carousel-nav carousel-nav-next bg-transparent border-none rounded-full w-8 h-8 flex items-center justify-center hover:bg-red-50/50 transition-all duration-300" id="recommendedNextBtn" type="button">
-                        <span class="sr-only">Next recommended events</span>
-                        <svg class="w-5 h-5" style="color: #1e40af;" fill="currentColor" viewBox="0 -960 960 960" aria-hidden="true">
+                    <button class="carousel-nav carousel-nav-next bg-transparent border-none rounded-full w-8 h-8 flex items-center justify-center hover:bg-red-50/50 transition-all duration-300" id="mostPopularNextBtn" type="button">
+                        <span class="sr-only">Next most popular events</span>
+                        <svg class="w-5 h-5" style="color: #340AFF;" fill="currentColor" viewBox="0 -960 960 960" aria-hidden="true">
                             <path d="m321-80-71-71 329-329-329-329 71-71 400 400L321-80Z"/>
-                    </svg>
+                        </svg>
                     </button>
-        </div>
-        </div>
+                        </div>
+                    </div>
             
             <div class="relative">
                 <!-- Carousel Container -->
-                <div class="recommended-carousel-container overflow-hidden cursor-grab active:cursor-grabbing" id="recommendedCarouselContainer">
-                    <div class="recommended-carousel-track flex transition-transform duration-300 ease-out" id="recommendedCarousel">
-                        <!-- Recommended events -->
-                        <div class="recommended-event-card">
-                            <div class="recommended-event-image">
-                                <img src="Images/068e9d4bef717cd1000843dc38c603ec.jpg" alt="Iceland Music Festival" class="w-full h-full object-cover">
-                </div>
-                            <div class="recommended-event-content">
-                                <div class="recommended-event-title">Reykjavík Music Festival</div>
-                                <div class="recommended-event-location">Harpa Concert Hall, Reykjavík</div>
-                                <div class="recommended-event-date">March 15, 2024</div>
-                            </div>
-            </div>
-
-                        <div class="recommended-event-card">
-                            <div class="recommended-event-image">
-                                <img src="Images/1d595e6dc1b6a3d963b932eb94de79d1.jpg" alt="Art Exhibition" class="w-full h-full object-cover">
-                    </div>
-                            <div class="recommended-event-content">
-                                <div class="recommended-event-title">Modern Icelandic Art</div>
-                                <div class="recommended-event-location">National Gallery, Reykjavík</div>
-                                <div class="recommended-event-date">March 20, 2024</div>
-                    </div>
-                </div>
-                        
-                        <div class="recommended-event-card">
-                            <div class="recommended-event-image">
-                                <img src="Images/233986128f46951bf66a727cca1b3a18.jpg" alt="Food Festival" class="w-full h-full object-cover">
-                            </div>
-                            <div class="recommended-event-content">
-                                <div class="recommended-event-title">Icelandic Food Festival</div>
-                                <div class="recommended-event-location">Harbor District, Reykjavík</div>
-                                <div class="recommended-event-date">March 25, 2024</div>
-            </div>
-        </div>
-
-                        <div class="recommended-event-card">
-                            <div class="recommended-event-image">
-                                <img src="Images/3bd777f8c2760cbf585251808e738698.jpg" alt="Family Fun Day" class="w-full h-full object-cover">
-                            </div>
-                            <div class="recommended-event-content">
-                                <div class="recommended-event-title">Family Fun Day</div>
-                                <div class="recommended-event-location">Laugardalslaug, Reykjavík</div>
-                                <div class="recommended-event-date">March 30, 2024</div>
-            </div>
-        </div>
-
-                        <div class="recommended-event-card">
-                            <div class="recommended-event-image">
-                                <img src="Images/3f117cff666f231104f270edda727dab.jpg" alt="Outdoor Adventure" class="w-full h-full object-cover">
-                </div>
-                            <div class="recommended-event-content">
-                                <div class="recommended-event-title">Golden Circle Tour</div>
-                                <div class="recommended-event-location">Golden Circle, Iceland</div>
-                                <div class="recommended-event-date">April 5, 2024</div>
-            </div>
-        </div>
-
-                        <div class="recommended-event-card">
-                            <div class="recommended-event-image">
-                                <img src="Images/542dfd6b879d676a823e611028e40984.jpg" alt="Business Conference" class="w-full h-full object-cover">
-        </div>
-                            <div class="recommended-event-content">
-                                <div class="recommended-event-title">Tech Innovation Summit</div>
-                                <div class="recommended-event-location">Harpa Concert Hall</div>
-                                <div class="recommended-event-date">April 10, 2024</div>
-        </div>
+                <div class="recommended-carousel-container overflow-hidden cursor-grab active:cursor-grabbing" id="mostPopularCarouselContainer">
+                    <div class="recommended-carousel-track flex transition-transform duration-300 ease-out" id="mostPopularCarousel">
+                        <!-- Most popular events will be populated here -->
                         </div>
                     </div>
                         </div>
                     </div>
-                        </div>
     </section>
 
     <!-- Tónlist Section -->
@@ -1188,13 +1158,13 @@
                 <div class="flex gap-1">
                     <button class="carousel-nav carousel-nav-prev bg-transparent border-none rounded-full w-8 h-8 flex items-center justify-center hover:bg-red-50/50 transition-all duration-300" id="musicPrevBtn" type="button">
                         <span class="sr-only">Previous music events</span>
-                        <svg class="w-5 h-5" style="color: #1e40af;" fill="currentColor" viewBox="0 -960 960 960" aria-hidden="true">
+                        <svg class="w-5 h-5" style="color: #340AFF;" fill="currentColor" viewBox="0 -960 960 960" aria-hidden="true">
                             <path d="M640-80 240-480l400-400 71 71-329 329 329 329-71 71Z"/>
                         </svg>
                     </button>
                     <button class="carousel-nav carousel-nav-next bg-transparent border-none rounded-full w-8 h-8 flex items-center justify-center hover:bg-red-50/50 transition-all duration-300" id="musicNextBtn" type="button">
                         <span class="sr-only">Next music events</span>
-                        <svg class="w-5 h-5" style="color: #1e40af;" fill="currentColor" viewBox="0 -960 960 960" aria-hidden="true">
+                        <svg class="w-5 h-5" style="color: #340AFF;" fill="currentColor" viewBox="0 -960 960 960" aria-hidden="true">
                             <path d="m321-80-71-71 329-329-329-329 71-71 400 400L321-80Z"/>
                         </svg>
                     </button>
@@ -1212,7 +1182,7 @@
                     </div>
     </section>
 
-    <!-- Sviðslist Section -->
+    <!-- Theater Section -->
     <section class="py-12 md:py-16 bg-background">
         <div class="max-w-full mx-auto px-2 md:px-4">
             <div class="mb-8 md:mb-12 flex justify-between items-end">
@@ -1230,13 +1200,13 @@
                 <div class="flex gap-1">
                     <button class="carousel-nav carousel-nav-prev bg-transparent border-none rounded-full w-8 h-8 flex items-center justify-center hover:bg-red-50/50 transition-all duration-300" id="theaterPrevBtn" type="button">
                         <span class="sr-only">Previous theater events</span>
-                        <svg class="w-5 h-5" style="color: #1e40af;" fill="currentColor" viewBox="0 -960 960 960" aria-hidden="true">
+                        <svg class="w-5 h-5" style="color: #340AFF;" fill="currentColor" viewBox="0 -960 960 960" aria-hidden="true">
                             <path d="M640-80 240-480l400-400 71 71-329 329 329 329-71 71Z"/>
                         </svg>
                     </button>
                     <button class="carousel-nav carousel-nav-next bg-transparent border-none rounded-full w-8 h-8 flex items-center justify-center hover:bg-red-50/50 transition-all duration-300" id="theaterNextBtn" type="button">
                         <span class="sr-only">Next theater events</span>
-                        <svg class="w-5 h-5" style="color: #1e40af;" fill="currentColor" viewBox="0 -960 960 960" aria-hidden="true">
+                        <svg class="w-5 h-5" style="color: #340AFF;" fill="currentColor" viewBox="0 -960 960 960" aria-hidden="true">
                             <path d="m321-80-71-71 329-329-329-329 71-71 400 400L321-80Z"/>
                         </svg>
                     </button>
@@ -1272,13 +1242,13 @@
                 <div class="flex gap-1">
                     <button class="carousel-nav carousel-nav-prev bg-transparent border-none rounded-full w-8 h-8 flex items-center justify-center hover:bg-red-50/50 transition-all duration-300" id="dancePrevBtn" type="button">
                         <span class="sr-only">Previous dance events</span>
-                        <svg class="w-5 h-5" style="color: #1e40af;" fill="currentColor" viewBox="0 -960 960 960" aria-hidden="true">
+                        <svg class="w-5 h-5" style="color: #340AFF;" fill="currentColor" viewBox="0 -960 960 960" aria-hidden="true">
                             <path d="M640-80 240-480l400-400 71 71-329 329 329 329-71 71Z"/>
                         </svg>
                     </button>
                     <button class="carousel-nav carousel-nav-next bg-transparent border-none rounded-full w-8 h-8 flex items-center justify-center hover:bg-red-50/50 transition-all duration-300" id="danceNextBtn" type="button">
                         <span class="sr-only">Next dance events</span>
-                        <svg class="w-5 h-5" style="color: #1e40af;" fill="currentColor" viewBox="0 -960 960 960" aria-hidden="true">
+                        <svg class="w-5 h-5" style="color: #340AFF;" fill="currentColor" viewBox="0 -960 960 960" aria-hidden="true">
                             <path d="m321-80-71-71 329-329-329-329 71-71 400 400L321-80Z"/>
                         </svg>
                     </button>
@@ -1332,20 +1302,20 @@
     </section>
 
     <!-- Footer -->
-    <footer class="bg-[#1e40af] text-background py-12 md:py-20 relative overflow-hidden" id="contact" role="contentinfo">
+    <footer class="bg-[#340AFF] text-background py-12 md:py-20 relative overflow-hidden" id="contact" role="contentinfo">
         <div class="max-w-7xl mx-auto px-4 md:px-10 grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-16 relative z-10">
             <div>
-                <h3 class="tit-no-underline text-sm mb-4 md:mb-5 font-medium text-background">Contact</h3>
-                <address class="text-xs text-background/80 mb-2 not-italic">
+                <h3 class="tit-no-underline text-sm mb-4 md:mb-5 font-medium text-background font-sans">Contact</h3>
+                <address class="text-xs text-background/80 mb-2 not-italic font-sans">
                     <p>Reykjavik, Iceland</p>
-                    <p><a href="mailto:info@venuu.is" class="text-background/80 hover:text-background transition-colors">info@venuu.is</a></p>
-                    <p><a href="tel:+3541234567" class="text-background/80 hover:text-background transition-colors">+354 123 4567</a></p>
+                    <p><a href="mailto:info@venuu.is" class="text-background/80 hover:text-background transition-colors font-sans">info@venuu.is</a></p>
+                    <p><a href="tel:+3541234567" class="text-background/80 hover:text-background transition-colors font-sans">+354 123 4567</a></p>
                 </address>
             </div>
             <div>
-                <h3 class="tit-no-underline text-sm mb-4 md:mb-5 font-medium text-background">About</h3>
-                <p class="text-xs text-background/80 mb-2">Venuu connects people through Iceland's vibrant cultural events.</p>
-                <p class="text-xs text-background/80 mb-2">© 2024 Venuu. All rights reserved.</p>
+                <h3 class="tit-no-underline text-sm mb-4 md:mb-5 font-medium text-background font-sans">About</h3>
+                <p class="text-xs text-background/80 mb-2 font-sans">Venuu connects people through Iceland's vibrant cultural events.</p>
+                <p class="text-xs text-background/80 mb-2 font-sans">© 2024 Venuu. All rights reserved.</p>
             </div>
         </div>
         
@@ -1353,14 +1323,14 @@
         <div class="mt-8 md:mt-10 pt-4 md:pt-5 relative z-10">
             <div class="max-w-7xl mx-auto px-4 md:px-10 flex flex-col sm:flex-row justify-between items-center gap-4 md:gap-5">
                 <div class="flex flex-col sm:flex-row gap-4 md:gap-8 text-center sm:text-left">
-                    <a href="#" class="text-background/70 no-underline text-xs transition-colors duration-200 hover:text-accent">Privacy Policy</a>
-                    <a href="#" class="text-background/70 no-underline text-xs transition-colors duration-200 hover:text-accent">Terms of Service</a>
-                    <a href="#" class="text-background/70 no-underline text-xs transition-colors duration-200 hover:text-accent">Support</a>
+                    <a href="#" class="text-background/70 no-underline text-xs transition-colors duration-200 hover:text-accent font-sans">Privacy Policy</a>
+                    <a href="#" class="text-background/70 no-underline text-xs transition-colors duration-200 hover:text-accent font-sans">Terms of Service</a>
+                    <a href="#" class="text-background/70 no-underline text-xs transition-colors duration-200 hover:text-accent font-sans">Support</a>
                 </div>
                 <div class="flex gap-4 md:gap-5">
-                    <a href="#" class="text-background/70 no-underline text-sm transition-colors duration-200 hover:text-accent">Instagram</a>
-                    <a href="#" class="text-background/70 no-underline text-sm transition-colors duration-200 hover:text-accent">Facebook</a>
-                    <a href="#" class="text-background/70 no-underline text-sm transition-colors duration-200 hover:text-accent">Twitter</a>
+                    <a href="#" class="text-background/70 no-underline text-sm transition-colors duration-200 hover:text-accent font-sans">Instagram</a>
+                    <a href="#" class="text-background/70 no-underline text-sm transition-colors duration-200 hover:text-accent font-sans">Facebook</a>
+                    <a href="#" class="text-background/70 no-underline text-sm transition-colors duration-200 hover:text-accent font-sans">Twitter</a>
                 </div>
             </div>
         </div>
@@ -1382,25 +1352,25 @@
             },
             dateOrder: 'asc', // 'asc' for earliest first, 'desc' for latest first
             availableImages: [
-                'Images/068e9d4bef717cd1000843dc38c603ec.jpg',
-                'Images/1d595e6dc1b6a3d963b932eb94de79d1.jpg',
-                'Images/233986128f46951bf66a727cca1b3a18.jpg',
-                'Images/24de6470d3365d85550c2c65ce8ddfca.jpg',
-                'Images/3bd777f8c2760cbf585251808e738698.jpg',
-                'Images/3f117cff666f231104f270edda727dab.jpg',
-                'Images/53fe06b8e5fe6593f0f2a5de835609d2.jpg',
-                'Images/542dfd6b879d676a823e611028e40984.jpg',
-                'Images/783d478fde50b0f1d23ed5db8e9e2dee.jpg',
-                'Images/90f82bfbdb111074fdfe5c1a6d813f5e.jpg',
-                'Images/9303687a932a721b3a360633ade52260.jpg',
-                'Images/96ec819f4ad7e5237c653c05baf5cd8c.jpg',
-                'Images/b365df6222f9cce1e0ec0bf2ee881fb9.jpg',
-                'Images/b3a1e66d241d956c3de527627d3c0a8a.jpg',
-                'Images/d7ecf3fce251c523f3bb43ee6620e902.jpg',
-                'Images/istockphoto-1478375497-612x612.jpg',
-                'Images/istockphoto-494896581-612x612.jpg',
-                'Images/pexels-jibarofoto-2774556.jpg',
-                'Images/Poster.jpg'
+                'Images/event-posters/068e9d4bef717cd1000843dc38c603ec.jpg',
+                'Images/event-posters/1d595e6dc1b6a3d963b932eb94de79d1.jpg',
+                'Images/event-posters/233986128f46951bf66a727cca1b3a18.jpg',
+                'Images/event-posters/24de6470d3365d85550c2c65ce8ddfca.jpg',
+                'Images/event-posters/3bd777f8c2760cbf585251808e738698.jpg',
+                'Images/event-posters/3f117cff666f231104f270edda727dab.jpg',
+                'Images/event-posters/53fe06b8e5fe6593f0f2a5de835609d2.jpg',
+                'Images/event-posters/542dfd6b879d676a823e611028e40984.jpg',
+                'Images/event-posters/783d478fde50b0f1d23ed5db8e9e2dee.jpg',
+                'Images/event-posters/90f82bfbdb111074fdfe5c1a6d813f5e.jpg',
+                'Images/event-posters/9303687a932a721b3a360633ade52260.jpg',
+                'Images/event-posters/96ec819f4ad7e5237c653c05baf5cd8c.jpg',
+                'Images/event-posters/b365df6222f9cce1e0ec0bf2ee881fb9.jpg',
+                'Images/event-posters/b3a1e66d241d956c3de527627d3c0a8a.jpg',
+                'Images/event-posters/d7ecf3fce251c523f3bb43ee6620e902.jpg',
+                'Images/event-posters/istockphoto-1478375497-612x612.jpg',
+                'Images/event-posters/istockphoto-494896581-612x612.jpg',
+                'Images/event-posters/pexels-jibarofoto-2774556.jpg',
+                'Images/event-posters/Poster.jpg'
             ]
         };
 
@@ -1463,6 +1433,7 @@
                 
                 // Add click event handler
                 card.addEventListener('click', () => {
+                    console.log('Event card clicked:', event);
                     showEventDetails(event);
                 });
                 
@@ -1510,6 +1481,7 @@
             initializeCarousels() {
                 // Initialize all carousel managers after events are loaded
                 if (window.RecommendedCarouselManager) RecommendedCarouselManager.init();
+                if (window.MostPopularCarouselManager) MostPopularCarouselManager.init();
                 if (window.MusicCarouselManager) MusicCarouselManager.init();
                 if (window.TheaterCarouselManager) TheaterCarouselManager.init();
                 if (window.DanceCarouselManager) DanceCarouselManager.init();
@@ -1909,6 +1881,16 @@
                     category: category,
                     filterFunction: filterFunction,
                     title: title,
+                    
+                    // Utility function to shuffle array for randomization
+                    shuffleArray(array) {
+                        const shuffled = [...array];
+                        for (let i = shuffled.length - 1; i > 0; i--) {
+                            const j = Math.floor(Math.random() * (i + 1));
+                            [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+                        }
+                        return shuffled;
+                    },
             
             init() {
                         this.carouselTrack = document.getElementById(`${category}Carousel`);
@@ -1938,7 +1920,16 @@
                     
                     populateCarousel() {
                         // Filter events based on category
-                        const categoryEvents = App.events.filter(this.filterFunction).slice(0, 8);
+                        let categoryEvents = App.events.filter(this.filterFunction);
+                        
+                        // Special handling for recommended carousel - randomize events
+                        if (this.category === 'recommended') {
+                            // Shuffle the events array to get random selection
+                            categoryEvents = this.shuffleArray([...categoryEvents]).slice(0, 8);
+                        } else {
+                            categoryEvents = categoryEvents.slice(0, 8);
+                        }
+                        
                         this.totalItems = categoryEvents.length;
                         
                         // Hide the entire carousel section if no events found
@@ -1961,7 +1952,7 @@
                             const imageUrl = Utils.getEventImage(event, index, categoryEvents);
                             
                             return `
-                                <div class="recommended-event-card" data-event-id="${event.id}">
+                                <div class="recommended-event-card" data-event-id="${event.id}" style="cursor: pointer;">
                                     <div class="recommended-event-image">
                                         <img src="${imageUrl}" alt="${title}" 
                                              onerror="this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAwIiBoZWlnaHQ9IjQwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZGVmcz48bGluZWFyR3JhZGllbnQgaWQ9ImciIHgxPSIwJSIgeTE9IjAlIiB4Mj0iMTAwJSIgeTI9IjEwMCUiPjxzdG9wIG9mZnNldD0iMCUiIHN0b3AtY29sb3I9IiMwMDY2Q0MiLz48c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiM3NjRiYTIiLz48L2xpbmVhckdyYWRpZW50PjwvZGVmcz48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSJ1cmwoI2cpIi8+PHRleHQgeD0iNTAlIiB5PSI1MCUiIGZvbnQtZmFtaWx5PSJBcmlhbCIgZm9udC1zaXplPSIyNCIgZmlsbD0id2hpdGUiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGR5PSIuM2VtIj7wn5GAPC90ZXh0Pjwvc3ZnPg=='"
@@ -1975,6 +1966,17 @@
                                 </div>
                             `;
                         }).join('');
+                        
+                        // Add click handlers to the new cards
+                        this.carouselTrack.querySelectorAll('.recommended-event-card').forEach(card => {
+                            card.addEventListener('click', () => {
+                                const eventId = card.dataset.eventId;
+                                const event = categoryEvents.find(e => e.id == eventId);
+                                if (event) {
+                                    showEventDetails(event);
+                                }
+                            });
+                        });
                     },
                     
                     setupNavigation() {
@@ -2111,220 +2113,6 @@
             }
         };
 
-        // Recommended Events Carousel Manager
-        const RecommendedCarouselManager = {
-            currentIndex: 0,
-            itemsPerView: 3,
-            totalItems: 0,
-            carouselTrack: null,
-            carouselContainer: null,
-            isDragging: false,
-            startX: 0,
-            currentX: 0,
-            initialTranslateX: 0,
-            
-            init() {
-                this.carouselTrack = document.getElementById('recommendedCarousel');
-                this.carouselContainer = document.getElementById('carouselContainer');
-                const prevBtn = document.getElementById('prevBtn');
-                const nextBtn = document.getElementById('nextBtn');
-                
-                if (!this.carouselTrack || !this.carouselContainer || !prevBtn || !nextBtn) return;
-                
-                // Wait for events to be loaded
-                if (App.events && App.events.length > 0) {
-                    this.populateCarousel();
-                    this.setupNavigation();
-                    this.setupDrag();
-                } else {
-                    // Wait for events to load
-                    const checkEvents = setInterval(() => {
-                        if (App.events && App.events.length > 0) {
-                            this.populateCarousel();
-                            this.setupNavigation();
-                            this.setupDrag();
-                            clearInterval(checkEvents);
-                        }
-                    }, 100);
-                }
-            },
-            
-            populateCarousel() {
-                // Get recommended events (first 8 events for now)
-                const recommendedEvents = App.events.slice(0, 8);
-                this.totalItems = recommendedEvents.length;
-                
-                // Hide the entire carousel section if no events found
-                const carouselSection = this.carouselContainer.closest('section');
-                if (this.totalItems === 0) {
-                    if (carouselSection) {
-                        carouselSection.style.display = 'none';
-                    }
-                    return;
-                } else {
-                    if (carouselSection) {
-                        carouselSection.style.display = 'block';
-                    }
-                }
-                
-                this.carouselTrack.innerHTML = recommendedEvents.map((event, index) => {
-                    const title = event.language?.is?.title || event.language?.en?.title || event.title || 'Untitled Event';
-                    const location = event.formatted_address || event.city || 'Location TBD';
-                    const date = event.start ? Utils.formatDate(event.start) : 'Date TBD';
-                    const imageUrl = Utils.getEventImage(event, index, recommendedEvents);
-                    
-                    return `
-                        <div class="recommended-event-card" data-event-id="${event.id}">
-                            <div class="recommended-event-image">
-                                <img src="${imageUrl}" alt="${title}" 
-                                     onerror="this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAwIiBoZWlnaHQ9IjQwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZGVmcz48bGluZWFyR3JhZGllbnQgaWQ9ImciIHgxPSIwJSIgeTE9IjAlIiB4Mj0iMTAwJSIgeTI9IjEwMCUiPjxzdG9wIG9mZnNldD0iMCUiIHN0b3AtY29sb3I9IiMwMDY2Q0MiLz48c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiM3NjRiYTIiLz48L2xpbmVhckdyYWRpZW50PjwvZGVmcz48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSJ1cmwoI2cpIi8+PHRleHQgeD0iNTAlIiB5PSI1MCUiIGZvbnQtZmFtaWx5PSJBcmlhbCIgZm9udC1zaXplPSIyNCIgZmlsbD0id2hpdGUiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGR5PSIuM2VtIj7wn5GAPC90ZXh0Pjwvc3ZnPg=='"
-                                     onload="this.classList.add('loaded')">
-                            </div>
-                            <div class="recommended-event-content">
-                                <div class="recommended-event-title">${title}</div>
-                                <div class="recommended-event-location">${location}</div>
-                                <div class="recommended-event-date">${date}</div>
-                            </div>
-                        </div>
-                    `;
-                }).join('');
-                
-            },
-            
-            setupNavigation() {
-                const prevBtn = document.getElementById('prevBtn');
-                const nextBtn = document.getElementById('nextBtn');
-                
-                prevBtn.addEventListener('click', () => this.previous());
-                nextBtn.addEventListener('click', () => this.next());
-                
-                // Update navigation state
-                this.updateNavigation();
-            },
-            
-            next() {
-                if (this.currentIndex < this.totalItems - this.itemsPerView) {
-                    this.currentIndex++;
-                    this.updateCarousel();
-                }
-            },
-            
-            previous() {
-                if (this.currentIndex > 0) {
-                    this.currentIndex--;
-                    this.updateCarousel();
-                }
-            },
-            
-            updateCarousel() {
-                const cardWidth = 320 + 24; // card width + gap
-                const translateX = -this.currentIndex * cardWidth;
-                this.carouselTrack.style.transform = `translateX(${translateX}px)`;
-                this.updateNavigation();
-            },
-            
-            setupDrag() {
-                // Mouse events
-                this.carouselContainer.addEventListener('mousedown', this.startDrag.bind(this));
-                this.carouselContainer.addEventListener('mousemove', this.drag.bind(this));
-                this.carouselContainer.addEventListener('mouseup', this.endDrag.bind(this));
-                this.carouselContainer.addEventListener('mouseleave', this.endDrag.bind(this));
-                
-                // Touch events
-                this.carouselContainer.addEventListener('touchstart', this.startDrag.bind(this));
-                this.carouselContainer.addEventListener('touchmove', this.drag.bind(this));
-                this.carouselContainer.addEventListener('touchend', this.endDrag.bind(this));
-                
-                // Prevent default drag behavior
-                this.carouselContainer.addEventListener('dragstart', (e) => e.preventDefault());
-            },
-            
-            startDrag(e) {
-                this.isDragging = true;
-                this.carouselContainer.classList.add('dragging');
-                
-                // Prevent default touch behavior
-                if (e.type === 'touchstart') {
-                    e.preventDefault();
-                }
-                
-                const clientX = e.type === 'touchstart' ? e.touches[0].clientX : e.clientX;
-                this.startX = clientX;
-                this.currentX = clientX;
-                
-                // Get current translateX value
-                const transform = this.carouselTrack.style.transform;
-                const match = transform.match(/translateX\(([^)]+)px\)/);
-                this.initialTranslateX = match ? parseFloat(match[1]) : 0;
-            },
-            
-            drag(e) {
-                if (!this.isDragging) return;
-                
-                // Always prevent default to stop scrolling
-                e.preventDefault();
-                e.stopPropagation();
-                
-                const clientX = e.type === 'touchmove' ? e.touches[0].clientX : e.clientX;
-                this.currentX = clientX;
-                
-                const deltaX = this.currentX - this.startX;
-                const newTranslateX = this.initialTranslateX + deltaX;
-                
-                this.carouselTrack.style.transform = `translateX(${newTranslateX}px)`;
-            },
-            
-            endDrag(e) {
-                if (!this.isDragging) return;
-                
-                this.isDragging = false;
-                this.carouselContainer.classList.remove('dragging');
-                
-                // Get final position for touch events
-                if (e.type === 'touchend' && e.changedTouches && e.changedTouches[0]) {
-                    this.currentX = e.changedTouches[0].clientX;
-                }
-                
-                const deltaX = this.currentX - this.startX;
-                const cardWidth = 320 + 24; // card width + gap
-                const threshold = cardWidth / 8; // Even more sensitive - 1/8 of card width
-                
-                // Only update if we have enough drag distance
-                if (Math.abs(deltaX) > threshold) {
-                    if (deltaX > 0 && this.currentIndex > 0) {
-                        // Dragging right - go to previous
-                        this.currentIndex--;
-                        this.updateCarousel();
-                    } else if (deltaX < 0 && this.currentIndex < this.totalItems - this.itemsPerView) {
-                        // Dragging left - go to next
-                        this.currentIndex++;
-                        this.updateCarousel();
-                    } else {
-                        // At boundary, snap back
-                        this.updateCarousel();
-                    }
-                } else {
-                    // Not enough drag distance, snap back
-                    this.updateCarousel();
-                }
-            },
-            
-            updateNavigation() {
-                const prevBtn = document.getElementById('prevBtn');
-                const nextBtn = document.getElementById('nextBtn');
-                
-                if (prevBtn) {
-                    prevBtn.style.opacity = this.currentIndex > 0 ? '1' : '0.5';
-                    prevBtn.disabled = this.currentIndex <= 0;
-                }
-                
-                if (nextBtn) {
-                    nextBtn.style.opacity = this.currentIndex < this.totalItems - this.itemsPerView ? '1' : '0.5';
-                    nextBtn.disabled = this.currentIndex >= this.totalItems - this.itemsPerView;
-                }
-            },
-            
-        };
 
         // Lottie Logo Manager
         const initLottieLogo = () => {
@@ -2338,7 +2126,7 @@
                         renderer: 'svg',
                         loop: true,
                         autoplay: true,
-                        path: 'Video/FinalBlueLogo.json'
+                        path: 'Video/NEWNEw.json'
                     });
                     
                     animation.addEventListener('data_failed', () => {
@@ -2395,116 +2183,21 @@
             }
         };
 
-        // Recommended Events Carousel Manager
-        window.RecommendedCarouselManager = {
-            carouselTrack: null,
-            carouselContainer: null,
-            currentIndex: 0,
-            totalItems: 6,
-            isDragging: false,
-            startX: 0,
-            currentX: 0,
-            initialTransform: 0,
-            
-            init() {
-                this.carouselTrack = document.getElementById('recommendedCarousel');
-                this.carouselContainer = document.getElementById('recommendedCarouselContainer');
-                const prevBtn = document.getElementById('recommendedPrevBtn');
-                const nextBtn = document.getElementById('recommendedNextBtn');
-                
-                if (!this.carouselTrack || !this.carouselContainer || !prevBtn || !nextBtn) return;
-                
-                this.setupNavigation();
-                this.setupDrag();
-            },
-            
-            setupNavigation() {
-                const prevBtn = document.getElementById('recommendedPrevBtn');
-                const nextBtn = document.getElementById('recommendedNextBtn');
-                
-                prevBtn.addEventListener('click', () => this.previous());
-                nextBtn.addEventListener('click', () => this.next());
-                
-                this.updateNavigation();
-            },
-            
-            next() {
-                if (this.currentIndex < this.totalItems - 1) {
-                    this.currentIndex++;
-                    this.updateCarousel();
-                }
-            },
-            
-            previous() {
-                if (this.currentIndex > 0) {
-                    this.currentIndex--;
-                    this.updateCarousel();
-                }
-            },
-            
-            updateCarousel() {
-                const cardWidth = 320; // Width of each card including margin
-                const translateX = -this.currentIndex * cardWidth;
-                this.carouselTrack.style.transform = `translateX(${translateX}px)`;
-                this.updateNavigation();
-            },
-            
-            updateNavigation() {
-                const prevBtn = document.getElementById('recommendedPrevBtn');
-                const nextBtn = document.getElementById('recommendedNextBtn');
-                
-                if (prevBtn) prevBtn.style.opacity = this.currentIndex === 0 ? '0.5' : '1';
-                if (nextBtn) nextBtn.style.opacity = this.currentIndex >= this.totalItems - 1 ? '0.5' : '1';
-            },
-            
-            setupDrag() {
-                this.carouselContainer.addEventListener('mousedown', (e) => this.startDrag(e));
-                this.carouselContainer.addEventListener('touchstart', (e) => this.startDrag(e.touches[0]));
-                
-                document.addEventListener('mousemove', (e) => this.drag(e));
-                document.addEventListener('touchmove', (e) => this.drag(e.touches[0]));
-                
-                document.addEventListener('mouseup', () => this.endDrag());
-                document.addEventListener('touchend', () => this.endDrag());
-            },
-            
-            startDrag(e) {
-                this.isDragging = true;
-                this.startX = e.clientX;
-                this.initialTransform = -this.currentIndex * 320;
-                this.carouselContainer.classList.add('dragging');
-            },
-            
-            drag(e) {
-                if (!this.isDragging) return;
-                e.preventDefault();
-                
-                this.currentX = e.clientX;
-                const deltaX = this.currentX - this.startX;
-                const newTransform = this.initialTransform + deltaX;
-                
-                this.carouselTrack.style.transform = `translateX(${newTransform}px)`;
-            },
-            
-            endDrag() {
-                if (!this.isDragging) return;
-                this.isDragging = false;
-                this.carouselContainer.classList.remove('dragging');
-                
-                const deltaX = this.currentX - this.startX;
-                const threshold = 50;
-                
-                if (Math.abs(deltaX) > threshold) {
-                    if (deltaX > 0 && this.currentIndex > 0) {
-                        this.currentIndex--;
-                    } else if (deltaX < 0 && this.currentIndex < this.totalItems - 1) {
-                        this.currentIndex++;
-                    }
-                }
-                
-                this.updateCarousel();
-            }
-        };
+        // Recommended for You Carousel Manager (using same pattern as other carousels)
+        window.RecommendedCarouselManager = CategoryCarouselManager.createManager('recommended', 
+            (event) => {
+                // For Recommended for You, we'll show a random selection of events
+                // This could be based on user preferences, but for now we'll show random events
+                return true; // Show all events for recommendations
+            }, 'Recommended for You');
+
+        // Most Popular Carousel Manager (using same pattern as other carousels)
+        window.MostPopularCarouselManager = CategoryCarouselManager.createManager('mostPopular', 
+            (event) => {
+                // For Most Popular, we'll show a mix of different event types
+                // This could be based on popularity metrics, but for now we'll show a variety
+                return true; // Show all events for most popular
+            }, 'Most Popular');
 
         // Initialize category carousels (make them global)
         window.MusicCarouselManager = CategoryCarouselManager.createManager('music', 
@@ -2767,12 +2460,818 @@
             });
         }
 
+        // Utilities
+        const kr = v => typeof v === "number"
+            ? new Intl.NumberFormat("is-IS").format(v) + " kr"
+            : v || "Price not set";
+
+        const fmtDate = iso => new Date(iso).toLocaleDateString("en-GB", {
+            year: "numeric", month: "long", day: "numeric"
+        });
+
+        const fmtRange = (startISO, endISO) => {
+            if (!startISO) return "Date not set";
+            if (!endISO) return fmtDate(startISO);
+            const s = new Date(startISO);
+            const e = new Date(endISO);
+            const sameMonth = s.getMonth() === e.getMonth() && s.getFullYear() === e.getFullYear();
+            if (sameMonth) {
+                return `${s.toLocaleString("en-GB",{month:"long"})} ${s.getDate()} - ${e.getDate()}, ${e.getFullYear()}`;
+            }
+            return `${fmtDate(startISO)} - ${fmtDate(endISO)}`;
+        };
+
+        // Modal control - Initialize after DOM is ready
+        let modalEl, panelEl, freeModalEl, freePanelEl, createModalEl, createPanelEl;
+        
+        function initModal() {
+            modalEl = document.getElementById("event-modal");
+            console.log('Modal element found:', modalEl);
+            if (!modalEl) {
+                console.error('Modal element not found!');
+                return;
+            }
+            panelEl = modalEl.querySelector("[data-panel]");
+            console.log('Panel element found:', panelEl);
+            
+            // Initialize free event modal
+            freeModalEl = document.getElementById("free-event-modal");
+            console.log('Free modal element found:', freeModalEl);
+            if (freeModalEl) {
+                freePanelEl = freeModalEl.querySelector("[data-panel]");
+                console.log('Free panel element found:', freePanelEl);
+            }
+            
+            // Initialize create event modal
+            createModalEl = document.getElementById("create-event-modal");
+            console.log('Create modal element found:', createModalEl);
+            if (createModalEl) {
+                createPanelEl = createModalEl.querySelector("[data-panel]");
+                console.log('Create panel element found:', createPanelEl);
+            }
+            
+            // Add event listeners for closing modals
+            modalEl.addEventListener("click", e => {
+                if (e.target.closest("[data-close]")) closeEventModal();
+            });
+            
+            if (freeModalEl) {
+                freeModalEl.addEventListener("click", e => {
+                    if (e.target.closest("[data-close]")) closeFreeEventModal();
+                });
+            }
+            
+            if (createModalEl) {
+                createModalEl.addEventListener("click", e => {
+                    if (e.target.closest("[data-close]")) closeCreateEventModal();
+                });
+            }
+        }
+
+        function openEventModal(ev) {
+            console.log('openEventModal called with:', ev);
+            console.log('Modal element:', modalEl);
+            
+            if (!modalEl) {
+                console.error('Modal not initialized!');
+                return;
+            }
+            
+            // Fill content
+            const titleEl = document.getElementById("event-modal-title");
+            const locationEl = document.getElementById("ev-location");
+            const datesEl = document.getElementById("ev-dates");
+            const priceEl = document.getElementById("ev-price");
+            const ctaEl = document.getElementById("ev-cta");
+            const img = document.getElementById("ev-cover");
+            
+            console.log('Modal elements found:', { titleEl, locationEl, datesEl, priceEl, ctaEl, img });
+            
+            if (titleEl) titleEl.textContent = ev.title || "Untitled event";
+            if (locationEl) locationEl.textContent = ev.location || "Location TBA";
+            if (datesEl) datesEl.textContent = fmtRange(ev.startDate, ev.endDate);
+            if (priceEl) priceEl.textContent = kr(ev.price);
+            if (ctaEl) {
+                ctaEl.href = ev.ticketUrl || "#";
+                ctaEl.textContent = ev.ctaLabel || "Go to TIX";
+            }
+            if (img) {
+                img.src = ev.imageUrl || "/images/placeholder.jpg";
+                img.alt = ev.imageAlt || ev.title || "Event cover";
+            }
+
+            const desc = document.getElementById("ev-desc");
+            desc.innerHTML = "";                                  // clear
+            const paragraphs = Array.isArray(ev.description)
+                ? ev.description
+                : String(ev.description || "").split(/\n{2,}/);
+            paragraphs.filter(Boolean).forEach(t => {
+                const p = document.createElement("p");
+                p.textContent = t.trim();
+                desc.appendChild(p);
+            });
+
+            // Bind actions
+            document.getElementById("ev-share").onclick = async () => {
+                const shareData = { title: ev.title, text: ev.shareText || ev.title, url: ev.shareUrl || ev.ticketUrl || location.href };
+                if (navigator.share) { try { await navigator.share(shareData); } catch {} }
+                else { navigator.clipboard.writeText(shareData.url).catch(()=>{}); }
+            };
+            document.getElementById("ev-save").onclick = () => {
+                // Hook up to your save [favorite] logic
+                // example: saveEvent(ev.id)
+            };
+
+            // Open
+            console.log('About to show modal, current classes:', modalEl.className);
+            modalEl.classList.remove("hidden");
+            modalEl.removeAttribute("aria-hidden");
+            console.log('Modal classes after show:', modalEl.className);
+            console.log('Modal aria-hidden after show:', modalEl.getAttribute('aria-hidden'));
+
+            // Basic focus trap
+            const focusables = panelEl.querySelectorAll('a,button,input,textarea,select,[tabindex]:not([tabindex="-1"])');
+            const first = focusables[0], last = focusables[focusables.length - 1];
+            panelEl._trap = e => {
+                if (e.key === "Tab") {
+                    if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+                    else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+                }
+                if (e.key === "Escape") closeEventModal();
+            };
+            panelEl.addEventListener("keydown", panelEl._trap);
+            panelEl.focus();
+        }
+
+        function closeEventModal() {
+            if (!modalEl) {
+                console.error('Modal not initialized!');
+                return;
+            }
+            modalEl.setAttribute("aria-hidden","true");
+            modalEl.classList.add("hidden");
+            panelEl.removeEventListener("keydown", panelEl._trap || (()=>{}));
+        }
+
+        function openFreeEventModal(ev) {
+            console.log('openFreeEventModal called with:', ev);
+            console.log('Free modal element:', freeModalEl);
+            
+            if (!freeModalEl) {
+                console.error('Free modal not initialized!');
+                return;
+            }
+            
+            // Fill content
+            const titleEl = document.getElementById("free-event-modal-title");
+            const locationEl = document.getElementById("free-ev-location");
+            const datesEl = document.getElementById("free-ev-dates");
+            const img = document.getElementById("free-ev-cover");
+            
+            console.log('Free modal elements found:', { titleEl, locationEl, datesEl, img });
+            
+            if (titleEl) titleEl.textContent = ev.title || "Untitled event";
+            if (locationEl) locationEl.textContent = ev.location || "Location TBA";
+            if (datesEl) datesEl.textContent = fmtRange(ev.startDate, ev.endDate);
+            if (img) {
+                img.src = ev.imageUrl || "/images/placeholder.jpg";
+                img.alt = ev.imageAlt || ev.title || "Event cover";
+            }
+
+            const desc = document.getElementById("free-ev-desc");
+            desc.innerHTML = "";                                  // clear
+            const paragraphs = Array.isArray(ev.description)
+                ? ev.description
+                : String(ev.description || "").split(/\n{2,}/);
+            paragraphs.filter(Boolean).forEach(t => {
+                const p = document.createElement("p");
+                p.textContent = t.trim();
+                desc.appendChild(p);
+            });
+
+            // Bind actions
+            document.getElementById("free-ev-share").onclick = async () => {
+                const shareData = { title: ev.title, text: ev.shareText || ev.title, url: ev.shareUrl || ev.ticketUrl || location.href };
+                if (navigator.share) { try { await navigator.share(shareData); } catch {} }
+                else { navigator.clipboard.writeText(shareData.url).catch(()=>{}); }
+            };
+            document.getElementById("free-ev-save").onclick = () => {
+                // Hook up to your save [favorite] logic
+                // example: saveEvent(ev.id)
+            };
+
+            // Handle signup form submission
+            const signupForm = document.getElementById("free-event-signup");
+            signupForm.onsubmit = async (e) => {
+                e.preventDefault();
+                const email = document.getElementById("signup-email").value;
+                
+                // Here you would typically send the email to your backend
+                // For now, we'll just show a success message
+                try {
+                    // Simulate API call
+                    console.log('Registering email:', email, 'for event:', ev.title);
+                    
+                    // Show success message
+                    const button = signupForm.querySelector('button[type="submit"]');
+                    const originalText = button.textContent;
+                    button.textContent = "Registration Successful!";
+                    button.classList.remove("border-green-500", "text-green-700", "hover:bg-green-50", "bg-green-50");
+                    button.classList.add("border-green-600", "text-green-800", "bg-green-100");
+                    
+                    // Reset after 3 seconds
+                    setTimeout(() => {
+                        button.textContent = originalText;
+                        button.classList.remove("border-green-600", "text-green-800", "bg-green-100");
+                        button.classList.add("border-green-500", "text-green-700", "hover:bg-green-50", "bg-green-50");
+                        signupForm.reset();
+                    }, 3000);
+                    
+                } catch (error) {
+                    console.error('Registration failed:', error);
+                    alert('Registration failed. Please try again.');
+                }
+            };
+
+            // Open
+            console.log('About to show free modal, current classes:', freeModalEl.className);
+            freeModalEl.classList.remove("hidden");
+            freeModalEl.removeAttribute("aria-hidden");
+            console.log('Free modal classes after show:', freeModalEl.className);
+
+            // Basic focus trap
+            const focusables = freePanelEl.querySelectorAll('a,button,input,textarea,select,[tabindex]:not([tabindex="-1"])');
+            const first = focusables[0], last = focusables[focusables.length - 1];
+            freePanelEl._trap = e => {
+                if (e.key === "Tab") {
+                    if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+                    else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+                }
+                if (e.key === "Escape") closeFreeEventModal();
+            };
+            freePanelEl.addEventListener("keydown", freePanelEl._trap);
+            freePanelEl.focus();
+        }
+
+        function closeFreeEventModal() {
+            if (!freeModalEl) {
+                console.error('Free modal not initialized!');
+                return;
+            }
+            freeModalEl.setAttribute("aria-hidden","true");
+            freeModalEl.classList.add("hidden");
+            freePanelEl.removeEventListener("keydown", freePanelEl._trap || (()=>{}));
+        }
+
+        function openCreateEventModal() {
+            console.log('openCreateEventModal called');
+            console.log('Create modal element:', createModalEl);
+            
+            if (!createModalEl) {
+                console.error('Create modal not initialized!');
+                return;
+            }
+            
+            // Reset form
+            const form = document.getElementById("create-event-form");
+            if (form) {
+                form.reset();
+            }
+            
+            // Open modal
+            console.log('About to show create modal, current classes:', createModalEl.className);
+            createModalEl.classList.remove("hidden");
+            createModalEl.removeAttribute("aria-hidden");
+            console.log('Create modal classes after show:', createModalEl.className);
+
+            // Basic focus trap
+            const focusables = createPanelEl.querySelectorAll('a,button,input,textarea,select,[tabindex]:not([tabindex="-1"])');
+            const first = focusables[0], last = focusables[focusables.length - 1];
+            createPanelEl._trap = e => {
+                if (e.key === "Tab") {
+                    if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+                    else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+                }
+                if (e.key === "Escape") closeCreateEventModal();
+            };
+            createPanelEl.addEventListener("keydown", createPanelEl._trap);
+            createPanelEl.focus();
+        }
+
+        // Make function globally accessible
+        window.openCreateEventModal = openCreateEventModal;
+
+        function closeCreateEventModal() {
+            if (!createModalEl) {
+                console.error('Create modal not initialized!');
+                return;
+            }
+            createModalEl.setAttribute("aria-hidden","true");
+            createModalEl.classList.add("hidden");
+            createPanelEl.removeEventListener("keydown", createPanelEl._trap || (()=>{}));
+        }
+
+        // Event listener will be added in initModal
+
+        // Convert existing event data to new format and populate EVENTS_BY_ID
+        window.EVENTS_BY_ID = {};
+        
+        function convertEventToNewFormat(event) {
+            // Determine if event should be free based on ID or title
+            const isFreeEvent = event.id % 3 === 0 || // Every 3rd event is free
+                               (event.language?.is?.title || event.language?.en?.title || event.title || '').toLowerCase().includes('free') ||
+                               (event.language?.is?.title || event.language?.en?.title || event.title || '').toLowerCase().includes('gratis');
+            
+            // Set price based on whether it's free or not
+            let price;
+            if (isFreeEvent) {
+                price = 0; // Free event
+            } else {
+                // Generate sample prices for paid events
+                const samplePrices = [2500, 3500, 4500, 5500, 7500, 9500, 12500, 15000];
+                price = samplePrices[event.id % samplePrices.length];
+            }
+            
+            return {
+                id: event.id,
+                title: event.language?.is?.title || event.language?.en?.title || event.title || 'Untitled Event',
+                location: event.formatted_address || event.city || 'Location TBD',
+                startDate: event.start,
+                endDate: event.end,
+                price: price,
+                ticketUrl: event.ticket_url || event.url,
+                imageUrl: Utils.getEventImage(event),
+                imageAlt: event.language?.is?.title || event.language?.en?.title || event.title || 'Event cover',
+                description: event.language?.is?.text || event.language?.en?.text || event.description || 'No description available.',
+                shareUrl: event.ticket_url || event.url || location.href
+            };
+        }
+
+        // Hook into existing event loading
+        const originalLoadEvents = DataManager.loadEvents;
+        DataManager.loadEvents = function() {
+            return originalLoadEvents.call(this).then(() => {
+                // Populate EVENTS_BY_ID with converted events
+                if (App.events) {
+                    App.events.forEach(event => {
+                        window.EVENTS_BY_ID[event.id] = convertEventToNewFormat(event);
+                    });
+                }
+            });
+        };
+
+        // Update existing click handlers to use new modal
+        function showEventDetails(event) {
+            console.log('showEventDetails called with event:', event);
+            const convertedEvent = convertEventToNewFormat(event);
+            console.log('Converted event:', convertedEvent);
+            
+            // Check if event is free (price is 0, null, undefined, or "free")
+            const isFreeEvent = !convertedEvent.price || 
+                               convertedEvent.price === 0 || 
+                               convertedEvent.price === "0" || 
+                               convertedEvent.price.toString().toLowerCase().includes("free");
+            
+            if (isFreeEvent) {
+                openFreeEventModal(convertedEvent);
+            } else {
+                openEventModal(convertedEvent);
+            }
+        }
+
         // Initialize Draw Random Underline
         document.addEventListener('DOMContentLoaded', function() {
+            initModal();
             initDrawRandomUnderline();
             initSmoothScroll();
             initTextAnimation();
+            
+            // Debug: Check if Create Event modal is properly initialized
+            console.log('Create Event modal element:', document.getElementById("create-event-modal"));
+            console.log('openCreateEventModal function available:', typeof window.openCreateEventModal);
+            
+            // Add event listeners to Create Event links as backup
+            const createEventLinks = document.querySelectorAll('a[aria-label="Create a new event"]');
+            createEventLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    console.log('Create Event link clicked via event listener');
+                    openCreateEventModal();
+                });
+            });
+            console.log('Found Create Event links:', createEventLinks.length);
+            
+            // Handle Create Event form submission
+            const createEventForm = document.getElementById("create-event-form");
+            if (createEventForm) {
+                createEventForm.addEventListener("submit", async (e) => {
+                    e.preventDefault();
+                    
+                    const formData = new FormData(createEventForm);
+                    const eventData = {
+                        title: formData.get("title"),
+                        date: formData.get("date"),
+                        time: formData.get("time"),
+                        location: formData.get("location"),
+                        fee: formData.get("fee") || 0,
+                        image: formData.get("image"),
+                        description: formData.get("description")
+                    };
+                    
+                    console.log('Creating event with data:', eventData);
+                    
+                    try {
+                        // Here you would typically send the data to your backend
+                        // For now, we'll just show a success message
+                        
+                        // Show success message
+                        const submitButton = createEventForm.querySelector('button[type="submit"]');
+                        const originalText = submitButton.textContent;
+                        submitButton.textContent = "Event Created Successfully!";
+                        submitButton.style.borderColor = "#10B981";
+                        submitButton.style.color = "#10B981";
+                        submitButton.style.backgroundColor = "#ECFDF5";
+                        
+                        // Reset after 3 seconds and close modal
+                        setTimeout(() => {
+                            submitButton.textContent = originalText;
+                            submitButton.style.borderColor = "#340AFF";
+                            submitButton.style.color = "#340AFF";
+                            submitButton.style.backgroundColor = "transparent";
+                            createEventForm.reset();
+                            closeCreateEventModal();
+                        }, 3000);
+                        
+                    } catch (error) {
+                        console.error('Event creation failed:', error);
+                        alert('Event creation failed. Please try again.');
+                    }
+                });
+            }
         });
     </script>
+
+    <!-- Event Details Popup Modal -->
+    <div id="event-modal" class="fixed inset-0 z-50 hidden" aria-hidden="true">
+        <div class="absolute inset-0 bg-black/50" data-close></div>
+
+        <div role="dialog" aria-modal="true" aria-labelledby="event-modal-title"
+             class="absolute inset-0 grid place-items-center p-4">
+            <div class="w-[95vw] h-[90vh] sm:w-[900px] sm:h-[600px] rounded-2xl bg-white shadow-2xl ring-1 ring-black/5 overflow-hidden flex flex-col relative"
+                 tabindex="-1" data-panel>
+
+                <!-- Close button - top right corner -->
+                <button class="absolute top-4 right-4 z-10 grid h-10 w-10 place-items-center rounded-full bg-white/90 hover:bg-white shadow-lg border border-gray-200" data-close aria-label="Close">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 6l12 12M18 6L6 18"/>
+                    </svg>
+                </button>
+
+                <!-- Favorite button - below close button -->
+                <button id="ev-save" class="absolute top-16 right-4 z-10 grid h-10 w-10 place-items-center rounded-full bg-white/90 hover:bg-white shadow-lg border border-gray-200" aria-label="Save">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M11.645 20.91l-.007-.003-.022-.011a20.55 20.55 0 01-1.933-1.143 22.063 22.063 0 01-3.26-2.414C3.642 15.107 2 12.745 2 10.25 2 7.903 3.903 6 6.25 6c1.507 0 2.88.698 3.75 1.79A4.75 4.75 0 0117.75 6C20.097 6 22 7.903 22 10.25c0 2.494-1.642 4.857-4.423 6.989a22.06 22.06 0 01-3.26 2.414 20.55 20.55 0 01-1.955 1.154l-.017.008-.007.003-.005.002-.003.001a.75.75 0 01-.63 0l-.003-.001-.005-.002z"/>
+                    </svg>
+                </button>
+
+                <!-- Share button - below favorite button -->
+                <button id="ev-share" class="absolute top-28 right-4 z-10 grid h-10 w-10 place-items-center rounded-full bg-white/90 hover:bg-white shadow-lg border border-gray-200" aria-label="Share">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 12v7a1 1 0 001 1h14a1 1 0 001-1v-7M16 6l-4-4-4 4M12 2v14"/>
+                    </svg>
+                </button>
+
+                <!-- Modal header - fixed -->
+                <div class="p-8 border-b border-gray-100">
+                    <div class="grid grid-cols-2 gap-8">
+                        <!-- Top Left Quarter - Image -->
+                        <div class="rounded-lg p-4 flex items-center justify-center max-h-[300px]">
+                            <img id="ev-cover" src="/images/placeholder.jpg" alt="" class="max-h-full max-w-full rounded-lg object-contain">
+                        </div>
+
+                        <!-- Top Right Quarter - Event Details -->
+                        <div class="rounded-lg p-6 pr-20">
+                            <h2 id="event-modal-title" class="text-2xl sm:text-[28px] font-semibold tracking-tight text-gray-900 mb-6">
+                                Iceland Airwaves
+                            </h2>
+
+                            <!-- Meta row -->
+                            <div class="space-y-3 text-sm text-gray-700">
+                                <div class="inline-flex items-center gap-2">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 21s-6-5.373-6-10a6 6 0 1112 0c0 4.627-6 10-6 10z"/><circle cx="12" cy="11" r="2"/>
+                                    </svg>
+                                    <span id="ev-location">Downtown Reykjavík</span>
+                                </div>
+
+                                <div class="inline-flex items-center gap-2">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3M3 9h18M5 9v11h14V9"/>
+                                    </svg>
+                                    <span id="ev-dates">November 6 [to] 8, 2025</span>
+                                </div>
+
+                                <div class="inline-flex items-center gap-2 font-medium text-gray-900">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 7h6l7 7-6 6-7-7V7z"/><circle cx="7.5" cy="7.5" r="1.5"/>
+                                    </svg>
+                                    <span>Price:</span>
+                                    <span id="ev-price">12.400 kr</span>
+                                </div>
+                            </div>
+
+                            <!-- CTA -->
+                            <div class="mt-6">
+                                <a id="ev-cta"
+                                   href="#"
+                                   target="_blank" rel="noopener"
+                                   class="inline-flex items-center justify-center rounded-full border px-12 py-4 text-base font-semibold
+                                          border-indigo-500 text-indigo-700 hover:bg-indigo-50">
+                                    Go to TIX
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Scrollable content area -->
+                <div class="flex-1 overflow-y-auto">
+                    <div class="p-8">
+                        <!-- Description -->
+                        <div id="ev-desc" class="text-[15px] leading-8 text-gray-800 space-y-4 break-words overflow-wrap-anywhere">
+                            <p>Three days, countless bands [local and international], and a music industry conference.</p>
+                            <p>Iceland Airwaves is an annual music festival held in Reykjavík, Iceland.</p>
+                            <p>Known for an eclectic line up, vibrant atmosphere, and top conference days.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Free Event Signup Modal -->
+    <div id="free-event-modal" class="fixed inset-0 z-50 hidden" aria-hidden="true">
+        <div class="absolute inset-0 bg-black/50" data-close></div>
+
+        <div role="dialog" aria-modal="true" aria-labelledby="free-event-modal-title"
+             class="absolute inset-0 grid place-items-center p-4">
+            <div class="w-[95vw] h-[90vh] sm:w-[900px] sm:h-[600px] rounded-2xl bg-white shadow-2xl ring-1 ring-black/5 overflow-hidden flex flex-col relative"
+                 tabindex="-1" data-panel>
+
+                <!-- Close button - top right corner -->
+                <button class="absolute top-4 right-4 z-10 grid h-10 w-10 place-items-center rounded-full bg-white/90 hover:bg-white shadow-lg border border-gray-200" data-close aria-label="Close">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 6l12 12M18 6L6 18"/>
+                    </svg>
+                </button>
+
+                <!-- Favorite button - below close button -->
+                <button id="free-ev-save" class="absolute top-16 right-4 z-10 grid h-10 w-10 place-items-center rounded-full bg-white/90 hover:bg-white shadow-lg border border-gray-200" aria-label="Save">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M11.645 20.91l-.007-.003-.022-.011a20.55 20.55 0 01-1.933-1.143 22.063 22.063 0 01-3.26-2.414C3.642 15.107 2 12.745 2 10.25 2 7.903 3.903 6 6.25 6c1.507 0 2.88.698 3.75 1.79A4.75 4.75 0 0117.75 6C20.097 6 22 7.903 22 10.25c0 2.494-1.642 4.857-4.423 6.989a22.06 22.06 0 01-3.26 2.414 20.55 20.55 0 01-1.955 1.154l-.017.008-.007.003-.005.002-.003.001a.75.75 0 01-.63 0l-.003-.001-.005-.002z"/>
+                    </svg>
+                </button>
+
+                <!-- Share button - below favorite button -->
+                <button id="free-ev-share" class="absolute top-28 right-4 z-10 grid h-10 w-10 place-items-center rounded-full bg-white/90 hover:bg-white shadow-lg border border-gray-200" aria-label="Share">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 12v7a1 1 0 001 1h14a1 1 0 001-1v-7M16 6l-4-4-4 4M12 2v14"/>
+                    </svg>
+                </button>
+
+                <!-- Modal header - fixed -->
+                <div class="p-8 border-b border-gray-100">
+                    <div class="grid grid-cols-2 gap-8">
+                        <!-- Top Left Quarter - Image -->
+                        <div class="rounded-lg p-4 flex items-center justify-center max-h-[300px]">
+                            <img id="free-ev-cover" src="/images/placeholder.jpg" alt="" class="max-h-full max-w-full rounded-lg object-contain">
+                        </div>
+
+                        <!-- Top Right Quarter - Event Details -->
+                        <div class="rounded-lg p-6 pr-20">
+                            <h2 id="free-event-modal-title" class="text-2xl sm:text-[28px] font-semibold tracking-tight text-gray-900 mb-4">
+                                Free Community Event
+                            </h2>
+
+                            <!-- Meta column -->
+                            <div class="space-y-3 text-sm text-gray-700">
+                                <div class="flex items-center gap-2">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 21s-6-5.373-6-10a6 6 0 1112 0c0 4.627-6 10-6 10z"/><circle cx="12" cy="11" r="2"/>
+                                    </svg>
+                                    <span id="free-ev-location">Community Center</span>
+                                </div>
+
+                                <div class="flex items-center gap-2">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3M3 9h18M5 9v11h14V9"/>
+                                    </svg>
+                                    <span id="free-ev-dates">December 15, 2025</span>
+                                </div>
+
+                                <div class="flex items-center gap-2 font-medium text-green-600">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                                    </svg>
+                                    <span>FREE EVENT</span>
+                                </div>
+                            </div>
+
+                            <!-- Email Signup Form -->
+                            <div class="mt-4">
+                                <form id="free-event-signup" class="space-y-3">
+                                    <div>
+                                        <label for="signup-email" class="block text-xs font-medium text-gray-700 mb-1">
+                                            Email Address
+                                        </label>
+                                        <input type="email" id="signup-email" name="email" required
+                                               class="w-full px-3 py-2 text-sm border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
+                                               placeholder="Enter your email address">
+                                    </div>
+                                    <button type="submit" 
+                                            class="w-full inline-flex items-center justify-center rounded-full border px-8 py-2 text-sm font-semibold
+                                                   border-green-500 text-green-700 hover:bg-green-50 bg-green-50">
+                                        Register for Free Event
+                                    </button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Scrollable content area -->
+                <div class="flex-1 overflow-y-auto">
+                    <div class="p-8">
+                        <!-- Description -->
+                        <div id="free-ev-desc" class="text-[15px] leading-8 text-gray-800 space-y-4 break-words overflow-wrap-anywhere">
+                            <p>Join us for this free community event featuring local artists and musicians.</p>
+                            <p>This is a great opportunity to connect with your community and enjoy some amazing performances.</p>
+                            <p>Registration is required but completely free!</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Create Event Modal -->
+    <div id="create-event-modal" class="fixed inset-0 z-50 hidden" aria-hidden="true">
+        <div class="absolute inset-0 bg-black/50" data-close></div>
+
+        <div role="dialog" aria-modal="true" aria-labelledby="create-event-modal-title"
+             class="absolute inset-0 grid place-items-center p-4">
+            <div class="w-[95vw] max-w-2xl rounded-2xl bg-white shadow-2xl ring-1 ring-black/5 overflow-hidden"
+                 tabindex="-1" data-panel>
+
+                <!-- Modal Header -->
+                <div class="relative flex items-center justify-center p-6 border-b border-gray-100">
+                    <h2 id="create-event-modal-title" class="text-2xl font-bold" style="color: #340AFF;">
+                        Create the Event
+                    </h2>
+                    <button class="absolute right-6 grid h-8 w-8 place-items-center rounded-full hover:bg-gray-100" data-close aria-label="Close">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 6l12 12M18 6L6 18"/>
+                        </svg>
+                    </button>
+                </div>
+
+                <!-- Modal Content -->
+                <div class="p-6">
+                    <form id="create-event-form" class="space-y-6">
+                        <!-- Title of Event -->
+                        <div>
+                            <label for="event-title" class="block text-sm font-medium text-gray-700 mb-2">
+                                Title of Event
+                            </label>
+                            <div class="relative">
+                                <input type="text" id="event-title" name="title" required
+                                       class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-purple-500"
+                                       placeholder="Title">
+                                <div class="absolute inset-y-0 right-0 flex items-center pr-3">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-400" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                                    </svg>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Date -->
+                        <div>
+                            <label for="event-date" class="block text-sm font-medium text-gray-700 mb-2">
+                                Date
+                            </label>
+                            <div class="relative">
+                                <input type="text" id="event-date" name="date" required
+                                       class="w-full px-4 py-3 pl-10 pr-10 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-purple-500"
+                                       placeholder="Select the Date">
+                                <div class="absolute inset-y-0 left-0 flex items-center pl-3">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-400" viewBox="0 -960 960 960" fill="#e3e3e3">
+                                        <path d="M200-80q-33 0-56.5-23.5T120-160v-560q0-33 23.5-56.5T200-800h40v-80h80v80h320v-80h80v80h40q33 0 56.5 23.5T840-720v560q0 33-23.5 56.5T760-80H200Zm0-80h560v-400H200v400Zm0-480h560v-80H200v80Zm0 0v-80 80Zm280 240q-17 0-28.5-11.5T440-440q0-17 11.5-28.5T480-480q17 0 28.5 11.5T520-440q0 17-11.5 28.5T480-400Zm-160 0q-17 0-28.5-11.5T280-440q0-17 11.5-28.5T320-480q17 0 28.5 11.5T360-440q0 17-11.5 28.5T320-400Zm320 0q-17 0-28.5-11.5T600-440q0-17 11.5-28.5T640-480q17 0 28.5 11.5T680-440q0 17-11.5 28.5T640-400ZM480-240q-17 0-28.5-11.5T440-280q0-17 11.5-28.5T480-320q17 0 28.5 11.5T520-280q0 17-11.5 28.5T480-240Zm-160 0q-17 0-28.5-11.5T280-280q0-17 11.5-28.5T320-320q17 0 28.5 11.5T360-280q0 17-11.5 28.5T320-240Zm320 0q-17 0-28.5-11.5T600-280q0-17 11.5-28.5T640-320q17 0 28.5 11.5T680-280q0 17-11.5 28.5T640-240Z"/>
+                                    </svg>
+                                </div>
+                                <div class="absolute inset-y-0 right-0 flex items-center pr-3">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-400" viewBox="0 -960 960 960" fill="#e3e3e3">
+                                        <path d="M480-344 240-584l56-56 184 184 184-184 56 56-240 240Z"/>
+                                    </svg>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Time -->
+                        <div>
+                            <label for="event-time" class="block text-sm font-medium text-gray-700 mb-2">
+                                Time
+                            </label>
+                            <div class="relative">
+                                <input type="text" id="event-time" name="time" required
+                                       class="w-full px-4 py-3 pl-10 pr-10 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-purple-500"
+                                       placeholder="Select the Time">
+                                <div class="absolute inset-y-0 left-0 flex items-center pl-3">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-400" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                                    </svg>
+                                </div>
+                                <div class="absolute inset-y-0 right-0 flex items-center pr-3">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-400" viewBox="0 -960 960 960" fill="#e3e3e3">
+                                        <path d="M480-344 240-584l56-56 184 184 184-184 56 56-240 240Z"/>
+                                    </svg>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Location -->
+                        <div>
+                            <label for="event-location" class="block text-sm font-medium text-gray-700 mb-2">
+                                Location
+                            </label>
+                            <div class="relative">
+                                <input type="text" id="event-location" name="location" required
+                                       class="w-full px-4 py-3 pl-10 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-purple-500"
+                                       placeholder="Select the Location">
+                                <div class="absolute inset-y-0 left-0 flex items-center pl-3">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-400" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 21s-6-5.373-6-10a6 6 0 1112 0c0 4.627-6 10-6 10z"/><circle cx="12" cy="11" r="2"/>
+                                    </svg>
+                                </div>
+                                <div class="absolute inset-y-0 right-0 flex items-center pr-3">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-400" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                                    </svg>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Registration Fee -->
+                        <div>
+                            <label for="event-fee" class="block text-sm font-medium text-gray-700 mb-2">
+                                Registration Fee
+                            </label>
+                            <input type="number" id="event-fee" name="fee" min="0" step="100"
+                                   class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-purple-500"
+                                   placeholder="Enter The Registration Fee">
+                        </div>
+
+                        <!-- Upload Image -->
+                        <div>
+                            <label for="event-image" class="block text-sm font-medium text-gray-700 mb-2">
+                                Upload the Image
+                            </label>
+                            <div class="relative">
+                                <input type="file" id="event-image" name="image" accept="image/*"
+                                       class="w-full px-4 py-3 pl-10 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-purple-500"
+                                       placeholder="jpg*">
+                                <div class="absolute inset-y-0 left-0 flex items-center pl-3">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-400" viewBox="0 -960 960 960" fill="#e3e3e3">
+                                        <path d="M440-320v-326L336-542l-56-58 200-200 200 200-56 58-104-104v326h-80ZM240-160q-33 0-56.5-23.5T160-240v-120h80v120h480v-120h80v120q0 33-23.5 56.5T720-160H240Z"/>
+                                    </svg>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Description -->
+                        <div>
+                            <label for="event-description" class="block text-sm font-medium text-gray-700 mb-2">
+                                Description
+                            </label>
+                            <textarea id="event-description" name="description" rows="4" required
+                                      class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-purple-500 resize-none"
+                                      placeholder="Enter the Text"></textarea>
+                        </div>
+
+                        <!-- Submit Button -->
+                        <div class="pt-4">
+                            <button type="submit" 
+                                    class="w-full inline-flex items-center justify-center rounded-lg border-2 px-6 py-3 text-base font-semibold focus:ring-2 focus:ring-offset-2"
+                                    style="border-color: #340AFF; color: #340AFF;" 
+                                    onmouseover="this.style.backgroundColor='#340AFF'; this.style.color='white';" 
+                                    onmouseout="this.style.backgroundColor='transparent'; this.style.color='#340AFF';">
+                                Send
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
 </body>
 </html>
