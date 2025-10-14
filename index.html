@@ -693,13 +693,13 @@
             width: 100%;
             touch-action: pan-y pinch-zoom;
             -webkit-overflow-scrolling: touch;
-            padding: 36px 96px;
+            padding: 0;
         }
 
         .recommended-carousel-track {
             display: flex;
             gap: 24px;
-            padding: 0 4px;
+            padding: 0 96px;
         }
 
         .recommended-event-card {
@@ -932,7 +932,11 @@
             
             /* Mobile carousel adjustments */
             .recommended-carousel-container {
-                padding: 0 8px;
+                padding: 0;
+            }
+            
+            .recommended-carousel-track {
+                padding: 0 16px;
             }
             
             /* Mobile section spacing */
