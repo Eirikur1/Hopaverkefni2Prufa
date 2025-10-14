@@ -699,7 +699,7 @@
         .recommended-carousel-track {
             display: flex;
             gap: 24px;
-            padding: 0 96px;
+            padding: 0;
         }
 
         .recommended-event-card {
@@ -722,6 +722,15 @@
 
         .recommended-event-card:hover {
             transform: translateY(-8px) scale(1.02);
+        }
+
+        /* First and last card spacing to go behind padding */
+        .recommended-carousel-track .recommended-event-card:first-child {
+            margin-left: 96px;
+        }
+
+        .recommended-carousel-track .recommended-event-card:last-child {
+            margin-right: 96px;
         }
 
         .recommended-event-image {
@@ -936,7 +945,16 @@
             }
             
             .recommended-carousel-track {
-                padding: 0 16px;
+                padding: 0;
+            }
+            
+            /* Mobile first and last card spacing */
+            .recommended-carousel-track .recommended-event-card:first-child {
+                margin-left: 16px;
+            }
+
+            .recommended-carousel-track .recommended-event-card:last-child {
+                margin-right: 16px;
             }
             
             /* Mobile section spacing */
