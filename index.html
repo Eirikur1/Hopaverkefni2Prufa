@@ -12,6 +12,10 @@
     <script src="https://unpkg.com/in-view@0.6.1/dist/in-view.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.12.2/lottie.min.js"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <!-- Flickity CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/flickity@2/dist/flickity.min.css">
+    <!-- Flickity JS -->
+    <script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js"></script>
     <style>
         @font-face {
             font-family: 'RubikMonoOne';
@@ -687,22 +691,20 @@
             fill: #1F2937;
         }
 
-        /* Recommended Events Carousel Styles */
-        .recommended-carousel-container {
+        /* Flickity Carousel Styles */
+        .carouselOfImages {
             position: relative;
             width: 100%;
-            touch-action: pan-y pinch-zoom;
-            -webkit-overflow-scrolling: touch;
-            padding: 0;
         }
 
-        .recommended-carousel-track {
-            display: flex;
-            gap: 24px;
-            padding: 0;
+        .carouselOfImages .carouselImage {
+            width: 262px;
+            height: 330px;
+            margin-right: 24px;
+            flex-shrink: 0;
         }
 
-        .recommended-event-card {
+        .carouselImage {
             display: flex;
             width: 262px;
             height: 330px;
@@ -720,16 +722,16 @@
             overflow: hidden;
         }
 
-        .recommended-event-card:hover {
+        .carouselImage:hover {
             transform: translateY(-8px) scale(1.02);
         }
 
         /* First and last card spacing to go behind padding */
-        .recommended-carousel-track .recommended-event-card:first-child {
+        .carouselOfImages .carouselImage:first-child {
             margin-left: 96px;
         }
 
-        .recommended-carousel-track .recommended-event-card:last-child {
+        .carouselOfImages .carouselImage:last-child {
             margin-right: 96px;
         }
 
@@ -940,20 +942,16 @@
             }
             
             /* Mobile carousel adjustments */
-            .recommended-carousel-container {
-                padding: 0;
-            }
-            
-            .recommended-carousel-track {
+            .carouselOfImages {
                 padding: 0;
             }
             
             /* Mobile first and last card spacing */
-            .recommended-carousel-track .recommended-event-card:first-child {
+            .carouselOfImages .carouselImage:first-child {
                 margin-left: 16px;
             }
 
-            .recommended-carousel-track .recommended-event-card:last-child {
+            .carouselOfImages .carouselImage:last-child {
                 margin-right: 16px;
             }
             
@@ -1192,11 +1190,9 @@
             
             <div class="relative">
                 <!-- Carousel Container -->
-                <div class="recommended-carousel-container overflow-hidden cursor-grab active:cursor-grabbing" id="recommendedCarouselContainer">
-                    <div class="recommended-carousel-track flex transition-transform duration-300 ease-out" id="recommendedCarousel">
-                        <!-- Recommended events will be populated here -->
-                        </div>
-                    </div>
+                <div class="carouselOfImages" id="recommendedCarousel">
+                    <!-- Recommended events will be populated here -->
+                </div>
                         </div>
                     </div>
     </section>
@@ -1228,11 +1224,9 @@
             
             <div class="relative">
                 <!-- Carousel Container -->
-                <div class="recommended-carousel-container overflow-hidden cursor-grab active:cursor-grabbing" id="mostPopularCarouselContainer">
-                    <div class="recommended-carousel-track flex transition-transform duration-300 ease-out" id="mostPopularCarousel">
-                        <!-- Most popular events will be populated here -->
-                        </div>
-                    </div>
+                <div class="carouselOfImages" id="mostPopularCarousel">
+                    <!-- Most popular events will be populated here -->
+                </div>
                         </div>
                     </div>
     </section>
@@ -1264,11 +1258,9 @@
             
             <div class="relative">
                 <!-- Carousel Container -->
-                <div class="recommended-carousel-container overflow-hidden cursor-grab active:cursor-grabbing" id="musicCarouselContainer">
-                    <div class="recommended-carousel-track flex transition-transform duration-300 ease-out" id="musicCarousel">
-                        <!-- Music events will be populated here -->
-                        </div>
-                    </div>
+                <div class="carouselOfImages" id="musicCarousel">
+                    <!-- Music events will be populated here -->
+                </div>
                         </div>
                     </div>
     </section>
@@ -1300,11 +1292,9 @@
             
             <div class="relative">
                 <!-- Carousel Container -->
-                <div class="recommended-carousel-container overflow-hidden cursor-grab active:cursor-grabbing" id="theaterCarouselContainer">
-                    <div class="recommended-carousel-track flex transition-transform duration-300 ease-out" id="theaterCarousel">
-                        <!-- Theater events will be populated here -->
-                    </div>
-                        </div>
+                <div class="carouselOfImages" id="theaterCarousel">
+                    <!-- Theater events will be populated here -->
+                </div>
                     </div>
                         </div>
     </section>
@@ -1336,11 +1326,9 @@
             
             <div class="relative">
                 <!-- Carousel Container -->
-                <div class="recommended-carousel-container overflow-hidden cursor-grab active:cursor-grabbing" id="danceCarouselContainer">
-                    <div class="recommended-carousel-track flex transition-transform duration-300 ease-out" id="danceCarousel">
-                        <!-- Dance events will be populated here -->
-                        </div>
-                    </div>
+                <div class="carouselOfImages" id="danceCarousel">
+                    <!-- Dance events will be populated here -->
+                </div>
             </div>
         </div>
     </section>
@@ -1513,6 +1501,211 @@
             }
         };
 
+        // Flickity Carousel Implementation
+        const FlickityCarouselManager = {
+            carousels: {},
+            
+            init() {
+                // Wait for events to be loaded
+                if (App.events && App.events.length > 0) {
+                    this.initializeCarousels();
+                } else {
+                    const checkEvents = setInterval(() => {
+                        if (App.events && App.events.length > 0) {
+                            this.initializeCarousels();
+                            clearInterval(checkEvents);
+                        }
+                    }, 100);
+                }
+            },
+            
+            initializeCarousels() {
+                const carouselConfigs = [
+                    { id: 'recommendedCarousel', filter: () => true, title: 'Recommended' },
+                    { id: 'mostPopularCarousel', filter: () => true, title: 'Most Popular' },
+                    { id: 'musicCarousel', filter: this.filterMusicEvents, title: 'Music' },
+                    { id: 'theaterCarousel', filter: this.filterTheaterEvents, title: 'Theater' },
+                    { id: 'danceCarousel', filter: this.filterDanceEvents, title: 'Dance' }
+                ];
+                
+                carouselConfigs.forEach(config => {
+                    this.createCarousel(config.id, config.filter, config.title);
+                });
+            },
+            
+            createCarousel(carouselId, filterFunction, title) {
+                const carouselElement = document.getElementById(carouselId);
+                if (!carouselElement) return;
+                
+                // Filter events
+                const filteredEvents = App.events.filter(filterFunction);
+                const eventsToShow = this.shuffleArray(filteredEvents).slice(0, 12);
+                
+                if (eventsToShow.length === 0) {
+                    carouselElement.innerHTML = '<p class="text-center text-gray-500 py-8">No events found for this category.</p>';
+                    return;
+                }
+                
+                // Populate carousel HTML
+                carouselElement.innerHTML = eventsToShow.map(event => {
+                    const imageUrl = event.image || 'Images/event-posters/Poster.jpg';
+                    const eventTitle = event.language?.is?.title || event.language?.en?.title || event.title || 'Untitled Event';
+                    const location = event.location || 'Location TBD';
+                    const date = event.date || 'Date TBD';
+                    
+                    return `
+                        <div class="carouselImage" data-event-id="${event.id}">
+                            <img src="${imageUrl}" alt="${eventTitle}" class="recommended-event-image" loading="lazy">
+                            <div class="recommended-event-content">
+                                <h3 class="recommended-event-title">${eventTitle}</h3>
+                                <p class="recommended-event-location">${location}</p>
+                                <p class="recommended-event-date">${date}</p>
+                            </div>
+                        </div>
+                    `;
+                }).join('');
+                
+                // Initialize Flickity
+                const $carousel = jQuery(carouselElement).flickity({
+                    accessibility: false,
+                    autoPlay: false,
+                    pauseAutoPlayOnHover: false,
+                    cellAlign: 'center',
+                    contain: false,
+                    draggable: true,
+                    friction: 0.2,
+                    initialIndex: 0,
+                    lazyLoad: false,
+                    percentPosition: true,
+                    prevNextButtons: false,
+                    pageDots: false,
+                    resize: true,
+                    rightToLeft: false,
+                    setGallerySize: true,
+                    watchCSS: false,
+                    wrapAround: true
+                });
+                
+                // Store carousel reference
+                this.carousels[carouselId] = $carousel;
+                
+                // Add click handlers
+                carouselElement.querySelectorAll('.carouselImage').forEach(card => {
+                    card.addEventListener('click', () => {
+                        const eventId = card.dataset.eventId;
+                        const event = App.events.find(e => e.id == eventId);
+                        if (event) {
+                            App.showEventDetails(event);
+                        }
+                    });
+                });
+                
+                // Apply resize function
+                this.resizeCells(carouselId);
+                
+                // Bind scroll event
+                $carousel.on('scroll.flickity', () => {
+                    this.resizeCells(carouselId);
+                });
+                
+                // Bind hover events
+                this.bindHoverEvents(carouselId);
+            },
+            
+            shuffleArray(array) {
+                const shuffled = [...array];
+                for (let i = shuffled.length - 1; i > 0; i--) {
+                    const j = Math.floor(Math.random() * (i + 1));
+                    [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+                }
+                return shuffled;
+            },
+            
+            resizeCells(carouselId) {
+                const $carousel = this.carousels[carouselId];
+                if (!$carousel) return;
+                
+                const flkty = $carousel.data('flickity');
+                const $current = flkty.selectedIndex;
+                const $length = flkty.cells.length;
+                const $imageNumLimit = 5;
+                
+                if ($length < $imageNumLimit) {
+                    $carousel.flickity('destroy');
+                }
+                
+                const carouselElement = document.getElementById(carouselId);
+                carouselElement.querySelectorAll('.carouselImage').forEach(img => {
+                    img.classList.remove("nextToSelectedLeft", "nextToSelectedRight", "nextToSelectedLeft2", "nextToSelectedRight2");
+                });
+                
+                carouselElement.querySelectorAll('.carouselImage').eq($current - 1).addClass("nextToSelectedLeft");
+                carouselElement.querySelectorAll('.carouselImage').eq($current - 2).addClass("nextToSelectedLeft2");
+                
+                let $endCell;
+                if ($current + 1 == $length) {
+                    $endCell = "0";
+                } else {
+                    $endCell = $current + 1;
+                }
+                
+                carouselElement.querySelectorAll('.carouselImage').eq($endCell).addClass("nextToSelectedRight");
+                
+                if($endCell + 1 < $imageNumLimit){
+                    carouselElement.querySelectorAll('.carouselImage').eq($endCell + 1).addClass("nextToSelectedRight2"); 
+                } else {
+                    carouselElement.querySelectorAll('.carouselImage').eq(0).addClass("nextToSelectedRight2");
+                }
+            },
+            
+            bindHoverEvents(carouselId) {
+                const carouselElement = document.getElementById(carouselId);
+                const $carousel = this.carousels[carouselId];
+                
+                carouselElement.querySelectorAll('.carouselImage').forEach(img => {
+                    img.addEventListener('mouseover', function() {
+                        if (this.className.includes('nextToSelectedLeft')) {
+                            $carousel.flickity('playLeftSlowPlayer');
+                        } else if (this.className.includes('nextToSelectedLeft2')) {
+                            $carousel.flickity('playLeftFastPlayer');
+                        } else if (this.className.includes('nextToSelectedRight')) {
+                            $carousel.flickity('playRightSlowPlayer');
+                        } else if (this.className.includes('nextToSelectedRight2')) {
+                            $carousel.flickity('playRightFastPlayer');
+                        }
+                    });
+                    
+                    img.addEventListener('mouseout', function() {
+                        $carousel.flickity('pausePlayer');
+                    });
+                });
+            },
+            
+            filterMusicEvents(event) {
+                const title = (event.language?.is?.title || event.language?.en?.title || event.title || '').toLowerCase();
+                const description = (event.language?.is?.text || event.language?.en?.text || '').toLowerCase();
+                return title.includes('tónlist') || title.includes('music') || title.includes('concert') || 
+                       title.includes('festival') || title.includes('band') || title.includes('söngur') ||
+                       description.includes('tónlist') || description.includes('music') || description.includes('concert');
+            },
+            
+            filterTheaterEvents(event) {
+                const title = (event.language?.is?.title || event.language?.en?.title || event.title || '').toLowerCase();
+                const description = (event.language?.is?.text || event.language?.en?.text || '').toLowerCase();
+                return title.includes('sviðslist') || title.includes('theater') || title.includes('leikur') || 
+                       title.includes('drama') || title.includes('leikhús') || title.includes('sýning') ||
+                       description.includes('sviðslist') || description.includes('theater') || description.includes('leikur');
+            },
+            
+            filterDanceEvents(event) {
+                const title = (event.language?.is?.title || event.language?.en?.title || event.title || '').toLowerCase();
+                const description = (event.language?.is?.text || event.language?.en?.text || '').toLowerCase();
+                return title.includes('dans') || title.includes('dance') || title.includes('ballett') || 
+                       title.includes('ballet') || title.includes('dansleikur') || title.includes('dansflokkur') ||
+                       description.includes('dans') || description.includes('dance') || description.includes('ballett');
+            }
+        };
+
         // Data Management
         const DataManager = {
             async loadEvents() {
@@ -1538,12 +1731,8 @@
             },
 
             initializeCarousels() {
-                // Initialize all carousel managers after events are loaded
-                if (window.RecommendedCarouselManager) RecommendedCarouselManager.init();
-                if (window.MostPopularCarouselManager) MostPopularCarouselManager.init();
-                if (window.MusicCarouselManager) MusicCarouselManager.init();
-                if (window.TheaterCarouselManager) TheaterCarouselManager.init();
-                if (window.DanceCarouselManager) DanceCarouselManager.init();
+                // Initialize Flickity carousels after events are loaded
+                FlickityCarouselManager.init();
             },
 
         };
@@ -2315,7 +2504,7 @@
                 initLottieLogo();
             }, 100);
             
-            CarouselManager.init();
+            // CarouselManager.init(); // Replaced with FlickityCarouselManager
             MobileMenuManager.init();
         };
 
