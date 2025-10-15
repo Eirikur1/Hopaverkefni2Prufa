@@ -40,6 +40,516 @@
             font-weight: 800;
             font-style: normal;
         }
+
+        /* Event Details Modal Styles */
+        .event-details-modal-content {
+            display: inline-flex;
+            height: 576px;
+            padding: 42px;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+            border-radius: 10px;
+            background: #FFF;
+            max-width: 90vw;
+            width: 600px;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .event-details-header {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            right: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 10;
+        }
+
+        .event-details-title {
+            font-size: 24px;
+            font-weight: 700;
+            color: #340824;
+            margin: 0;
+        }
+
+        .event-details-close-btn {
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 8px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background-color 0.2s ease;
+            color: #6b7280;
+        }
+
+        .event-details-close-btn:hover {
+            background-color: rgba(0, 0, 0, 0.1);
+            color: #374151;
+        }
+
+        .event-details-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+            width: 100%;
+            height: 100%;
+            justify-content: center;
+        }
+
+        .event-details-image-container {
+            width: 250px;
+            height: 180px;
+            flex-shrink: 0;
+            border-radius: 8px 8px 0 0;
+            overflow: hidden;
+            padding: 42px;
+            box-sizing: border-box;
+        }
+
+        .event-details-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+            background: lightgray 50% / cover no-repeat;
+        }
+
+        .event-details-image:hover {
+            transform: scale(1.05);
+        }
+
+        .event-details-info {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 16px;
+            text-align: left;
+            width: 100%;
+        }
+
+        .event-details-header {
+            display: flex;
+            align-items: flex-start;
+            justify-content: flex-start;
+            width: 100%;
+            position: relative;
+        }
+
+        .event-details-close-x {
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-left: auto;
+            flex-shrink: 0;
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .close-x-icon {
+            width: 19px;
+            height: 19px;
+            transition: opacity 0.3s ease;
+            display: block;
+            opacity: 1;
+        }
+
+        .event-details-close-x:hover .close-x-icon {
+            opacity: 0.7;
+        }
+
+        .free-event-form {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 8px;
+        }
+
+        .free-event-email-container {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 8px;
+            width: 100%;
+        }
+
+        .free-event-register-btn {
+            display: flex;
+            width: 290px;
+            height: 40px;
+            padding: 12px 100px;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+            flex-shrink: 0;
+            border-radius: 25px;
+            border: 1px solid #340AFF;
+            background: #FFF;
+            color: #340AFF;
+            font-family: Inter;
+            font-size: 14px;
+            font-style: normal;
+            font-weight: 600;
+            line-height: normal;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+
+        .free-event-register-btn:hover {
+            background: rgba(52, 10, 255, 0.05);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px -5px rgba(52, 10, 255, 0.3);
+        }
+
+        .event-details-name {
+            color: #333 !important;
+            font-family: Inter !important;
+            font-size: 18px !important;
+            font-style: normal !important;
+            font-weight: 400 !important;
+            line-height: normal !important;
+            margin: 0;
+            margin-left: 22px;
+            text-align: left !important;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            max-height: calc(1.2em * 2);
+        }
+
+        .event-details-meta {
+            display: flex;
+            width: 500px;
+            justify-content: center;
+            align-items: flex-start;
+            gap: 20px;
+            flex-shrink: 0;
+            align-self: stretch;
+        }
+
+        .event-details-meta-info {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            width: 100%;
+            align-items: flex-start;
+            margin-top: 30px;
+        }
+
+        .event-details-location,
+        .event-details-date {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            color: #000;
+            text-align: center;
+            font-family: Inter;
+            font-size: 11px;
+            font-style: normal;
+            font-weight: 400;
+            line-height: normal;
+            flex: 1;
+        }
+
+        .event-details-price-line {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+            height: 19px;
+            padding-right: 0;
+        }
+
+        .event-details-price {
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            gap: 6px;
+            width: 90px;
+            height: 16px;
+            color: #333;
+            text-align: left;
+            font-family: Inter;
+            font-size: 11px;
+            font-style: normal;
+            font-weight: 700;
+            line-height: normal;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .event-details-share-icon {
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            margin-right: 0;
+        }
+
+        .event-details-heart-icon {
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            margin-right: 0;
+        }
+
+        .event-details-actions-column {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 12px;
+            z-index: 10;
+        }
+
+        .share-icon {
+            width: 14px;
+            height: 16px;
+            aspect-ratio: 7/8;
+            cursor: pointer;
+            transition: opacity 0.3s ease;
+            display: block;
+            opacity: 1;
+        }
+
+        .share-icon:hover {
+            opacity: 0.7;
+        }
+
+        .heart-icon {
+            width: 17px;
+            height: 16px;
+            aspect-ratio: 17/16;
+            cursor: pointer;
+            transition: opacity 0.3s ease;
+            display: block;
+            opacity: 1;
+        }
+
+        .heart-icon:hover {
+            opacity: 0.7;
+        }
+
+        .event-details-icon {
+            width: 16px;
+            height: 16px;
+            color: #9ca3af;
+        }
+
+        .event-details-description {
+            height: 180px;
+            align-self: stretch;
+            max-width: 100%;
+            text-align: center;
+        }
+
+        .event-details-description p {
+            font-family: Inter;
+            font-size: 13px;
+            font-style: normal;
+            font-weight: 400;
+            line-height: normal;
+            color: #333;
+            margin: 0;
+        }
+
+        .event-details-actions {
+            display: flex;
+            gap: 12px;
+            margin-top: 30px;
+            align-items: flex-start;
+            justify-content: flex-start;
+        }
+
+        .event-details-ticket-btn {
+            display: flex;
+            width: 290px;
+            height: 40px;
+            padding: 12px 100px;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+            flex-shrink: 0;
+            border-radius: 25px;
+            border: 1px solid #340AFF;
+            background: #FFF;
+            color: #340AFF;
+            font-family: Inter;
+            font-size: 14px;
+            font-style: normal;
+            font-weight: 600;
+            line-height: normal;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            order: -1;
+            text-decoration: none;
+        }
+
+        .event-details-ticket-btn:hover {
+            background: rgba(52, 10, 255, 0.05);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px -5px rgba(52, 10, 255, 0.3);
+        }
+
+        .event-details-favorite-btn,
+        .event-details-share-btn {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 24px;
+            border: 2px solid #340aff;
+            background: transparent;
+            color: #340aff;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 14px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .event-details-favorite-btn:hover,
+        .event-details-share-btn:hover {
+            background: #340aff;
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px -5px rgba(52, 10, 255, 0.3);
+        }
+
+        .event-details-favorite-btn svg,
+        .event-details-share-btn svg {
+            width: 14px;
+            height: 16px;
+            aspect-ratio: 7/8;
+        }
+
+        /* Responsive adjustments for event details modal */
+        @media (max-width: 768px) {
+            .event-details-modal-content {
+                width: 95vw;
+                height: auto;
+                min-height: 500px;
+                padding: 24px;
+            }
+
+            .event-details-image-container {
+                width: 100%;
+                max-width: 290px;
+                height: 180px;
+            }
+
+            .event-details-name {
+                font-size: 16px !important;
+                max-height: calc(1.2em * 2);
+            }
+
+            .event-details-meta {
+                width: 100%;
+                gap: 16px;
+                flex-direction: column;
+            }
+
+            .event-details-location,
+            .event-details-date,
+            .event-details-price {
+                flex: none;
+                width: 100%;
+            }
+
+            .event-details-description {
+                height: auto;
+                min-height: 220px;
+            }
+
+            .event-details-description p {
+                font-family: Inter;
+                font-style: normal;
+                font-weight: 400;
+                line-height: normal;
+                color: #333;
+            }
+
+            .event-details-actions {
+                flex-direction: column;
+                width: 100%;
+            }
+
+            .event-details-ticket-btn,
+            .event-details-favorite-btn,
+            .event-details-share-btn {
+                width: 100%;
+                justify-content: center;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .event-details-modal-content {
+                padding: 20px;
+            }
+
+            .event-details-image-container {
+                width: 100%;
+                max-width: 290px;
+                height: 160px;
+            }
+
+            .event-details-name {
+                font-size: 14px !important;
+                max-height: calc(1.2em * 2);
+            }
+
+            .event-details-location,
+            .event-details-date {
+                font-size: 10px;
+            }
+
+            .event-details-meta {
+                width: 100%;
+                gap: 12px;
+                flex-direction: column;
+            }
+
+            .event-details-location,
+            .event-details-date,
+            .event-details-price {
+                flex: none;
+                width: 100%;
+            }
+
+            .event-details-description {
+                height: auto;
+                min-height: 200px;
+            }
+
+            .event-details-description p {
+                font-size: 14px;
+                font-family: Inter;
+                font-style: normal;
+                font-weight: 400;
+                line-height: normal;
+                color: #333;
+            }
+        }
     </style>
     <script>
         tailwind.config = {
@@ -1331,7 +1841,22 @@
 
 
     <!-- Footer -->
-    <footer class="relative overflow-hidden" id="contact" role="contentinfo" style="display: flex; padding: 36px 99px; flex-direction: column; justify-content: center; align-items: flex-start; gap: 10px; align-self: stretch; border-top: 1px solid #1E40AF; background: #FFF;">
+    <footer
+      class="relative overflow-hidden"
+      id="contact"
+      role="contentinfo"
+      style="
+        display: flex;
+        padding: 36px 99px;
+        flex-direction: column;
+        justify-content: center;
+        align-items: flex-start;
+        gap: 10px;
+        align-self: stretch;
+        border-top: 1px solid #1e40af;
+        background: #fff;
+      "
+    >
         <div class="flex justify-between items-start w-full relative z-10" style="padding: 0;">
             <div>
                 <h3 class="tit-no-underline mb-4 md:mb-5 font-bold" style="align-self: stretch; color: #333; font-family: Inter, sans-serif; font-size: 20px; font-style: normal; font-weight: 700; line-height: normal;">Contact</h3>
@@ -1358,11 +1883,50 @@
                     </div>
                 </address>
             </div>
-            <div>
-                <h3 class="tit-no-underline mb-4 md:mb-5 font-bold" style="align-self: stretch; color: #333; font-family: Inter, sans-serif; font-size: 20px; font-style: normal; font-weight: 700; line-height: normal;">About</h3>
-                <p class="mb-2" style="align-self: stretch; color: #333; font-family: Inter, sans-serif; font-size: 16px; font-style: normal; font-weight: 400; line-height: normal;">Venuu connects people through Iceland's vibrant cultural events.</p>
-                <p class="mb-2" style="align-self: stretch; color: #333; font-family: Inter, sans-serif; font-size: 16px; font-style: normal; font-weight: 400; line-height: normal;">2025 Venuu. All rights reserved.</p>
-            </div>
+        <div>
+          <h3
+            class="tit-no-underline mb-4 md:mb-5 font-bold"
+            style="
+              align-self: stretch;
+              color: #333;
+              font-family: Inter, sans-serif;
+              font-size: 20px;
+              font-style: normal;
+              font-weight: 700;
+              line-height: normal;
+            "
+          >
+            About
+          </h3>
+          <p
+            class="mb-2"
+            style="
+              align-self: stretch;
+              color: #333;
+              font-family: Inter, sans-serif;
+              font-size: 16px;
+              font-style: normal;
+              font-weight: 400;
+              line-height: normal;
+            "
+          >
+            Venuu connects people through Iceland's vibrant cultural events.
+          </p>
+          <p
+            class="mb-2"
+            style="
+              align-self: stretch;
+              color: #333;
+              font-family: Inter, sans-serif;
+              font-size: 16px;
+              font-style: normal;
+              font-weight: 400;
+              line-height: normal;
+            "
+          >
+            2025 Venuu. All rights reserved.
+          </p>
+        </div>
         </div>
     </footer>
 
@@ -2644,16 +3208,7 @@
                 desc.appendChild(p);
             });
 
-            // Bind actions
-            document.getElementById("ev-share").onclick = async () => {
-                const shareData = { title: ev.title, text: ev.shareText || ev.title, url: ev.shareUrl || ev.ticketUrl || location.href };
-                if (navigator.share) { try { await navigator.share(shareData); } catch {} }
-                else { navigator.clipboard.writeText(shareData.url).catch(()=>{}); }
-            };
-            document.getElementById("ev-save").onclick = () => {
-                // Hook up to your save [favorite] logic
-                // example: saveEvent(ev.id)
-            };
+            // Bind actions (share and save buttons removed)
 
             // Open
             console.log('About to show modal, current classes:', modalEl.className);
@@ -2722,16 +3277,7 @@
                 desc.appendChild(p);
             });
 
-            // Bind actions
-            document.getElementById("free-ev-share").onclick = async () => {
-                const shareData = { title: ev.title, text: ev.shareText || ev.title, url: ev.shareUrl || ev.ticketUrl || location.href };
-                if (navigator.share) { try { await navigator.share(shareData); } catch {} }
-                else { navigator.clipboard.writeText(shareData.url).catch(()=>{}); }
-            };
-            document.getElementById("free-ev-save").onclick = () => {
-                // Hook up to your save [favorite] logic
-                // example: saveEvent(ev.id)
-            };
+            // Bind actions (share and save buttons removed)
 
             // Handle signup form submission
             const signupForm = document.getElementById("free-event-signup");
@@ -2990,76 +3536,78 @@
 
         <div role="dialog" aria-modal="true" aria-labelledby="event-modal-title"
              class="absolute inset-0 grid place-items-center p-4">
-            <div class="w-[95vw] h-[90vh] sm:w-[900px] sm:h-[600px] rounded-2xl bg-white shadow-2xl ring-1 ring-black/5 overflow-hidden flex flex-col relative"
+            <div class="event-details-modal-content"
                  tabindex="-1" data-panel>
 
-                <!-- Close button - top right corner -->
-                <button class="absolute top-4 right-4 z-10 grid h-10 w-10 place-items-center rounded-full bg-white/90 hover:bg-white shadow-lg border border-gray-200" data-close aria-label="Close">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 6l12 12M18 6L6 18"/>
-                    </svg>
-                </button>
-
-                <!-- Favorite button - below close button -->
-                <button id="ev-save" class="absolute top-16 right-4 z-10 grid h-10 w-10 place-items-center rounded-full bg-white/90 hover:bg-white shadow-lg border border-gray-200" aria-label="Save">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 24 24" fill="currentColor">
-                        <path d="M11.645 20.91l-.007-.003-.022-.011a20.55 20.55 0 01-1.933-1.143 22.063 22.063 0 01-3.26-2.414C3.642 15.107 2 12.745 2 10.25 2 7.903 3.903 6 6.25 6c1.507 0 2.88.698 3.75 1.79A4.75 4.75 0 0117.75 6C20.097 6 22 7.903 22 10.25c0 2.494-1.642 4.857-4.423 6.989a22.06 22.06 0 01-3.26 2.414 20.55 20.55 0 01-1.955 1.154l-.017.008-.007.003-.005.002-.003.001a.75.75 0 01-.63 0l-.003-.001-.005-.002z"/>
-                    </svg>
-                </button>
-
-                <!-- Share button - below favorite button -->
-                <button id="ev-share" class="absolute top-28 right-4 z-10 grid h-10 w-10 place-items-center rounded-full bg-white/90 hover:bg-white shadow-lg border border-gray-200" aria-label="Share">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 12v7a1 1 0 001 1h14a1 1 0 001-1v-7M16 6l-4-4-4 4M12 2v14"/>
-                    </svg>
-                </button>
 
                 <!-- Modal header - fixed -->
-                <div class="p-8 border-b border-gray-100">
-                    <div class="grid grid-cols-2 gap-8">
-                        <!-- Top Left Quarter - Image -->
-                        <div class="rounded-lg p-4 flex items-center justify-center max-h-[300px]">
-                            <img id="ev-cover" src="/images/placeholder.jpg" alt="" class="max-h-full max-w-full rounded-lg object-contain">
+                <div class="border-b border-gray-100 p-6">
+                    <div class="event-details-meta">
+                        <!-- Image -->
+                        <div class="event-details-image-container">
+                            <img id="ev-cover" src="/images/placeholder.jpg" alt="" class="event-details-image">
                         </div>
 
-                        <!-- Top Right Quarter - Event Details -->
-                        <div class="rounded-lg p-6 pr-20">
-                            <h2 id="event-modal-title" class="text-2xl sm:text-[28px] font-semibold tracking-tight text-gray-900 mb-6">
-                                Iceland Airwaves
-                            </h2>
+                        <!-- Event Details -->
+                        <div class="event-details-info">
+                            <div class="event-details-header">
+                                <h2 id="event-modal-title" class="event-details-name">
+                                    Iceland Airwaves
+                                </h2>
+                            </div>
+
+                            <!-- Actions Column -->
+                            <div class="event-details-actions-column">
+                                <button class="event-details-close-x" data-close aria-label="Close">
+                                    <img src="icons/x.svg" alt="Close" class="close-x-icon" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="close-x-icon" style="display:none;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M6 6l12 12M18 6L6 18"/>
+                                    </svg>
+                                </button>
+                                <div class="event-details-heart-icon">
+                                    <img src="icons/Heart.svg" alt="Heart" class="heart-icon" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="heart-icon" style="display:none;" viewBox="0 0 17 16" fill="none">
+                                        <path d="M8.5 16L7.2675 14.8665C5.83667 13.5441 4.65375 12.4033 3.71875 11.4441C2.78375 10.485 2.04 9.62398 1.4875 8.86104C0.935 8.09809 0.548958 7.39691 0.329375 6.75749C0.109792 6.11807 0 5.46412 0 4.79564C0 3.42961 0.44625 2.28883 1.33875 1.3733C2.23125 0.457766 3.34333 0 4.675 0C5.41167 0 6.11292 0.159855 6.77875 0.479564C7.44458 0.799273 8.01833 1.24977 8.5 1.83106C8.98167 1.24977 9.55542 0.799273 10.2213 0.479564C10.8871 0.159855 11.5883 0 12.325 0C13.6567 0 14.7688 0.457766 15.6613 1.3733C16.5538 2.28883 17 3.42961 17 4.79564C17 5.46412 16.8902 6.11807 16.6706 6.75749C16.451 7.39691 16.065 8.09809 15.5125 8.86104C14.96 9.62398 14.2163 10.485 13.2813 11.4441C12.3463 12.4033 11.1633 13.5441 9.7325 14.8665L8.5 16ZM8.5 13.6458C9.86 12.396 10.9792 11.3243 11.8575 10.4305C12.7358 9.53679 13.43 8.75931 13.94 8.09809C14.45 7.43688 14.8042 6.84832 15.0025 6.33243C15.2008 5.81653 15.3 5.30427 15.3 4.79564C15.3 3.92371 15.0167 3.19709 14.45 2.6158C13.8833 2.03451 13.175 1.74387 12.325 1.74387C11.6592 1.74387 11.0429 1.93642 10.4763 2.32153C9.90958 2.70663 9.52 3.19709 9.3075 3.79292H7.6925C7.48 3.19709 7.09042 2.70663 6.52375 2.32153C5.95708 1.93642 5.34083 1.74387 4.675 1.74387C3.825 1.74387 3.11667 2.03451 2.55 2.6158C1.98333 3.19709 1.7 3.92371 1.7 4.79564C1.7 5.30427 1.79917 5.81653 1.9975 6.33243C2.19583 6.84832 2.55 7.43688 3.06 8.09809C3.57 8.75931 4.26417 9.53679 5.1425 10.4305C6.02083 11.3243 7.14 12.396 8.5 13.6458Z" fill="#333333"/>
+                                    </svg>
+                                </div>
+                                <div class="event-details-share-icon">
+                                    <img src="Images/svg-icons/shareicon.svg" alt="Share" class="share-icon" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="share-icon" style="display:none;" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 12v7a1 1 0 001 1h14a1 1 0 001-1v-7M16 6l-4-4-4 4M12 2v14"/>
+                                    </svg>
+                                </div>
+                            </div>
 
                             <!-- Meta row -->
-                            <div class="space-y-3 text-sm text-gray-700">
-                                <div class="inline-flex items-center gap-2">
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                            <div class="event-details-meta-info">
+                                <div class="event-details-location">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="event-details-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 21s-6-5.373-6-10a6 6 0 1112 0c0 4.627-6 10-6 10z"/><circle cx="12" cy="11" r="2"/>
                                     </svg>
                                     <span id="ev-location">Downtown Reykjavík</span>
                                 </div>
 
-                                <div class="inline-flex items-center gap-2">
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3M3 9h18M5 9v11h14V9"/>
-                                    </svg>
-                                    <span id="ev-dates">November 6 [to] 8, 2025</span>
+                                <div class="event-details-date">
+                                    <img src="icons/calendar_month_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.svg" alt="Calendar" class="event-details-icon">
+                                    <span id="ev-dates">November 6 - 8, 2025</span>
                                 </div>
 
-                                <div class="inline-flex items-center gap-2 font-medium text-gray-900">
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 7h6l7 7-6 6-7-7V7z"/><circle cx="7.5" cy="7.5" r="1.5"/>
-                                    </svg>
-                                    <span>Price:</span>
-                                    <span id="ev-price">12.400 kr</span>
+                                <div class="event-details-price-line">
+                                    <div class="event-details-price">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="event-details-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 7h6l7 7-6 6-7-7V7z"/><circle cx="7.5" cy="7.5" r="1.5"/>
+                                        </svg>
+                                        <span>Price: <span id="ev-price">12.400 kr</span></span>
+                                    </div>
                                 </div>
                             </div>
 
                             <!-- CTA -->
-                            <div class="mt-6">
+                            <div class="event-details-actions">
                                 <a id="ev-cta"
                                    href="#"
                                    target="_blank" rel="noopener"
-                                   class="inline-flex items-center justify-center rounded-full border px-12 py-4 text-base font-semibold
-                                          border-indigo-500 text-indigo-700 hover:bg-indigo-50">
+                                   class="event-details-ticket-btn">
                                     Go to TIX
                                 </a>
                             </div>
@@ -3069,7 +3617,7 @@
 
                 <!-- Scrollable content area -->
                 <div class="flex-1 overflow-y-auto">
-                    <div class="p-8">
+                    <div class="p-6">
                         <!-- Description -->
                         <div id="ev-desc" class="text-[15px] leading-8 text-gray-800 space-y-4 break-words overflow-wrap-anywhere">
                             <p>Three days, countless bands [local and international], and a music industry conference.</p>
@@ -3088,72 +3636,76 @@
 
         <div role="dialog" aria-modal="true" aria-labelledby="free-event-modal-title"
              class="absolute inset-0 grid place-items-center p-4">
-            <div class="w-[95vw] h-[90vh] sm:w-[900px] sm:h-[600px] rounded-2xl bg-white shadow-2xl ring-1 ring-black/5 overflow-hidden flex flex-col relative"
+            <div class="event-details-modal-content"
                  tabindex="-1" data-panel>
 
-                <!-- Close button - top right corner -->
-                <button class="absolute top-4 right-4 z-10 grid h-10 w-10 place-items-center rounded-full bg-white/90 hover:bg-white shadow-lg border border-gray-200" data-close aria-label="Close">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 6l12 12M18 6L6 18"/>
-                    </svg>
-                </button>
-
-                <!-- Favorite button - below close button -->
-                <button id="free-ev-save" class="absolute top-16 right-4 z-10 grid h-10 w-10 place-items-center rounded-full bg-white/90 hover:bg-white shadow-lg border border-gray-200" aria-label="Save">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 24 24" fill="currentColor">
-                        <path d="M11.645 20.91l-.007-.003-.022-.011a20.55 20.55 0 01-1.933-1.143 22.063 22.063 0 01-3.26-2.414C3.642 15.107 2 12.745 2 10.25 2 7.903 3.903 6 6.25 6c1.507 0 2.88.698 3.75 1.79A4.75 4.75 0 0117.75 6C20.097 6 22 7.903 22 10.25c0 2.494-1.642 4.857-4.423 6.989a22.06 22.06 0 01-3.26 2.414 20.55 20.55 0 01-1.955 1.154l-.017.008-.007.003-.005.002-.003.001a.75.75 0 01-.63 0l-.003-.001-.005-.002z"/>
-                    </svg>
-                </button>
-
-                <!-- Share button - below favorite button -->
-                <button id="free-ev-share" class="absolute top-28 right-4 z-10 grid h-10 w-10 place-items-center rounded-full bg-white/90 hover:bg-white shadow-lg border border-gray-200" aria-label="Share">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 12v7a1 1 0 001 1h14a1 1 0 001-1v-7M16 6l-4-4-4 4M12 2v14"/>
-                    </svg>
-                </button>
 
                 <!-- Modal header - fixed -->
-                <div class="p-8 border-b border-gray-100">
-                    <div class="grid grid-cols-2 gap-8">
-                        <!-- Top Left Quarter - Image -->
-                        <div class="rounded-lg p-4 flex items-center justify-center max-h-[300px]">
-                            <img id="free-ev-cover" src="/images/placeholder.jpg" alt="" class="max-h-full max-w-full rounded-lg object-contain">
+                <div class="border-b border-gray-100 p-6">
+                    <div class="event-details-meta">
+                        <!-- Image -->
+                        <div class="event-details-image-container">
+                            <img id="free-ev-cover" src="/images/placeholder.jpg" alt="" class="event-details-image">
                         </div>
 
-                        <!-- Top Right Quarter - Event Details -->
-                        <div class="rounded-lg p-6 pr-20">
-                            <h2 id="free-event-modal-title" class="text-2xl sm:text-[28px] font-semibold tracking-tight text-gray-900 mb-4">
-                                Free Community Event
-                            </h2>
+                        <!-- Event Details -->
+                        <div class="event-details-info">
+                            <div class="event-details-header">
+                                <h2 id="free-event-modal-title" class="event-details-name">
+                                    Free Community Event
+                                </h2>
+                            </div>
 
-                            <!-- Meta column -->
-                            <div class="space-y-3 text-sm text-gray-700">
-                                <div class="flex items-center gap-2">
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                            <!-- Actions Column -->
+                            <div class="event-details-actions-column">
+                                <button class="event-details-close-x" data-close aria-label="Close">
+                                    <img src="icons/x.svg" alt="Close" class="close-x-icon" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="close-x-icon" style="display:none;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M6 6l12 12M18 6L6 18"/>
+                                    </svg>
+                                </button>
+                                <div class="event-details-heart-icon">
+                                    <img src="icons/Heart.svg" alt="Heart" class="heart-icon" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="heart-icon" style="display:none;" viewBox="0 0 17 16" fill="none">
+                                        <path d="M8.5 16L7.2675 14.8665C5.83667 13.5441 4.65375 12.4033 3.71875 11.4441C2.78375 10.485 2.04 9.62398 1.4875 8.86104C0.935 8.09809 0.548958 7.39691 0.329375 6.75749C0.109792 6.11807 0 5.46412 0 4.79564C0 3.42961 0.44625 2.28883 1.33875 1.3733C2.23125 0.457766 3.34333 0 4.675 0C5.41167 0 6.11292 0.159855 6.77875 0.479564C7.44458 0.799273 8.01833 1.24977 8.5 1.83106C8.98167 1.24977 9.55542 0.799273 10.2213 0.479564C10.8871 0.159855 11.5883 0 12.325 0C13.6567 0 14.7688 0.457766 15.6613 1.3733C16.5538 2.28883 17 3.42961 17 4.79564C17 5.46412 16.8902 6.11807 16.6706 6.75749C16.451 7.39691 16.065 8.09809 15.5125 8.86104C14.96 9.62398 14.2163 10.485 13.2813 11.4441C12.3463 12.4033 11.1633 13.5441 9.7325 14.8665L8.5 16ZM8.5 13.6458C9.86 12.396 10.9792 11.3243 11.8575 10.4305C12.7358 9.53679 13.43 8.75931 13.94 8.09809C14.45 7.43688 14.8042 6.84832 15.0025 6.33243C15.2008 5.81653 15.3 5.30427 15.3 4.79564C15.3 3.92371 15.0167 3.19709 14.45 2.6158C13.8833 2.03451 13.175 1.74387 12.325 1.74387C11.6592 1.74387 11.0429 1.93642 10.4763 2.32153C9.90958 2.70663 9.52 3.19709 9.3075 3.79292H7.6925C7.48 3.19709 7.09042 2.70663 6.52375 2.32153C5.95708 1.93642 5.34083 1.74387 4.675 1.74387C3.825 1.74387 3.11667 2.03451 2.55 2.6158C1.98333 3.19709 1.7 3.92371 1.7 4.79564C1.7 5.30427 1.79917 5.81653 1.9975 6.33243C2.19583 6.84832 2.55 7.43688 3.06 8.09809C3.57 8.75931 4.26417 9.53679 5.1425 10.4305C6.02083 11.3243 7.14 12.396 8.5 13.6458Z" fill="#333333"/>
+                                    </svg>
+                                </div>
+                                <div class="event-details-share-icon">
+                                    <img src="Images/svg-icons/shareicon.svg" alt="Share" class="share-icon" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="share-icon" style="display:none;" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 12v7a1 1 0 001 1h14a1 1 0 001-1v-7M16 6l-4-4-4 4M12 2v14"/>
+                                    </svg>
+                                </div>
+                            </div>
+
+                            <!-- Meta row -->
+                            <div class="event-details-meta-info">
+                                <div class="event-details-location">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="event-details-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 21s-6-5.373-6-10a6 6 0 1112 0c0 4.627-6 10-6 10z"/><circle cx="12" cy="11" r="2"/>
                                     </svg>
                                     <span id="free-ev-location">Community Center</span>
                                 </div>
 
-                                <div class="flex items-center gap-2">
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3M3 9h18M5 9v11h14V9"/>
-                                    </svg>
+                                <div class="event-details-date">
+                                    <img src="icons/calendar_month_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.svg" alt="Calendar" class="event-details-icon">
                                     <span id="free-ev-dates">December 15, 2025</span>
                                 </div>
 
-                                <div class="flex items-center gap-2 font-medium text-green-600">
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
-                                    </svg>
-                                    <span>FREE EVENT</span>
+                                <div class="event-details-price-line">
+                                    <div class="event-details-price">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="event-details-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                                        </svg>
+                                        <span>FREE EVENT</span>
+                                    </div>
                                 </div>
                             </div>
 
                             <!-- Email Signup Form -->
-                            <div class="mt-4">
-                                <form id="free-event-signup" class="space-y-3">
-                                    <div>
+                            <div class="event-details-actions">
+                                <form id="free-event-signup" class="free-event-form">
+                                    <div class="free-event-email-container">
                                         <label for="signup-email" class="block text-xs font-medium text-gray-700 mb-1">
                                             Email Address
                                         </label>
@@ -3161,10 +3713,8 @@
                                                class="w-full px-3 py-2 text-sm border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
                                                placeholder="Enter your email address">
                                     </div>
-                                    <button type="submit" 
-                                            class="w-full inline-flex items-center justify-center rounded-full border px-8 py-2 text-sm font-semibold
-                                                   border-green-500 text-green-700 hover:bg-green-50 bg-green-50">
-                                        Register for Free Event
+                                    <button type="submit" class="free-event-register-btn">
+                                        Register
                                     </button>
                                 </form>
                             </div>
@@ -3174,9 +3724,9 @@
 
                 <!-- Scrollable content area -->
                 <div class="flex-1 overflow-y-auto">
-                    <div class="p-8">
+                    <div class="p-6">
                         <!-- Description -->
-                        <div id="free-ev-desc" class="text-[15px] leading-8 text-gray-800 space-y-4 break-words overflow-wrap-anywhere">
+                        <div id="free-ev-desc" class="event-details-description">
                             <p>Join us for this free community event featuring local artists and musicians.</p>
                             <p>This is a great opportunity to connect with your community and enjoy some amazing performances.</p>
                             <p>Registration is required but completely free!</p>
@@ -3194,14 +3744,15 @@
         <div role="dialog" aria-modal="true" aria-labelledby="create-event-modal-title"
              class="absolute inset-0 grid place-items-center p-4">
             <div class="w-[95vw] max-w-2xl rounded-2xl bg-white shadow-2xl ring-1 ring-black/5 overflow-hidden"
-                 tabindex="-1" data-panel>
+                 tabindex="-1" data-panel
+                 style="display: flex; flex-direction: column; height: 763px; padding: 42px;">
 
                 <!-- Modal Header -->
-                <div class="relative flex items-center justify-center p-6 border-b border-gray-100">
-                    <h2 id="create-event-modal-title" class="text-2xl font-bold" style="color: #340AFF;">
+                <div class="relative flex items-center justify-center p-4 border-b border-gray-100">
+                    <h2 id="create-event-modal-title" class="text-xl font-bold" style="color: #340AFF;">
                         Create the Event
                     </h2>
-                    <button class="absolute right-6 grid h-8 w-8 place-items-center rounded-full hover:bg-gray-100" data-close aria-label="Close">
+                    <button class="absolute right-4 grid h-8 w-8 place-items-center rounded-full hover:bg-gray-100" data-close aria-label="Close">
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 6l12 12M18 6L6 18"/>
                         </svg>
@@ -3209,19 +3760,19 @@
                 </div>
 
                 <!-- Modal Content -->
-                <div class="p-6">
-                    <form id="create-event-form" class="space-y-6">
+                <div class="flex-1 overflow-y-auto p-4">
+                    <form id="create-event-form" class="space-y-4">
                         <!-- Title of Event -->
                         <div>
-                            <label for="event-title" class="block text-sm font-medium text-gray-700 mb-2">
+                            <label for="event-title" class="block text-sm font-medium text-gray-700 mb-1">
                                 Title of Event
                             </label>
                             <div class="relative">
                                 <input type="text" id="event-title" name="title" required
-                                       class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-purple-500"
+                                       class="w-full px-3 py-2 text-sm border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-purple-500"
                                        placeholder="Title">
-                                <div class="absolute inset-y-0 right-0 flex items-center pr-3">
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-400" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                <div class="absolute inset-y-0 right-0 flex items-center pr-2">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-gray-400" viewBox="0 0 24 24" fill="none" stroke="currentColor">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
                                     </svg>
                                 </div>
@@ -3230,20 +3781,20 @@
 
                         <!-- Date -->
                         <div>
-                            <label for="event-date" class="block text-sm font-medium text-gray-700 mb-2">
+                            <label for="event-date" class="block text-sm font-medium text-gray-700 mb-1">
                                 Date
                             </label>
                             <div class="relative">
                                 <input type="text" id="event-date" name="date" required
-                                       class="w-full px-4 py-3 pl-10 pr-10 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-purple-500"
+                                       class="w-full px-3 py-2 pl-8 pr-8 text-sm border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-purple-500"
                                        placeholder="Select the Date">
-                                <div class="absolute inset-y-0 left-0 flex items-center pl-3">
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-400" viewBox="0 -960 960 960" fill="#e3e3e3">
+                                <div class="absolute inset-y-0 left-0 flex items-center pl-2">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-gray-400" viewBox="0 -960 960 960" fill="#e3e3e3">
                                         <path d="M200-80q-33 0-56.5-23.5T120-160v-560q0-33 23.5-56.5T200-800h40v-80h80v80h320v-80h80v80h40q33 0 56.5 23.5T840-720v560q0 33-23.5 56.5T760-80H200Zm0-80h560v-400H200v400Zm0-480h560v-80H200v80Zm0 0v-80 80Zm280 240q-17 0-28.5-11.5T440-440q0-17 11.5-28.5T480-480q17 0 28.5 11.5T520-440q0 17-11.5 28.5T480-400Zm-160 0q-17 0-28.5-11.5T280-440q0-17 11.5-28.5T320-480q17 0 28.5 11.5T360-440q0 17-11.5 28.5T320-400Zm320 0q-17 0-28.5-11.5T600-440q0-17 11.5-28.5T640-480q17 0 28.5 11.5T680-440q0 17-11.5 28.5T640-400ZM480-240q-17 0-28.5-11.5T440-280q0-17 11.5-28.5T480-320q17 0 28.5 11.5T520-280q0 17-11.5 28.5T480-240Zm-160 0q-17 0-28.5-11.5T280-280q0-17 11.5-28.5T320-320q17 0 28.5 11.5T360-280q0 17-11.5 28.5T320-240Zm320 0q-17 0-28.5-11.5T600-280q0-17 11.5-28.5T640-320q17 0 28.5 11.5T680-280q0 17-11.5 28.5T640-240Z"/>
                                     </svg>
                                 </div>
-                                <div class="absolute inset-y-0 right-0 flex items-center pr-3">
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-400" viewBox="0 -960 960 960" fill="#e3e3e3">
+                                <div class="absolute inset-y-0 right-0 flex items-center pr-2">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-gray-400" viewBox="0 -960 960 960" fill="#e3e3e3">
                                         <path d="M480-344 240-584l56-56 184 184 184-184 56 56-240 240Z"/>
                                     </svg>
                                 </div>
@@ -3252,20 +3803,20 @@
 
                         <!-- Time -->
                         <div>
-                            <label for="event-time" class="block text-sm font-medium text-gray-700 mb-2">
+                            <label for="event-time" class="block text-sm font-medium text-gray-700 mb-1">
                                 Time
                             </label>
                             <div class="relative">
                                 <input type="text" id="event-time" name="time" required
-                                       class="w-full px-4 py-3 pl-10 pr-10 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-purple-500"
+                                       class="w-full px-3 py-2 pl-8 pr-8 text-sm border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-purple-500"
                                        placeholder="Select the Time">
-                                <div class="absolute inset-y-0 left-0 flex items-center pl-3">
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-400" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                <div class="absolute inset-y-0 left-0 flex items-center pl-2">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-gray-400" viewBox="0 0 24 24" fill="none" stroke="currentColor">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
                                     </svg>
                                 </div>
-                                <div class="absolute inset-y-0 right-0 flex items-center pr-3">
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-400" viewBox="0 -960 960 960" fill="#e3e3e3">
+                                <div class="absolute inset-y-0 right-0 flex items-center pr-2">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-gray-400" viewBox="0 -960 960 960" fill="#e3e3e3">
                                         <path d="M480-344 240-584l56-56 184 184 184-184 56 56-240 240Z"/>
                                     </svg>
                                 </div>
@@ -3274,20 +3825,20 @@
 
                         <!-- Location -->
                         <div>
-                            <label for="event-location" class="block text-sm font-medium text-gray-700 mb-2">
+                            <label for="event-location" class="block text-sm font-medium text-gray-700 mb-1">
                                 Location
                             </label>
                             <div class="relative">
                                 <input type="text" id="event-location" name="location" required
-                                       class="w-full px-4 py-3 pl-10 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-purple-500"
+                                       class="w-full px-3 py-2 pl-8 text-sm border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-purple-500"
                                        placeholder="Select the Location">
-                                <div class="absolute inset-y-0 left-0 flex items-center pl-3">
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-400" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                <div class="absolute inset-y-0 left-0 flex items-center pl-2">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-gray-400" viewBox="0 0 24 24" fill="none" stroke="currentColor">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 21s-6-5.373-6-10a6 6 0 1112 0c0 4.627-6 10-6 10z"/><circle cx="12" cy="11" r="2"/>
                                     </svg>
                                 </div>
-                                <div class="absolute inset-y-0 right-0 flex items-center pr-3">
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-400" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                <div class="absolute inset-y-0 right-0 flex items-center pr-2">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-gray-400" viewBox="0 0 24 24" fill="none" stroke="currentColor">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
                                     </svg>
                                 </div>
@@ -3296,25 +3847,25 @@
 
                         <!-- Registration Fee -->
                         <div>
-                            <label for="event-fee" class="block text-sm font-medium text-gray-700 mb-2">
+                            <label for="event-fee" class="block text-sm font-medium text-gray-700 mb-1">
                                 Registration Fee
                             </label>
                             <input type="number" id="event-fee" name="fee" min="0" step="100"
-                                   class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-purple-500"
+                                   class="w-full px-3 py-2 text-sm border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-purple-500"
                                    placeholder="Enter The Registration Fee">
                         </div>
 
                         <!-- Upload Image -->
                         <div>
-                            <label for="event-image" class="block text-sm font-medium text-gray-700 mb-2">
+                            <label for="event-image" class="block text-sm font-medium text-gray-700 mb-1">
                                 Upload the Image
                             </label>
                             <div class="relative">
                                 <input type="file" id="event-image" name="image" accept="image/*"
-                                       class="w-full px-4 py-3 pl-10 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-purple-500"
-                                       placeholder="jpg*">
-                                <div class="absolute inset-y-0 left-0 flex items-center pl-3">
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-400" viewBox="0 -960 960 960" fill="#e3e3e3">
+                                       class="w-full px-3 py-2 pl-8 text-sm border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-purple-500"
+                                       placeholder="No file chosen">
+                                <div class="absolute inset-y-0 left-0 flex items-center pl-2">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-gray-400" viewBox="0 -960 960 960" fill="#e3e3e3">
                                         <path d="M440-320v-326L336-542l-56-58 200-200 200 200-56 58-104-104v326h-80ZM240-160q-33 0-56.5-23.5T160-240v-120h80v120h480v-120h80v120q0 33-23.5 56.5T720-160H240Z"/>
                                     </svg>
                                 </div>
@@ -3323,18 +3874,18 @@
 
                         <!-- Description -->
                         <div>
-                            <label for="event-description" class="block text-sm font-medium text-gray-700 mb-2">
+                            <label for="event-description" class="block text-sm font-medium text-gray-700 mb-1">
                                 Description
                             </label>
                             <textarea id="event-description" name="description" rows="4" required
-                                      class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-purple-500 resize-none"
+                                      class="w-full px-3 py-2 text-sm border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-purple-500 resize-none"
                                       placeholder="Enter the Text"></textarea>
                         </div>
 
                         <!-- Submit Button -->
-                        <div class="pt-4">
+                        <div class="pt-2">
                             <button type="submit" 
-                                    class="w-full inline-flex items-center justify-center rounded-lg border-2 px-6 py-3 text-base font-semibold focus:ring-2 focus:ring-offset-2"
+                                    class="w-full inline-flex items-center justify-center rounded-lg border-2 px-4 py-2 text-sm font-semibold focus:ring-2 focus:ring-offset-2"
                                     style="border-color: #340AFF; color: #340AFF;" 
                                     onmouseover="this.style.backgroundColor='#340AFF'; this.style.color='white';" 
                                     onmouseout="this.style.backgroundColor='transparent'; this.style.color='#340AFF';">
