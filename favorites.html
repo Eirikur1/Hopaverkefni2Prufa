@@ -1,0 +1,1514 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Favorites - Venuu</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/DrawSVGPlugin.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollToPlugin.min.js"></script>
+    <script src="https://unpkg.com/in-view@0.6.1/dist/in-view.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.12.2/lottie.min.js"></script>
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+      rel="stylesheet"
+    />
+    <style>
+      @font-face {
+        font-family: "RubikMonoOne";
+        src: url("Fonts/RubikMonoOne-Regular.ttf") format("truetype");
+        font-weight: normal;
+        font-style: normal;
+      }
+
+      @font-face {
+        font-family: "Inter";
+        src: url("Fonts/Google_Sans_Code,Inter,Righteous,Rubik_Mono_One/Inter/Inter-Regular.ttf") format("truetype"),
+             url("Fonts/Google_Sans_Code,Inter,Righteous,Rubik_Mono_One/Inter/static/Inter-Regular.ttf") format("truetype");
+        font-weight: normal;
+        font-style: normal;
+        font-display: swap;
+      }
+    </style>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              primary: "#340824",
+              accent: "#E55050",
+              background: "#FFFDF8",
+              surface: "rgba(255, 253, 248, 0.8)",
+              "surface-hover": "rgba(229, 80, 80, 0.05)",
+            },
+            fontFamily: {
+              sans: [
+                "Inter",
+                "-apple-system",
+                "BlinkMacSystemFont",
+                "Segoe UI",
+                "Roboto",
+                "sans-serif",
+              ],
+            },
+            animation: {
+              "fade-in": "fadeIn 0.5s ease-in-out",
+              "slide-up": "slideUp 0.6s ease-out",
+              "bounce-in": "bounceIn 0.8s ease-out",
+            },
+            keyframes: {
+              fadeIn: {
+                "0%": { opacity: "0" },
+                "100%": { opacity: "1" },
+              },
+              slideUp: {
+                "0%": { transform: "translateY(20px)", opacity: "0" },
+                "100%": { transform: "translateY(0)", opacity: "1" },
+              },
+              bounceIn: {
+                "0%": { transform: "scale(0.3)", opacity: "0" },
+                "50%": { transform: "scale(1.05)" },
+                "70%": { transform: "scale(0.9)" },
+                "100%": { transform: "scale(1)", opacity: "1" },
+              },
+            },
+          },
+        },
+      };
+    </script>
+    <style>
+      /* Essential Custom Styles Only */
+      html {
+        scroll-behavior: smooth;
+      }
+
+      /* Search Bar Styles */
+      .search-bar {
+        position: relative;
+        width: 100%;
+        max-width: 600px;
+      }
+
+      .search-input {
+        width: 100%;
+        padding: 12px 16px 12px 40px;
+        border: 3px solid #1f2937;
+        border-radius: 25px;
+        font-size: 14px;
+        background-color: transparent;
+        color: #1f2937;
+        transition: all 0.3s ease;
+        outline: none;
+        font-family: Inter, sans-serif;
+        font-weight: 400;
+      }
+
+      .search-input:focus {
+        border-color: #1f2937;
+        background-color: rgba(255, 253, 248, 0.3);
+        box-shadow: 0 0 0 4px rgba(31, 41, 55, 0.2);
+      }
+
+      .search-input::placeholder {
+        color: #1f2937;
+        font-weight: 300;
+      }
+
+      .search-btn {
+        position: absolute;
+        left: 8px;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 20px;
+        height: 20px;
+        border: none;
+        background: transparent;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .search-btn:hover {
+        /* Hover effects removed */
+      }
+
+      .search-btn svg {
+        width: 16px;
+        height: 16px;
+        fill: #1f2937;
+      }
+
+      .search-dropdown {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: rgba(255, 253, 248, 0.98);
+        backdrop-filter: blur(20px);
+        border: 1px solid rgba(255, 52, 10, 0.1);
+        border-top: none;
+        border-radius: 0 0 25px 25px;
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+        z-index: 1000;
+        max-height: 200px;
+        overflow-y: auto;
+        display: none;
+      }
+
+      .search-dropdown.show {
+        display: block;
+      }
+
+      .search-dropdown-item {
+        padding: 12px 16px;
+        cursor: pointer;
+        border-bottom: 1px solid rgba(255, 52, 10, 0.1);
+        transition: background-color 0.2s ease;
+        font-size: 14px;
+        color: #1f2937;
+      }
+
+      .search-dropdown-item:hover,
+      .search-dropdown-item.selected {
+        background-color: rgba(255, 52, 10, 0.1);
+      }
+
+      .search-dropdown-item:last-child {
+        border-bottom: none;
+      }
+
+      .sr-only {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        padding: 0;
+        margin: -1px;
+        overflow: hidden;
+        clip: rect(0, 0, 0, 0);
+        white-space: nowrap;
+        border: 0;
+      }
+
+      /* Filter Styles */
+      .filter-select,
+      .filter-button {
+        font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif !important;
+        font-size: 16px !important;
+        font-style: normal !important;
+        font-weight: normal !important;
+        line-height: 1.2 !important;
+        color: #333 !important;
+        text-align: center !important;
+        cursor: pointer;
+        outline: none;
+        transition: all 0.3s ease;
+        appearance: none;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+      }
+
+      .filter-select:focus,
+      .filter-button:focus {
+        box-shadow: 0 0 0 2px rgba(52, 10, 255, 0.2);
+      }
+
+      .filter-select:hover,
+      .filter-button:hover {
+        background-color: rgba(52, 10, 255, 0.05);
+      }
+
+      .filter-select {
+        background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23340AFF' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6,9 12,15 18,9'%3e%3c/polyline%3e%3c/svg%3e");
+        background-repeat: no-repeat;
+        background-position: right 12px center;
+        background-size: 16px;
+        padding-right: 40px;
+      }
+
+      .filter-button {
+        border: 1px solid #340AFF;
+        background: #FFF;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+      }
+
+      .filter-button:hover {
+        background-color: #340AFF;
+        color: #FFF;
+      }
+
+      .filter-button:hover i,
+      .filter-button:hover span {
+        color: #FFF;
+      }
+
+      .filter-button i {
+        font-size: 12px;
+      }
+
+      /* Events Grid 4x3 Layout */
+      .events-grid {
+        max-width: 1200px;
+        margin: 0 auto;
+        display: grid;
+        grid-gap: 30px;
+        grid-template-columns: repeat(4, 1fr);
+        grid-template-rows: repeat(3, auto);
+        justify-content: center;
+        align-content: start;
+        padding: 0 20px;
+      }
+
+      .event-item {
+        display: flex;
+        width: 100%;
+        height: 330px; /* Fixed height for uniform cards */
+        flex-direction: column;
+        align-items: center;
+        gap: 16px;
+        flex-shrink: 0;
+        border-radius: 8px;
+        border: 1px solid rgba(0, 0, 0, 0.20);
+        background: #FFF;
+        position: relative;
+        z-index: 1;
+        cursor: pointer;
+        transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        overflow: hidden;
+      }
+
+      .event-item:hover {
+        transform: translateY(-8px) scale(1.02);
+      }
+
+      .event-img {
+        width: 100%;
+        height: 175px; /* Fixed height for images */
+        flex-shrink: 0;
+        aspect-ratio: 262/175;
+        border-radius: 8px 8px 0 0;
+        border: 1px solid rgba(35, 213, 142, 0.20);
+        background: lightgray 50% / cover no-repeat;
+        position: relative;
+        z-index: 1;
+      }
+
+      .event-img img {
+        width: 100%;
+        height: 100%;
+        display: block;
+        transition: all 0.4s ease;
+        filter: brightness(1) contrast(1.1);
+        border-radius: 8px 8px 0 0;
+        object-fit: cover;
+      }
+
+      .event-item:hover .event-img img {
+        transform: scale(1.05);
+        filter: brightness(1.1) contrast(1.2);
+      }
+
+      .event-caption {
+        position: relative;
+        z-index: 2;
+        display: flex;
+        width: 230px; /* Fixed width for content */
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+        font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      }
+
+      .event-caption .event-title {
+        align-self: stretch;
+        color: #333;
+        font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+        font-size: 20px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: 1.3;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        max-width: 100%;
+      }
+
+      .event-caption .event-date-row {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+      }
+
+      .event-caption .event-date {
+        color: #333;
+        text-align: left;
+        font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+        font-size: 13px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: normal;
+        display: flex;
+        align-items: center;
+        gap: 6px;
+      }
+
+      .event-caption .event-date::before {
+        content: '';
+        display: flex;
+        width: 16px;
+        height: 16px;
+        align-items: flex-start;
+        gap: 27px;
+        flex-shrink: 0;
+        aspect-ratio: 1/1;
+        background-image: url('icons/calendar_month_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.svg');
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center;
+        filter: brightness(0) saturate(100%) invert(20%) sepia(8%) saturate(1000%) hue-rotate(200deg) brightness(95%) contrast(90%);
+      }
+
+      .event-heart {
+        display: flex;
+        align-items: center;
+        cursor: pointer;
+        transition: transform 0.2s ease;
+      }
+
+      .event-heart:hover {
+        transform: scale(1.1);
+      }
+
+      .event-heart svg {
+        width: 17px;
+        height: 16px;
+      }
+
+      /* Load More Button Styles */
+      .load-more-button {
+        font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+        font-size: 14px;
+        font-weight: normal;
+        color: #340AFF;
+        cursor: pointer;
+        outline: none;
+        transition: all 0.3s ease;
+        border: 1px solid #340AFF;
+        background: #FFF;
+      }
+
+      .load-more-button:hover {
+        background-color: #340AFF;
+        color: #FFF;
+      }
+
+      .load-more-button:hover .load-more-icons img {
+        filter: brightness(0) invert(1);
+      }
+
+      .load-more-icons {
+        display: flex;
+        flex-direction: column;
+        gap: 2px;
+        align-items: center;
+      }
+
+      .load-more-icons img {
+        transition: filter 0.3s ease;
+      }
+
+      /* Responsive adjustments */
+      @media (max-width: 1024px) {
+        .events-grid {
+          grid-template-columns: repeat(3, 1fr);
+          grid-template-rows: repeat(4, auto);
+          grid-gap: 25px;
+          padding: 0 15px;
+        }
+      }
+
+      @media (max-width: 768px) {
+        .events-grid {
+          grid-template-columns: repeat(2, 1fr);
+          grid-template-rows: repeat(6, auto);
+          grid-gap: 20px;
+          padding: 0 15px;
+        }
+
+        .event-item {
+          height: 320px;
+        }
+
+        .event-img {
+          height: 200px;
+        }
+
+        .event-caption {
+          width: 200px;
+        }
+
+        .event-caption .event-title {
+          font-size: 16px;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .events-grid {
+          grid-template-columns: 1fr;
+          grid-template-rows: repeat(12, auto);
+          grid-gap: 15px;
+          padding: 0 10px;
+        }
+
+        .event-item {
+          height: 300px;
+        }
+
+        .event-img {
+          height: 180px;
+        }
+
+        .event-caption {
+          width: 180px;
+        }
+
+        .event-caption .event-title {
+          font-size: 15px;
+        }
+
+        .event-caption .event-date {
+          font-size: 12px;
+        }
+      }
+
+      /* Mobile Responsive Enhancements */
+      @media (max-width: 1024px) {
+        /* Navigation adjustments */
+        nav {
+          height: 70px !important;
+          padding: 0 20px !important;
+        }
+        
+        .nav-logo {
+          width: 40px !important;
+          height: 40px !important;
+        }
+        
+        .nav-links {
+          gap: 20px !important;
+        }
+        
+        .nav-links a {
+          font-size: 14px !important;
+        }
+        
+        /* Search bar mobile */
+        .search-bar {
+          width: 100% !important;
+          max-width: 500px !important;
+          margin: 0 auto !important;
+        }
+        
+        /* Filter buttons mobile */
+        .filter-select,
+        .filter-button {
+          width: 140px !important;
+          height: 35px !important;
+          font-size: 14px !important;
+        }
+        
+        /* Events grid adjustments */
+        .events-grid {
+          grid-template-columns: repeat(3, 1fr) !important;
+          grid-gap: 20px !important;
+          padding: 0 15px !important;
+        }
+        
+        .event-item {
+          height: 300px !important;
+        }
+        
+        .event-img {
+          height: 160px !important;
+        }
+        
+        .event-caption {
+          width: 200px !important;
+        }
+        
+        .event-caption .event-title {
+          font-size: 16px !important;
+        }
+        
+        /* Load more button mobile */
+        .load-more-button {
+          width: 100px !important;
+          height: 45px !important;
+        }
+      }
+
+      @media (max-width: 768px) {
+        /* Navigation mobile */
+        nav {
+          height: 60px !important;
+          padding: 0 15px !important;
+        }
+        
+        .nav-logo {
+          width: 35px !important;
+          height: 35px !important;
+        }
+        
+        .nav-links {
+          gap: 15px !important;
+        }
+        
+        .nav-links a {
+          font-size: 13px !important;
+        }
+        
+        /* Search bar mobile */
+        .search-bar {
+          width: 100% !important;
+          max-width: 400px !important;
+          height: 45px !important;
+        }
+        
+        .search-input {
+          font-size: 14px !important;
+          padding: 10px 14px 10px 35px !important;
+        }
+        
+        /* Filter buttons mobile */
+        .filter-select,
+        .filter-button {
+          width: 120px !important;
+          height: 32px !important;
+          font-size: 13px !important;
+          padding: 6px 12px !important;
+        }
+        
+        /* Events grid mobile */
+        .events-grid {
+          grid-template-columns: repeat(2, 1fr) !important;
+          grid-gap: 15px !important;
+          padding: 0 10px !important;
+        }
+        
+        .event-item {
+          height: 280px !important;
+        }
+        
+        .event-img {
+          height: 150px !important;
+        }
+        
+        .event-caption {
+          width: 180px !important;
+        }
+        
+        .event-caption .event-title {
+          font-size: 15px !important;
+        }
+        
+        .event-caption .event-date {
+          font-size: 12px !important;
+        }
+        
+        /* Load more button mobile */
+        .load-more-button {
+          width: 90px !important;
+          height: 40px !important;
+        }
+        
+        /* Footer mobile */
+        footer {
+          padding: 30px 20px !important;
+          flex-direction: column !important;
+          gap: 20px !important;
+        }
+        
+        .footer-content {
+          flex-direction: column !important;
+          gap: 20px !important;
+          text-align: center !important;
+        }
+      }
+
+      @media (max-width: 480px) {
+        /* Navigation small mobile */
+        nav {
+          height: 55px !important;
+          padding: 0 10px !important;
+        }
+        
+        .nav-logo {
+          width: 30px !important;
+          height: 30px !important;
+        }
+        
+        .nav-links {
+          gap: 10px !important;
+        }
+        
+        .nav-links a {
+          font-size: 12px !important;
+        }
+        
+        /* Search bar small mobile */
+        .search-bar {
+          width: 100% !important;
+          max-width: 350px !important;
+          height: 40px !important;
+        }
+        
+        .search-input {
+          font-size: 13px !important;
+          padding: 8px 12px 8px 30px !important;
+        }
+        
+        /* Filter buttons small mobile */
+        .filter-select,
+        .filter-button {
+          width: 100px !important;
+          height: 30px !important;
+          font-size: 12px !important;
+          padding: 5px 10px !important;
+        }
+        
+        /* Events grid small mobile */
+        .events-grid {
+          grid-template-columns: 1fr !important;
+          grid-gap: 12px !important;
+          padding: 0 8px !important;
+        }
+        
+        .event-item {
+          height: 260px !important;
+        }
+        
+        .event-img {
+          height: 140px !important;
+        }
+        
+        .event-caption {
+          width: 160px !important;
+        }
+        
+        .event-caption .event-title {
+          font-size: 14px !important;
+        }
+        
+        .event-caption .event-date {
+          font-size: 11px !important;
+        }
+        
+        /* Load more button small mobile */
+        .load-more-button {
+          width: 80px !important;
+          height: 35px !important;
+        }
+        
+        /* Footer small mobile */
+        footer {
+          padding: 25px 15px !important;
+        }
+        
+        .footer-content h3 {
+          font-size: 18px !important;
+        }
+        
+        .footer-content p,
+        .footer-content a {
+          font-size: 14px !important;
+        }
+      }
+    </style>
+  </head>
+  <body class="bg-background text-gray-900 font-sans">
+    <!-- Navigation -->
+    <nav
+      class="fixed top-0 left-0 right-0 z-50 bg-background/95 backdrop-blur-md border-b border-gray-200/50"
+      style="
+        display: flex;
+        width: 100%;
+        height: 80px;
+        padding: 0 99px;
+        justify-content: space-between;
+        align-items: center;
+        flex-shrink: 0;
+        background: rgba(255, 253, 248, 0.95);
+        backdrop-filter: blur(20px);
+        border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+      "
+    >
+      <div class="flex items-center">
+        <a href="index.html" class="flex items-center">
+          <div
+            id="lottie-logo"
+            class="nav-logo"
+            style="width: 50px; height: 50px"
+          ></div>
+        </a>
+      </div>
+
+      <div
+        class="nav-links hidden md:flex items-center space-x-8"
+        style="
+          display: flex;
+          align-items: center;
+          gap: 32px;
+        "
+      >
+        <a
+          href="index.html"
+          class="text-gray-700 hover:text-primary transition-colors duration-300 font-medium"
+          style="
+            color: #333;
+            font-family: Inter, sans-serif;
+            font-size: 16px;
+            font-style: normal;
+            font-weight: 500;
+            line-height: normal;
+            text-decoration: none;
+          "
+          >Home</a
+        >
+        <a
+          href="events.html"
+          class="text-gray-700 hover:text-primary transition-colors duration-300 font-medium"
+          style="
+            color: #333;
+            font-family: Inter, sans-serif;
+            font-size: 16px;
+            font-style: normal;
+            font-weight: 500;
+            line-height: normal;
+            text-decoration: none;
+          "
+          >Events</a
+        >
+        <a
+          href="favorites.html"
+          class="text-primary hover:text-primary transition-colors duration-300 font-medium"
+          style="
+            color: #340aff;
+            font-family: Inter, sans-serif;
+            font-size: 16px;
+            font-style: normal;
+            font-weight: 500;
+            line-height: normal;
+            text-decoration: none;
+          "
+          >Favorites</a
+        >
+        <a
+          href="login.html"
+          class="text-gray-700 hover:text-primary transition-colors duration-300 font-medium"
+          style="
+            color: #333;
+            font-family: Inter, sans-serif;
+            font-size: 16px;
+            font-style: normal;
+            font-weight: 500;
+            line-height: normal;
+            text-decoration: none;
+          "
+          >Login</a
+        >
+      </div>
+
+      <button
+        id="mobile-menu-btn"
+        class="md:hidden p-2 text-gray-700 hover:text-primary transition-colors"
+        style="
+          display: none;
+          padding: 8px;
+          background: none;
+          border: none;
+          cursor: pointer;
+          min-width: 44px;
+          min-height: 44px;
+          align-items: center;
+          justify-content: center;
+        "
+        aria-label="Toggle mobile menu"
+      >
+        <i class="fas fa-bars text-xl"></i>
+      </button>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="pt-20">
+      <!-- Search Section -->
+      <section class="py-8 md:py-12 bg-background">
+        <div class="w-full max-w-7xl mx-auto px-4 md:px-10">
+          <!-- Search Bar -->
+          <div class="flex justify-center mb-6 md:mb-8">
+            <div
+              class="search-bar"
+              style="
+                display: flex;
+                width: 407px;
+                height: 30px;
+                padding: 0 32px;
+                flex-direction: row;
+                justify-content: space-between;
+                align-items: center;
+                gap: 10px;
+                border-radius: 25px;
+                border: 0.5px solid #6b6666;
+                background: #fff;
+              "
+            >
+              <label for="search-input" class="sr-only"
+                >Search for events, locations, or categories</label
+              >
+              <input
+                type="text"
+                class="search-input"
+                placeholder="Search for events, locations, or categories..."
+                id="search-input"
+                aria-describedby="search-help"
+                autocomplete="off"
+                role="searchbox"
+                style="
+                  flex: 1;
+                  border: none;
+                  outline: none;
+                  background: transparent;
+                  font-size: 14px;
+                  color: #333;
+                  border-radius: 25px;
+                  box-shadow: none;
+                  -webkit-appearance: none;
+                  -moz-appearance: none;
+                  padding-left: 0;
+                "
+              />
+              <button
+                class="search-btn"
+                id="searchBtn"
+                type="button"
+                aria-label="Search"
+                aria-describedby="search-help"
+                style="
+                  display: flex;
+                  align-items: center;
+                  justify-content: center;
+                  background: none;
+                  border: none;
+                  cursor: pointer;
+                "
+              >
+                <img
+                  src="icons/Search_icon.svg"
+                  alt="Search"
+                  width="13"
+                  height="13"
+                  aria-hidden="true"
+                />
+              </button>
+              <div
+                class="search-dropdown"
+                id="searchDropdown"
+                role="listbox"
+                aria-label="Search suggestions"
+                aria-live="polite"
+              >
+                <!-- Search suggestions will be populated here -->
+              </div>
+              <div id="search-help" class="sr-only">
+                Type to search for events by name, location, or category. Use arrow
+                keys to navigate suggestions and Enter to select.
+              </div>
+            </div>
+          </div>
+
+          <!-- Filter Section -->
+          <div class="flex flex-wrap justify-center gap-4">
+            <select
+              id="category-filter"
+              class="filter-select"
+              style="
+                display: flex;
+                width: 156px;
+                height: 40px;
+                padding: 8px 40px 8px 23px;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                flex-shrink: 0;
+                border-radius: 25px;
+                border: 1px solid #340aff;
+                background: #fff url('data:image/svg+xml;charset=UTF-8,%3csvg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 24 24\' fill=\'none\' stroke=\'%23340AFF\' stroke-width=\'2\' stroke-linecap=\'round\' stroke-linejoin=\'round\'%3e%3cpolyline points=\'6,9 12,15 18,9\'%3e%3c/polyline%3e%3c/svg%3e') no-repeat right 12px center;
+                background-size: 16px;
+                font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+                font-size: 16px;
+                font-weight: normal;
+                color: #333;
+                text-align: center;
+              "
+            >
+              <option value="">All Categories</option>
+            </select>
+            <select
+              id="location-filter"
+              class="filter-select"
+              style="
+                display: flex;
+                width: 156px;
+                height: 40px;
+                padding: 8px 40px 8px 23px;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                flex-shrink: 0;
+                border-radius: 25px;
+                border: 1px solid #340aff;
+                background: #fff url('data:image/svg+xml;charset=UTF-8,%3csvg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 24 24\' fill=\'none\' stroke=\'%23340AFF\' stroke-width=\'2\' stroke-linecap=\'round\' stroke-linejoin=\'round\'%3e%3cpolyline points=\'6,9 12,15 18,9\'%3e%3c/polyline%3e%3c/svg%3e') no-repeat right 12px center;
+                background-size: 16px;
+                font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+                font-size: 16px;
+                font-weight: normal;
+                color: #333;
+                text-align: center;
+              "
+            >
+              <option value="">All Locations</option>
+            </select>
+            <select
+              id="sort-filter"
+              class="filter-select"
+              style="
+                display: flex;
+                width: 156px;
+                height: 40px;
+                padding: 8px 40px 8px 23px;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                flex-shrink: 0;
+                border-radius: 25px;
+                border: 1px solid #340aff;
+                background: #fff url('data:image/svg+xml;charset=UTF-8,%3csvg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 24 24\' fill=\'none\' stroke=\'%23340AFF\' stroke-width=\'2\' stroke-linecap=\'round\' stroke-linejoin=\'round\'%3e%3cpolyline points=\'6,9 12,15 18,9\'%3e%3c/polyline%3e%3c/svg%3e') no-repeat right 12px center;
+                background-size: 16px;
+                font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+                font-size: 16px;
+                font-weight: normal;
+                color: #333;
+                text-align: center;
+              "
+            >
+              <option value="date">Sort by Date</option>
+              <option value="name">Sort by Name</option>
+              <option value="location">Sort by Location</option>
+            </select>
+            <button
+              id="date-order-toggle"
+              class="filter-button"
+              style="
+                display: flex;
+                width: 180px;
+                height: 40px;
+                padding: 12px 16px;
+                flex-direction: row;
+                justify-content: center;
+                align-items: center;
+                flex-shrink: 0;
+                border-radius: 25px;
+                border: 1px solid #340aff;
+                background: #fff;
+                font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+                font-size: 16px;
+                font-weight: normal;
+                color: #333;
+                text-align: center;
+                gap: 8px;
+              "
+            >
+              <i class="fas fa-sort-amount-up"></i>
+              <span id="date-order-text">Earliest First</span>
+            </button>
+            <button
+              id="clear-filters"
+              class="filter-button"
+              style="
+                display: flex;
+                width: 156px;
+                height: 40px;
+                padding: 12px 16px;
+                flex-direction: row;
+                justify-content: center;
+                align-items: center;
+                flex-shrink: 0;
+                border-radius: 25px;
+                border: 1px solid #340aff;
+                background: #fff;
+                font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+                font-size: 16px;
+                font-weight: normal;
+                color: #333;
+                text-align: center;
+                gap: 8px;
+              "
+            >
+              <i class="fas fa-times"></i>
+              <span>Clear</span>
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <!-- Page Title -->
+      <div class="text-center mb-12 md:mb-16 px-4 md:px-0">
+        <h1
+          class="text-4xl md:text-5xl lg:text-6xl mb-4 md:mb-6 text-primary font-light tracking-tight"
+          style="
+            color: #340aff;
+            font-family: 'RubikMonoOne', monospace;
+            font-weight: normal;
+          "
+        >
+          My Favorites
+        </h1>
+        <p
+          class="text-base md:text-lg text-gray-600 max-w-3xl mx-auto leading-relaxed font-light"
+        >
+          Your saved events and experiences across Iceland's beautiful landscapes.
+        </p>
+      </div>
+
+      <!-- Events Grid -->
+      <section class="py-8 md:py-12 bg-background">
+        <div class="w-full max-w-7xl mx-auto px-4 md:px-10">
+          <div class="events-grid" id="events-grid">
+            <!-- Favorite Event 1 -->
+            <div class="event-item" data-event-id="fav-1">
+              <div class="event-img">
+                <img src="Images/event-posters/068e9d4bef717cd1000843dc38c603ec.jpg" alt="Northern Lights Photography Workshop" />
+              </div>
+              <div class="event-caption">
+                <h3 class="event-title">Northern Lights Photography Workshop</h3>
+                <div class="event-date-row">
+                  <span class="event-date">March 15, 2024</span>
+                  <div class="event-heart">
+                    <svg width="17" height="16" viewBox="0 0 17 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M8.5 15.5L7.085 14.085C2.715 9.715 0 7.205 0 4.25C0 1.9 1.9 0 4.25 0C5.635 0 6.96 0.635 7.75 1.75C8.54 0.635 9.865 0 11.25 0C13.6 0 15.5 1.9 15.5 4.25C15.5 7.205 12.785 9.715 8.415 14.085L8.5 15.5Z" fill="#E55050"/>
+                    </svg>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Favorite Event 2 -->
+            <div class="event-item" data-event-id="fav-2">
+              <div class="event-img">
+                <img src="Images/event-posters/1d595e6dc1b6a3d963b932eb94de79d1.jpg" alt="Icelandic Music Festival" />
+              </div>
+              <div class="event-caption">
+                <h3 class="event-title">Icelandic Music Festival</h3>
+                <div class="event-date-row">
+                  <span class="event-date">April 22, 2024</span>
+                  <div class="event-heart">
+                    <svg width="17" height="16" viewBox="0 0 17 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M8.5 15.5L7.085 14.085C2.715 9.715 0 7.205 0 4.25C0 1.9 1.9 0 4.25 0C5.635 0 6.96 0.635 7.75 1.75C8.54 0.635 9.865 0 11.25 0C13.6 0 15.5 1.9 15.5 4.25C15.5 7.205 12.785 9.715 8.415 14.085L8.5 15.5Z" fill="#E55050"/>
+                    </svg>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Favorite Event 3 -->
+            <div class="event-item" data-event-id="fav-3">
+              <div class="event-img">
+                <img src="Images/event-posters/233986128f46951bf66a727cca1b3a18.jpg" alt="Glacier Hiking Adventure" />
+              </div>
+              <div class="event-caption">
+                <h3 class="event-title">Glacier Hiking Adventure</h3>
+                <div class="event-date-row">
+                  <span class="event-date">May 8, 2024</span>
+                  <div class="event-heart">
+                    <svg width="17" height="16" viewBox="0 0 17 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M8.5 15.5L7.085 14.085C2.715 9.715 0 7.205 0 4.25C0 1.9 1.9 0 4.25 0C5.635 0 6.96 0.635 7.75 1.75C8.54 0.635 9.865 0 11.25 0C13.6 0 15.5 1.9 15.5 4.25C15.5 7.205 12.785 9.715 8.415 14.085L8.5 15.5Z" fill="#E55050"/>
+                    </svg>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Favorite Event 4 -->
+            <div class="event-item" data-event-id="fav-4">
+              <div class="event-img">
+                <img src="Images/event-posters/24de6470d3365d85550c2c65ce8ddfca.jpg" alt="Hot Spring Wellness Retreat" />
+              </div>
+              <div class="event-caption">
+                <h3 class="event-title">Hot Spring Wellness Retreat</h3>
+                <div class="event-date-row">
+                  <span class="event-date">June 12, 2024</span>
+                  <div class="event-heart">
+                    <svg width="17" height="16" viewBox="0 0 17 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M8.5 15.5L7.085 14.085C2.715 9.715 0 7.205 0 4.25C0 1.9 1.9 0 4.25 0C5.635 0 6.96 0.635 7.75 1.75C8.54 0.635 9.865 0 11.25 0C13.6 0 15.5 1.9 15.5 4.25C15.5 7.205 12.785 9.715 8.415 14.085L8.5 15.5Z" fill="#E55050"/>
+                    </svg>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Favorite Event 5 -->
+            <div class="event-item" data-event-id="fav-5">
+              <div class="event-img">
+                <img src="Images/event-posters/3bd777f8c2760cbf585251808e738698.jpg" alt="Viking Heritage Tour" />
+              </div>
+              <div class="event-caption">
+                <h3 class="event-title">Viking Heritage Tour</h3>
+                <div class="event-date-row">
+                  <span class="event-date">July 3, 2024</span>
+                  <div class="event-heart">
+                    <svg width="17" height="16" viewBox="0 0 17 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M8.5 15.5L7.085 14.085C2.715 9.715 0 7.205 0 4.25C0 1.9 1.9 0 4.25 0C5.635 0 6.96 0.635 7.75 1.75C8.54 0.635 9.865 0 11.25 0C13.6 0 15.5 1.9 15.5 4.25C15.5 7.205 12.785 9.715 8.415 14.085L8.5 15.5Z" fill="#E55050"/>
+                    </svg>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Favorite Event 6 -->
+            <div class="event-item" data-event-id="fav-6">
+              <div class="event-img">
+                <img src="Images/event-posters/3f117cff666f231104f270edda727dab.jpg" alt="Midnight Sun Photography" />
+              </div>
+              <div class="event-caption">
+                <h3 class="event-title">Midnight Sun Photography</h3>
+                <div class="event-date-row">
+                  <span class="event-date">August 18, 2024</span>
+                  <div class="event-heart">
+                    <svg width="17" height="16" viewBox="0 0 17 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M8.5 15.5L7.085 14.085C2.715 9.715 0 7.205 0 4.25C0 1.9 1.9 0 4.25 0C5.635 0 6.96 0.635 7.75 1.75C8.54 0.635 9.865 0 11.25 0C13.6 0 15.5 1.9 15.5 4.25C15.5 7.205 12.785 9.715 8.415 14.085L8.5 15.5Z" fill="#E55050"/>
+                    </svg>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Load More Button -->
+          <div id="load-more-container" class="flex justify-center my-16 hidden">
+            <button
+              id="load-more-btn"
+              class="load-more-button"
+              style="display: flex; width: 120px; height: 50px; padding: 12px 41px; flex-direction: column; justify-content: center; align-items: center; gap: 2px; border-radius: 10px; border: 1px solid #340AFF; background: #FFF;"
+            >
+              <div class="load-more-icons">
+                <img src="icons/LOADMOREICON.svg" alt="Load more" width="26" height="10" />
+                <img src="icons/LOADMOREICON.svg" alt="Load more" width="26" height="10" />
+              </div>
+              <i
+                id="load-more-spinner"
+                class="fas fa-spinner fa-spin hidden"
+              ></i>
+            </button>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Footer -->
+    <footer
+      class="relative overflow-hidden"
+      id="contact"
+      role="contentinfo"
+      style="
+        display: flex;
+        padding: 36px 99px;
+        flex-direction: column;
+        justify-content: center;
+        align-items: flex-start;
+        gap: 10px;
+        align-self: stretch;
+        border-top: 1px solid #1e40af;
+        background: #fff;
+      "
+    >
+      <div
+        class="flex justify-between items-start w-full relative z-10"
+        style="padding: 0"
+      >
+        <div>
+          <h3
+            class="tit-no-underline mb-4 md:mb-5 font-bold"
+            style="
+              align-self: stretch;
+              color: #333;
+              font-family: Inter, sans-serif;
+              font-size: 20px;
+              font-style: normal;
+              font-weight: 700;
+              line-height: normal;
+            "
+          >
+            Contact
+          </h3>
+          <address
+            class="mb-2 not-italic"
+            style="
+              align-self: stretch;
+              color: #333;
+              font-family: Inter, sans-serif;
+              font-size: 16px;
+              font-style: normal;
+              font-weight: 400;
+              line-height: normal;
+            "
+          >
+            <p>Reykjavik, Iceland</p>
+            <p>
+              <a
+                href="mailto:info@venuu.is"
+                class="transition-colors"
+                style="
+                  align-self: stretch;
+                  color: #333;
+                  font-family: Inter, sans-serif;
+                  font-size: 16px;
+                  font-style: normal;
+                  font-weight: 400;
+                  line-height: normal;
+                "
+                onmouseover="this.style.color='#1E40AF';"
+                onmouseout="this.style.color='#333';"
+                >info@venuu.is</a
+              >
+            </p>
+            <p>
+              <a
+                href="tel:+3541234567"
+                class="transition-colors"
+                style="
+                  align-self: stretch;
+                  color: #333;
+                  font-family: Inter, sans-serif;
+                  font-size: 16px;
+                  font-style: normal;
+                  font-weight: 400;
+                  line-height: normal;
+                "
+                onmouseover="this.style.color='#1E40AF';"
+                onmouseout="this.style.color='#333';"
+                >+354 123 4567</a
+              >
+            </p>
+            <div
+              class="social-media-icons"
+              style="display: flex; gap: 12px; margin-top: 8px"
+            >
+              <a
+                href="#"
+                aria-label="Facebook"
+                style="transition: transform 0.2s ease"
+                onmouseover="this.style.transform='scale(1.1)';"
+                onmouseout="this.style.transform='scale(1)';"
+              >
+                <svg
+                  width="10"
+                  height="20"
+                  viewBox="0 0 10 20"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M9.34469 11.1875L9.86325 7.74895H6.62096V5.51756C6.62096 4.57684 7.07388 3.65986 8.526 3.65986H10V0.732305C10 0.732305 8.66239 0.5 7.38349 0.5C4.71337 0.5 2.96806 2.14691 2.96806 5.12828V7.74895H0V11.1875H2.96806V19.5H6.62096V11.1875H9.34469Z"
+                    fill="#333333"
+                  />
+                </svg>
+              </a>
+              <a
+                href="#"
+                aria-label="Instagram"
+                style="transition: transform 0.2s ease"
+                onmouseover="this.style.transform='scale(1.1)';"
+                onmouseout="this.style.transform='scale(1)';"
+              >
+                <svg
+                  width="19"
+                  height="20"
+                  viewBox="0 0 19 20"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M9.50212 5.12864C6.8063 5.12864 4.63185 7.30358 4.63185 10C4.63185 12.6964 6.8063 14.8714 9.50212 14.8714C12.1979 14.8714 14.3724 12.6964 14.3724 10C14.3724 7.30358 12.1979 5.12864 9.50212 5.12864ZM9.50212 13.167C7.76001 13.167 6.33581 11.7467 6.33581 10C6.33581 8.25326 7.75577 6.83298 9.50212 6.83298C11.2485 6.83298 12.6684 8.25326 12.6684 10C12.6684 11.7467 11.2442 13.167 9.50212 13.167ZM15.7076 4.92938C15.7076 5.56108 15.1989 6.0656 14.5716 6.0656C13.94 6.0656 13.4356 5.55684 13.4356 4.92938C13.4356 4.30191 13.9443 3.79315 14.5716 3.79315C15.1989 3.79315 15.7076 4.30191 15.7076 4.92938ZM18.9332 6.08256C18.8612 4.56053 18.5136 3.21232 17.3988 2.10153C16.2883 0.99074 14.9404 0.643088 13.4187 0.566775C11.8504 0.477742 7.14964 0.477742 5.58132 0.566775C4.06386 0.638849 2.71595 0.9865 1.60117 2.09729C0.486392 3.20808 0.143056 4.55629 0.0667596 6.07832C-0.0222532 7.64699 -0.0222532 12.3488 0.0667596 13.9174C0.138818 15.4395 0.486392 16.7877 1.60117 17.8985C2.71595 19.0093 4.05962 19.3569 5.58132 19.4332C7.14964 19.5223 11.8504 19.5223 13.4187 19.4332C14.9404 19.3612 16.2883 19.0135 17.3988 17.8985C18.5094 16.7877 18.8569 15.4395 18.9332 13.9174C19.0223 12.3488 19.0223 7.65123 18.9332 6.08256Z"
+                    fill="#333333"
+                  />
+                </svg>
+              </a>
+              <a
+                href="#"
+                aria-label="Twitter"
+                style="transition: transform 0.2s ease"
+                onmouseover="this.style.transform='scale(1.1)';"
+                onmouseout="this.style.transform='scale(1)';"
+              >
+                <svg
+                  width="23"
+                  height="20"
+                  viewBox="0 0 23 20"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M20.6358 5.23514C20.6504 5.44294 20.6504 5.65079 20.6504 5.85859C20.6504 12.1968 15.9074 19.5 7.2386 19.5C4.5679 19.5 2.08694 18.7132 0 17.3477C0.379457 17.3922 0.744269 17.407 1.13832 17.407C3.34198 17.407 5.37057 16.65 6.9905 15.3586C4.91816 15.3141 3.18147 13.9336 2.58311 12.0336C2.87501 12.0781 3.16687 12.1078 3.47337 12.1078C3.89658 12.1078 4.31984 12.0484 4.71385 11.9445C2.55395 11.4992 0.933974 9.56952 0.933974 7.23905V7.1797C1.56149 7.53595 2.29125 7.75861 3.06467 7.78826C1.795 6.9273 0.963174 5.45779 0.963174 3.79528C0.963174 2.90467 1.19663 2.08826 1.60529 1.37576C3.92574 4.28513 7.41371 6.1851 11.3248 6.39295C11.2519 6.0367 11.2081 5.66564 11.2081 5.29454C11.2081 2.65232 13.3096 0.5 15.9219 0.5C17.2792 0.5 18.5051 1.0789 19.3661 2.01406C20.4314 1.80626 21.453 1.40546 22.3579 0.856253C22.0076 1.96956 21.2633 2.90472 20.2855 3.49842C21.2342 3.39457 22.1536 3.12732 23 2.75627C22.358 3.70623 21.5553 4.55229 20.6358 5.23514Z"
+                    fill="#333333"
+                  />
+                </svg>
+              </a>
+            </div>
+          </address>
+        </div>
+        <div>
+          <h3
+            class="tit-no-underline mb-4 md:mb-5 font-bold"
+            style="
+              align-self: stretch;
+              color: #333;
+              font-family: Inter, sans-serif;
+              font-size: 20px;
+              font-style: normal;
+              font-weight: 700;
+              line-height: normal;
+            "
+          >
+            About
+          </h3>
+          <p
+            class="mb-2"
+            style="
+              align-self: stretch;
+              color: #333;
+              font-family: Inter, sans-serif;
+              font-size: 16px;
+              font-style: normal;
+              font-weight: 400;
+              line-height: normal;
+            "
+          >
+            Venuu connects people through Iceland's vibrant cultural events.
+          </p>
+          <p
+            class="mb-2"
+            style="
+              align-self: stretch;
+              color: #333;
+              font-family: Inter, sans-serif;
+              font-size: 16px;
+              font-style: normal;
+              font-weight: 400;
+              line-height: normal;
+            "
+          >
+            2025 Venuu. All rights reserved.
+          </p>
+        </div>
+      </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+      // Lottie Logo Animation
+      let logoAnimation;
+      
+      document.addEventListener('DOMContentLoaded', function() {
+        // Initialize Lottie logo
+        if (document.getElementById('lottie-logo')) {
+          logoAnimation = lottie.loadAnimation({
+            container: document.getElementById('lottie-logo'),
+            renderer: 'svg',
+            loop: true,
+            autoplay: true,
+            path: 'Video/header logo.json'
+          });
+        }
+
+        // Mobile menu toggle
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const navLinks = document.querySelector('.nav-links');
+        
+        if (mobileMenuBtn && navLinks) {
+          mobileMenuBtn.addEventListener('click', function() {
+            navLinks.classList.toggle('hidden');
+            navLinks.classList.toggle('flex');
+            navLinks.classList.toggle('flex-col');
+            navLinks.classList.toggle('absolute');
+            navLinks.classList.toggle('top-full');
+            navLinks.classList.toggle('left-0');
+            navLinks.classList.toggle('right-0');
+            navLinks.classList.toggle('bg-background');
+            navLinks.classList.toggle('border-t');
+            navLinks.classList.toggle('border-gray-200');
+            navLinks.classList.toggle('p-4');
+            navLinks.classList.toggle('space-y-4');
+          });
+        }
+
+        // Search functionality
+        const searchInput = document.getElementById('search-input');
+        const searchDropdown = document.getElementById('searchDropdown');
+        
+        if (searchInput && searchDropdown) {
+          searchInput.addEventListener('input', function() {
+            const query = this.value.toLowerCase();
+            if (query.length > 0) {
+              // Simple search implementation
+              searchDropdown.innerHTML = '<div class="search-dropdown-item">Search results for "' + query + '"</div>';
+              searchDropdown.classList.add('show');
+            } else {
+              searchDropdown.classList.remove('show');
+            }
+          });
+
+          searchInput.addEventListener('blur', function() {
+            setTimeout(() => {
+              searchDropdown.classList.remove('show');
+            }, 200);
+          });
+        }
+
+        // Heart toggle functionality for favorites
+        const heartButtons = document.querySelectorAll('.event-heart');
+        heartButtons.forEach(heart => {
+          heart.addEventListener('click', function(e) {
+            e.stopPropagation();
+            const svg = this.querySelector('svg path');
+            if (svg) {
+              if (svg.getAttribute('fill') === '#E55050') {
+                svg.setAttribute('fill', '#ccc');
+                // Remove from favorites logic here
+                console.log('Removed from favorites');
+              } else {
+                svg.setAttribute('fill', '#E55050');
+                // Add to favorites logic here
+                console.log('Added to favorites');
+              }
+            }
+          });
+        });
+
+        // Event card click functionality
+        const eventItems = document.querySelectorAll('.event-item');
+        eventItems.forEach(item => {
+          item.addEventListener('click', function() {
+            const eventId = this.getAttribute('data-event-id');
+            console.log('Clicked event:', eventId);
+            // Navigate to event detail page or show modal
+          });
+        });
+      });
+    </script>
+  </body>
+</html>

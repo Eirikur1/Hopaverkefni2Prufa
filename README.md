@@ -125,5 +125,3 @@ This project is created for educational purposes. Please respect the rights of a
 For questions about this project, you can reach out through the GitHub repository.
 
 ---
-
-_Built with ❤️ for the Icelandic event community_
