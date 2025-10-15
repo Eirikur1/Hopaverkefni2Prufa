@@ -1203,7 +1203,7 @@
             width: 100%;
             touch-action: pan-y pinch-zoom;
             -webkit-overflow-scrolling: touch;
-            padding: 36px 96px;
+            padding: 0;
         }
 
         .recommended-carousel-track {
@@ -1442,7 +1442,12 @@
             
             /* Mobile carousel adjustments */
             .recommended-carousel-container {
-                padding: 0 8px;
+                padding: 0;
+            }
+            
+            /* Mobile section padding adjustments */
+            section[style*="padding: 36px 96px"] {
+                padding: 30px 15px !important;
             }
             
             /* Mobile section spacing */
@@ -1580,9 +1585,16 @@
             }
             
             /* Hero section adjustments */
-            .hero-section {
+            section[style*="width: 1442px"] {
+                width: 100% !important;
                 padding: 100px 20px 60px !important;
                 min-height: 70vh !important;
+            }
+            
+            h1[style*="width: 415px"] {
+                width: 100% !important;
+                height: auto !important;
+                max-width: 500px !important;
             }
             
             .hero-title {
@@ -1630,6 +1642,9 @@
             /* Navigation mobile */
             nav {
                 height: 60px !important;
+            }
+            
+            nav > div {
                 padding: 0 15px !important;
             }
             
@@ -1646,10 +1661,37 @@
                 font-size: 13px !important;
             }
             
+            /* Mobile menu button adjustments */
+            #mobile-menu-btn {
+                padding: 8px !important;
+                min-width: 44px !important;
+                min-height: 44px !important;
+                display: flex !important;
+                align-items: center !important;
+                justify-content: center !important;
+            }
+            
+            #mobile-menu-btn i {
+                font-size: 18px !important;
+            }
+            
+            /* Logo adjustments for mobile */
+            #lottie-logo {
+                height: 40px !important;
+                width: auto !important;
+            }
+            
             /* Hero section mobile */
-            .hero-section {
+            section[style*="width: 1442px"] {
+                width: 100% !important;
                 padding: 80px 15px 40px !important;
                 min-height: 60vh !important;
+            }
+            
+            h1[style*="width: 415px"] {
+                width: 100% !important;
+                height: auto !important;
+                max-width: 400px !important;
             }
             
             .hero-title {
@@ -1719,6 +1761,9 @@
             /* Navigation small mobile */
             nav {
                 height: 55px !important;
+            }
+            
+            nav > div {
                 padding: 0 10px !important;
             }
             
@@ -1735,10 +1780,37 @@
                 font-size: 12px !important;
             }
             
+            /* Mobile menu button small mobile */
+            #mobile-menu-btn {
+                padding: 6px !important;
+                min-width: 40px !important;
+                min-height: 40px !important;
+                display: flex !important;
+                align-items: center !important;
+                justify-content: center !important;
+            }
+            
+            #mobile-menu-btn i {
+                font-size: 16px !important;
+            }
+            
+            /* Logo adjustments for small mobile */
+            #lottie-logo {
+                height: 35px !important;
+                width: auto !important;
+            }
+            
             /* Hero section small mobile */
-            .hero-section {
+            section[style*="width: 1442px"] {
+                width: 100% !important;
                 padding: 70px 10px 30px !important;
                 min-height: 50vh !important;
+            }
+            
+            h1[style*="width: 415px"] {
+                width: 100% !important;
+                height: auto !important;
+                max-width: 350px !important;
             }
             
             .hero-title {
@@ -1802,6 +1874,16 @@
             .footer-content p,
             .footer-content a {
                 font-size: 14px !important;
+            }
+            
+            /* Small mobile carousel adjustments */
+            .recommended-carousel-container {
+                padding: 0;
+            }
+            
+            /* Small mobile section padding adjustments */
+            section[style*="padding: 36px 96px"] {
+                padding: 25px 10px !important;
             }
         }
 
